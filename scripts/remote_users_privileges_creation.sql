@@ -25,6 +25,9 @@ IDENTIFIED BY '240765';
 CREATE USER IF NOT EXISTS 'Samuel'@'%'
 IDENTIFIED BY '240023';
 
+CREATE USER IF NOT EXISTS 'Josue'@'%'
+IDENTIFIED BY '240272';
+
 
 /*
 ============================================================
@@ -41,7 +44,8 @@ WHERE User IN (
     'Marianna.Gayosso',
     'jhona.leal',
     'Dara',
-    'Samuel'
+    'Samuel',
+    'Josue'
 );
 
 
@@ -126,7 +130,7 @@ PRIVILEGIOS DE SUPPORT
 */
 
 GRANT SELECT, INSERT, UPDATE
-ON db_test_7b.tb_users
+ON db_test_7b.tb_user
 TO 'support';
 
 GRANT SELECT, INSERT, UPDATE
@@ -219,6 +223,14 @@ TO 'Samuel'@'%';
 
 
 /*
+SUPPORT — JOSUE
+*/
+
+GRANT 'support'
+TO 'Josue'@'%';
+
+
+/*
 ============================================================
 ESTABLECER ROLES PREDETERMINADOS
 ============================================================
@@ -245,6 +257,9 @@ TO 'jhona.leal'@'%';
 SET DEFAULT ROLE 'common'
 TO 'Samuel'@'%';
 
+SET DEFAULT ROLE 'support'
+TO 'Josue'@'%';
+
 
 /*
 ============================================================
@@ -265,6 +280,8 @@ SHOW GRANTS FOR 'Dara'@'%';
 SHOW GRANTS FOR 'jhona.leal'@'%';
 
 SHOW GRANTS FOR 'Samuel'@'%';
+
+SHOW GRANTS FOR 'Josue'@'%';
 
 
 /*
@@ -307,7 +324,8 @@ WHERE TO_USER IN (
     'Jeysi.Lara',
     'Dara',
     'jhona.leal',
-    'Samuel'
+    'Samuel',
+    'Josue'
 )
 ORDER BY TO_USER, FROM_USER;
 
