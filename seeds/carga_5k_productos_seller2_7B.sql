@@ -1,4 +1,4 @@
-LOAD DATA LOCAL INFILE '"C:\Users\maria\OneDrive\Escritorio\Practicas-BDN-240174\scripts\remote_users_privileges_creation.sql"'
+LOAD DATA LOCAL INFILE 'C:/Users/maria/OneDrive/Escritorio/Practicas-BDN-240174/seeds/productos_SoloMay_5000.csv'
 INTO TABLE tb_products
 CHARACTER SET utf8mb4
 FIELDS TERMINATED BY ','

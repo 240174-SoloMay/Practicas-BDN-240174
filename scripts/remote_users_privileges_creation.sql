@@ -1,31 +1,56 @@
 /*
 ============================================================
+ELIMINAR USUARIOS Y ROLES ANTERIORES
+============================================================
+*/
+
+DROP USER IF EXISTS 'Jeysi.Lara'@'%';
+DROP USER IF EXISTS 'marco.ramirez'@'%';
+DROP USER IF EXISTS 'Diego.Garrido'@'%';
+DROP USER IF EXISTS 'Marianna.Gayosso'@'%';
+DROP USER IF EXISTS 'jhona.leal'@'%';
+DROP USER IF EXISTS 'Dara'@'%';
+DROP USER IF EXISTS 'Samuel'@'%';
+DROP USER IF EXISTS 'Josue'@'%';
+
+
+DROP ROLE IF EXISTS 'super_admin';
+DROP ROLE IF EXISTS 'admin';
+DROP ROLE IF EXISTS 'seller';
+DROP ROLE IF EXISTS 'buyer';
+DROP ROLE IF EXISTS 'support';
+DROP ROLE IF EXISTS 'common';
+DROP ROLE IF EXISTS 'user_not_registered';
+
+
+/*
+============================================================
 CREACIÓN DE USUARIOS
 ============================================================
 */
 
-CREATE USER IF NOT EXISTS 'Jeysi.Lara'@'%'
+CREATE USER 'Jeysi.Lara'@'%'
 IDENTIFIED BY '240234';
 
-CREATE USER IF NOT EXISTS 'marco.ramirez'@'%'
+CREATE USER 'marco.ramirez'@'%'
 IDENTIFIED BY 'qwerty123';
 
-CREATE USER IF NOT EXISTS 'Diego.Garrido'@'%'
+CREATE USER 'Diego.Garrido'@'%'
 IDENTIFIED BY '240709';
 
-CREATE USER IF NOT EXISTS 'Marianna.Gayosso'@'%'
+CREATE USER 'Marianna.Gayosso'@'%'
 IDENTIFIED BY '240174';
 
-CREATE USER IF NOT EXISTS 'jhona.leal'@'%'
+CREATE USER 'jhona.leal'@'%'
 IDENTIFIED BY '240603';
 
-CREATE USER IF NOT EXISTS 'Dara'@'%'
+CREATE USER 'Dara'@'%'
 IDENTIFIED BY '240765';
 
-CREATE USER IF NOT EXISTS 'Samuel'@'%'
+CREATE USER 'Samuel'@'%'
 IDENTIFIED BY '240023';
 
-CREATE USER IF NOT EXISTS 'Josue'@'%'
+CREATE USER 'Josue'@'%'
 IDENTIFIED BY '240272';
 
 
@@ -55,19 +80,19 @@ CREACIÓN DE ROLES
 ============================================================
 */
 
-CREATE ROLE IF NOT EXISTS 'super_admin';
+CREATE ROLE 'super_admin';
 
-CREATE ROLE IF NOT EXISTS 'admin';
+CREATE ROLE 'admin';
 
-CREATE ROLE IF NOT EXISTS 'seller';
+CREATE ROLE 'seller';
 
-CREATE ROLE IF NOT EXISTS 'buyer';
+CREATE ROLE 'buyer';
 
-CREATE ROLE IF NOT EXISTS 'support';
+CREATE ROLE 'support';
 
-CREATE ROLE IF NOT EXISTS 'common';
+CREATE ROLE 'common';
 
-CREATE ROLE IF NOT EXISTS 'user_not_registered';
+CREATE ROLE 'user_not_registered';
 
 
 /*
@@ -183,10 +208,10 @@ TO 'marco.ramirez'@'%';
 
 
 /*
-SUPPORT — DIEGO
+SELLER — DIEGO
 */
 
-GRANT 'support'
+GRANT 'seller'
 TO 'Diego.Garrido'@'%';
 
 
@@ -199,10 +224,10 @@ TO 'Jeysi.Lara'@'%';
 
 
 /*
-SELLER — DARA
+SUPPORT — DARA
 */
 
-GRANT 'seller'
+GRANT 'support'
 TO 'Dara'@'%';
 
 
@@ -242,13 +267,13 @@ TO 'Marianna.Gayosso'@'%';
 SET DEFAULT ROLE 'admin'
 TO 'marco.ramirez'@'%';
 
-SET DEFAULT ROLE 'support'
+SET DEFAULT ROLE 'seller'
 TO 'Diego.Garrido'@'%';
 
 SET DEFAULT ROLE 'seller'
 TO 'Jeysi.Lara'@'%';
 
-SET DEFAULT ROLE 'seller'
+SET DEFAULT ROLE 'support'
 TO 'Dara'@'%';
 
 SET DEFAULT ROLE 'buyer'

@@ -1,4 +1,34 @@
-﻿ID,SKU,name,description,current_price,current_stock,status
+﻿    ID,SKU,name,description,current_price,current_stock,status
+1,ELE-00001,"Laptop Lenovo IdeaPad 3 Negro, 256 GB",Laptop Lenovo IdeaPad 3 con almacenamiento de 256 GB,12499.0,120,1
+2,ELE-00002,"Laptop HP 15 Plata, 512 GB",Laptop HP 15 con almacenamiento de 512 GB,13999.0,135,1
+3,ELE-00003,"Laptop Dell Inspiron 14 Gris, 512 GB",Laptop Dell Inspiron 14 con almacenamiento de 512 GB,15499.0,98,1
+4,ELE-00004,"Monitor Samsung 24 Negro, Full HD",Monitor Samsung de 24 pulgadas con resolución Full HD,3299.0,176,1
+5,ELE-00005,"Monitor LG 27 Negro, Full HD",Monitor LG de 27 pulgadas con resolución Full HD,4199.0,143,1
+6,ELE-00006,"Monitor ASUS 24 Negro, 165 Hz",Monitor ASUS de 24 pulgadas con frecuencia de 165 Hz,4899.0,110,1
+7,ELE-00007,Teclado Logitech K380 Negro,Teclado inalámbrico Logitech K380,899.0,205,1
+8,ELE-00008,Teclado Redragon Kumara Negro,Teclado mecánico Redragon Kumara,1199.0,187,1
+9,ELE-00009,Mouse Logitech M185 Negro,Mouse inalámbrico Logitech M185,399.0,250,1
+10,ELE-00010,Mouse Razer DeathAdder Negro,Mouse gamer Razer DeathAdder,899.0,165,1
+11,ELE-00011,Audífonos Sony WH-CH520 Azul,Audífonos inalámbricos Sony WH-CH520,1199.0,132,1
+12,ELE-00012,Audífonos JBL Tune 510BT Negro,Audífonos Bluetooth JBL Tune 510BT,999.0,148,1
+13,ELE-00013,Bocina JBL Flip 6 Negro,Bocina portátil Bluetooth JBL Flip 6,2699.0,92,1
+14,ELE-00014,Bocina Sony SRS-XB100 Gris,Bocina portátil Bluetooth Sony SRS-XB100,1599.0,115,1
+15,ELE-00015,"Tablet Samsung Galaxy Tab A9 Gris, 64 GB",Tablet Samsung Galaxy Tab A9 con 64 GB,3499.0,105,1
+16,ELE-00016,"Tablet Lenovo Tab M10 Gris, 64 GB",Tablet Lenovo Tab M10 con 64 GB,3299.0,87,1
+17,ELE-00017,"Smartphone Samsung Galaxy A15 Azul, 128 GB",Smartphone Samsung Galaxy A15 con 128 GB,4299.0,126,1
+18,ELE-00018,"Smartphone Xiaomi Redmi Note 13 Negro, 256 GB",Smartphone Xiaomi Redmi Note 13 con 256 GB,5499.0,114,1
+19,ELE-00019,"Smartphone Motorola Moto G54 Azul, 128 GB",Smartphone Motorola Moto G54 con 128 GB,4999.0,101,1
+20,ELE-00020,"Smart TV Hisense 50 Negro, 4K",Smart TV Hisense de 50 pulgadas con resolución 4K,7499.0,76,1
+21,ELE-00021,"Smart TV TCL 55 Negro, 4K",Smart TV TCL de 55 pulgadas con resolución 4K,8999.0,68,1
+22,ELE-00022,"Webcam Logitech C920 Negro, Full HD",Webcam Logitech C920 con resolución Full HD,1799.0,124,1
+23,ELE-00023,Disco SSD Kingston 480 GB Negro,Unidad SSD Kingston de 480 GB,899.0,190,1
+24,ELE-00024,Disco SSD Crucial 1 TB Negro,Unidad SSD Crucial de 1 TB,1599.0,155,1
+25,ELE-00025,Memoria USB Kingston 64 GB Negro,Memoria USB Kingston de 64 GB,199.0,230,1
+26,ELE-00026,Memoria USB SanDisk 128 GB Negro,Memoria USB SanDisk de 128 GB,299.0,215,1
+27,ELE-00027,Router TP-Link Archer C6 Negro,Router inalámbrico TP-Link Archer C6,899.0,140,1
+28,ELE-00028,Impresora HP DeskJet 2775 Blanco,Impresora multifuncional HP DeskJet 2775,1699.0,83,1
+29,ELE-00029,Impresora Epson EcoTank L3250 Negro,Impresora multifuncional Epson EcoTank L3250,4499.0,72,1
+30,ELE-00030,Regulador APC 600VA Negro,Regulador de voltaje APC de 600VA,799.0,160,1
 31,ELE-00031,"HP Pavilion 15 Verde, 64 GB","Laptop HP Pavilion 15, variante Verde, 64 GB.",43166.6,150,1
 32,ELE-00032,"Dell Inspiron 15 Negro, 64 GB","Laptop Dell Inspiron 15, variante Negro, 64 GB.",3467.61,145,1
 33,ELE-00033,"Acer Aspire 5 Gris, 64 GB","Laptop Acer Aspire 5, variante Gris, 64 GB.",6124.62,173,1
