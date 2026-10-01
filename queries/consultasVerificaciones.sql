@@ -88,19 +88,31 @@ WHERE Db = 'db_test_7b';
 SELECT COUNT(*) AS total_productos
 FROM tb_products;
 
+/* ============================================================
+   11. CONTABILIZAR TODOS LOS PRODUCTOS
+   ============================================================ */
+
+SELECT COUNT(*) FROM tb_products;
 
 /* ============================================================
-   11. VISUALIZAR TODOS LOS PRODUCTOS
+   12. CONSULTA PARA SABER LA TRAZABILIDAD DE LOS PRODUCTOS
    ============================================================ */
 
 SELECT *
-FROM tb_products;
-
+FROM vw_trazabilidad_productos ORDER BY creation_date 
+DESC LIMIT 10;
 
 /* ============================================================
-   12. TRAZABILIDAD DE LOS PRODUCTOS
+   13. CONSULTA LA TRAZABILIDAD DE USUARIOS
    ============================================================ */
 
 SELECT *
-FROM vw_trazabilidad_productos
-LIMIT 10;
+FROM vw_trazabilidad_usuarios ORDER BY
+creation_date ASC;
+
+/* ============================================================
+   14. CONTABILIZAR CUANTOS PRODUCTOS POR TABLA HAY POR USUARIOS
+   ============================================================ */
+
+SELECT COUNT(*), vp.insert_by FROM vw_trazabilidad_productos vp
+GROUP BY vp.inserted_by;

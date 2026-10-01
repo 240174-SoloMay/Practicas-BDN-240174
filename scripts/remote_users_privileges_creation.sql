@@ -19,7 +19,7 @@ DROP ROLE IF EXISTS 'admin';
 DROP ROLE IF EXISTS 'seller';
 DROP ROLE IF EXISTS 'buyer';
 DROP ROLE IF EXISTS 'support';
-DROP ROLE IF EXISTS 'common';
+DROP ROLE IF EXISTS 'common_user';
 DROP ROLE IF EXISTS 'user_not_registered';
 
 
@@ -90,7 +90,7 @@ CREATE ROLE 'buyer';
 
 CREATE ROLE 'support';
 
-CREATE ROLE 'common';
+CREATE ROLE 'common_user';
 
 CREATE ROLE 'user_not_registered';
 
@@ -109,7 +109,7 @@ WHERE User IN (
     'seller',
     'buyer',
     'support',
-    'common',
+    'common_user',
     'user_not_registered'
 );
 
@@ -182,7 +182,7 @@ PRIVILEGIOS DE COMMON
 
 GRANT SELECT
 ON db_test_7b.*
-TO 'common';
+TO 'common_user';
 
 
 /*
@@ -243,7 +243,7 @@ TO 'jhona.leal'@'%';
 COMMON — SAMUEL
 */
 
-GRANT 'common'
+GRANT 'common_user'
 TO 'Samuel'@'%';
 
 
@@ -279,7 +279,7 @@ TO 'Dara'@'%';
 SET DEFAULT ROLE 'buyer'
 TO 'jhona.leal'@'%';
 
-SET DEFAULT ROLE 'common'
+SET DEFAULT ROLE 'common_user'
 TO 'Samuel'@'%';
 
 SET DEFAULT ROLE 'support'
@@ -325,7 +325,7 @@ SHOW GRANTS FOR 'buyer';
 
 SHOW GRANTS FOR 'support';
 
-SHOW GRANTS FOR 'common';
+SHOW GRANTS FOR 'common_user';
 
 SHOW GRANTS FOR 'user_not_registered';
 
