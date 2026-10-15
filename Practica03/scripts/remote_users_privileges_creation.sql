@@ -150,7 +150,7 @@ TO 'seller';
 
 /*
 ============================================================
-PRIVILEGIOS DE SUPPORT
+PRIVILEGIOS DE SUPPORT (Asignados al Rol)
 ============================================================
 */
 
@@ -160,6 +160,14 @@ TO 'support';
 
 GRANT SELECT, INSERT, UPDATE
 ON db_test_7b.tb_products
+TO 'support';
+
+GRANT SELECT, INSERT, UPDATE
+ON db_test_7b.tb_categories
+TO 'support';
+
+GRANT SELECT, INSERT, UPDATE
+ON db_test_7b.tb_product_categories
 TO 'support';
 
 
@@ -191,68 +199,25 @@ ASIGNACIÓN DE ROLES A LOS USUARIOS
 ============================================================
 */
 
-/*
-SUPER ADMIN — MARIANNA
-*/
+/* SUPER ADMIN — MARIANNA */
+GRANT 'super_admin' TO 'Marianna.Gayosso'@'%';
 
-GRANT 'super_admin'
-TO 'Marianna.Gayosso'@'%';
+/* ADMIN — MARCO */
+GRANT 'admin' TO 'marco.ramirez'@'%';
 
+/* SELLER — DIEGO Y JEYSI */
+GRANT 'seller' TO 'Diego.Garrido'@'%';
+GRANT 'seller' TO 'Jeysi.Lara'@'%';
 
-/*
-ADMIN — MARCO
-*/
+/* COMMON USER — DARA Y SAMUEL */
+GRANT 'common_user' TO 'Dara'@'%';
+GRANT 'common_user' TO 'Samuel'@'%';
 
-GRANT 'admin'
-TO 'marco.ramirez'@'%';
+/* BUYER — JHONA */
+GRANT 'buyer' TO 'jhona.leal'@'%';
 
-
-/*
-SELLER — DIEGO
-*/
-
-GRANT 'seller'
-TO 'Diego.Garrido'@'%';
-
-
-/*
-SELLER — JEYSI
-*/
-
-GRANT 'seller'
-TO 'Jeysi.Lara'@'%';
-
-
-/*
-SUPPORT — DARA
-*/
-
-GRANT 'support'
-TO 'Dara'@'%';
-
-
-/*
-BUYER — JHONA
-*/
-
-GRANT 'buyer'
-TO 'jhona.leal'@'%';
-
-
-/*
-COMMON — SAMUEL
-*/
-
-GRANT 'common_user'
-TO 'Samuel'@'%';
-
-
-/*
-SUPPORT — JOSUE
-*/
-
-GRANT 'support'
-TO 'Josue'@'%';
+/* SUPPORT — ÚNICAMENTE JOSUE */
+GRANT 'support' TO 'Josue'@'%';
 
 
 /*
@@ -261,29 +226,14 @@ ESTABLECER ROLES PREDETERMINADOS
 ============================================================
 */
 
-SET DEFAULT ROLE 'super_admin'
-TO 'Marianna.Gayosso'@'%';
-
-SET DEFAULT ROLE 'admin'
-TO 'marco.ramirez'@'%';
-
-SET DEFAULT ROLE 'seller'
-TO 'Diego.Garrido'@'%';
-
-SET DEFAULT ROLE 'seller'
-TO 'Jeysi.Lara'@'%';
-
-SET DEFAULT ROLE 'support'
-TO 'Dara'@'%';
-
-SET DEFAULT ROLE 'buyer'
-TO 'jhona.leal'@'%';
-
-SET DEFAULT ROLE 'common_user'
-TO 'Samuel'@'%';
-
-SET DEFAULT ROLE 'support'
-TO 'Josue'@'%';
+SET DEFAULT ROLE 'super_admin' TO 'Marianna.Gayosso'@'%';
+SET DEFAULT ROLE 'admin' TO 'marco.ramirez'@'%';
+SET DEFAULT ROLE 'seller' TO 'Diego.Garrido'@'%';
+SET DEFAULT ROLE 'seller' TO 'Jeysi.Lara'@'%';
+SET DEFAULT ROLE 'common_user' TO 'Dara'@'%';
+SET DEFAULT ROLE 'buyer' TO 'jhona.leal'@'%';
+SET DEFAULT ROLE 'common_user' TO 'Samuel'@'%';
+SET DEFAULT ROLE 'support' TO 'Josue'@'%';
 
 
 /*
@@ -293,19 +243,12 @@ VERIFICACIÓN DE PRIVILEGIOS DE LOS USUARIOS
 */
 
 SHOW GRANTS FOR 'Marianna.Gayosso'@'%';
-
 SHOW GRANTS FOR 'marco.ramirez'@'%';
-
 SHOW GRANTS FOR 'Diego.Garrido'@'%';
-
 SHOW GRANTS FOR 'Jeysi.Lara'@'%';
-
 SHOW GRANTS FOR 'Dara'@'%';
-
 SHOW GRANTS FOR 'jhona.leal'@'%';
-
 SHOW GRANTS FOR 'Samuel'@'%';
-
 SHOW GRANTS FOR 'Josue'@'%';
 
 
@@ -316,17 +259,11 @@ VERIFICACIÓN DE PRIVILEGIOS DE LOS ROLES
 */
 
 SHOW GRANTS FOR 'super_admin';
-
 SHOW GRANTS FOR 'admin';
-
 SHOW GRANTS FOR 'seller';
-
 SHOW GRANTS FOR 'buyer';
-
 SHOW GRANTS FOR 'support';
-
 SHOW GRANTS FOR 'common_user';
-
 SHOW GRANTS FOR 'user_not_registered';
 
 
