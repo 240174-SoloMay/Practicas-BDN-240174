@@ -1,3 +1,5 @@
+USE db_test_7b;
+
 /*
 ============================================================
 ELIMINAR USUARIOS Y ROLES ANTERIORES
@@ -56,11 +58,15 @@ IDENTIFIED BY '240272';
 
 /*
 ============================================================
-VERIFICAR QUE LOS USUARIOS EXISTEN
+VERIFICACIÓN DE USUARIOS
 ============================================================
 */
 
-SELECT User, Host
+SELECT
+    User,
+    Host,
+    account_locked,
+    password_expired
 FROM mysql.user
 WHERE User IN (
     'Jeysi.Lara',
@@ -71,7 +77,8 @@ WHERE User IN (
     'Dara',
     'Samuel',
     'Josue'
-);
+)
+ORDER BY User, Host;
 
 
 /*
@@ -81,27 +88,23 @@ CREACIÓN DE ROLES
 */
 
 CREATE ROLE 'super_admin';
-
 CREATE ROLE 'admin';
-
 CREATE ROLE 'seller';
-
 CREATE ROLE 'buyer';
-
 CREATE ROLE 'support';
-
 CREATE ROLE 'common_user';
-
 CREATE ROLE 'user_not_registered';
 
 
 /*
 ============================================================
-VERIFICAR QUE LOS ROLES EXISTEN
+VERIFICACIÓN DE ROLES
 ============================================================
 */
 
-SELECT User, Host
+SELECT
+    User,
+    Host
 FROM mysql.user
 WHERE User IN (
     'super_admin',
@@ -111,7 +114,8 @@ WHERE User IN (
     'support',
     'common_user',
     'user_not_registered'
-);
+)
+ORDER BY User, Host;
 
 
 /*
@@ -150,7 +154,7 @@ TO 'seller';
 
 /*
 ============================================================
-PRIVILEGIOS DE SUPPORT (Asignados al Rol)
+PRIVILEGIOS DE SUPPORT
 ============================================================
 */
 
@@ -184,7 +188,7 @@ TO 'buyer';
 
 /*
 ============================================================
-PRIVILEGIOS DE COMMON
+PRIVILEGIOS DE COMMON USER
 ============================================================
 */
 
@@ -199,24 +203,18 @@ ASIGNACIÓN DE ROLES A LOS USUARIOS
 ============================================================
 */
 
-/* SUPER ADMIN — MARIANNA */
 GRANT 'super_admin' TO 'Marianna.Gayosso'@'%';
 
-/* ADMIN — MARCO */
 GRANT 'admin' TO 'marco.ramirez'@'%';
 
-/* SELLER — DIEGO Y JEYSI */
 GRANT 'seller' TO 'Diego.Garrido'@'%';
 GRANT 'seller' TO 'Jeysi.Lara'@'%';
 
-/* COMMON USER — DARA Y SAMUEL */
 GRANT 'common_user' TO 'Dara'@'%';
 GRANT 'common_user' TO 'Samuel'@'%';
 
-/* BUYER — JHONA */
 GRANT 'buyer' TO 'jhona.leal'@'%';
 
-/* SUPPORT — ÚNICAMENTE JOSUE */
 GRANT 'support' TO 'Josue'@'%';
 
 
@@ -226,30 +224,80 @@ ESTABLECER ROLES PREDETERMINADOS
 ============================================================
 */
 
-SET DEFAULT ROLE 'super_admin' TO 'Marianna.Gayosso'@'%';
-SET DEFAULT ROLE 'admin' TO 'marco.ramirez'@'%';
-SET DEFAULT ROLE 'seller' TO 'Diego.Garrido'@'%';
-SET DEFAULT ROLE 'seller' TO 'Jeysi.Lara'@'%';
-SET DEFAULT ROLE 'common_user' TO 'Dara'@'%';
-SET DEFAULT ROLE 'buyer' TO 'jhona.leal'@'%';
-SET DEFAULT ROLE 'common_user' TO 'Samuel'@'%';
-SET DEFAULT ROLE 'support' TO 'Josue'@'%';
+SET DEFAULT ROLE 'super_admin'
+TO 'Marianna.Gayosso'@'%';
+
+SET DEFAULT ROLE 'admin'
+TO 'marco.ramirez'@'%';
+
+SET DEFAULT ROLE 'seller'
+TO 'Diego.Garrido'@'%';
+
+SET DEFAULT ROLE 'seller'
+TO 'Jeysi.Lara'@'%';
+
+SET DEFAULT ROLE 'common_user'
+TO 'Dara'@'%';
+
+SET DEFAULT ROLE 'buyer'
+TO 'jhona.leal'@'%';
+
+SET DEFAULT ROLE 'common_user'
+TO 'Samuel'@'%';
+
+SET DEFAULT ROLE 'support'
+TO 'Josue'@'%';
 
 
 /*
 ============================================================
-VERIFICACIÓN DE PRIVILEGIOS DE LOS USUARIOS
+VERIFICACIÓN DE ROLES ASIGNADOS
 ============================================================
 */
 
-SHOW GRANTS FOR 'Marianna.Gayosso'@'%';
-SHOW GRANTS FOR 'marco.ramirez'@'%';
-SHOW GRANTS FOR 'Diego.Garrido'@'%';
-SHOW GRANTS FOR 'Jeysi.Lara'@'%';
-SHOW GRANTS FOR 'Dara'@'%';
-SHOW GRANTS FOR 'jhona.leal'@'%';
-SHOW GRANTS FOR 'Samuel'@'%';
-SHOW GRANTS FOR 'Josue'@'%';
+SELECT
+    FROM_USER AS rol,
+    FROM_HOST AS host_rol,
+    TO_USER AS usuario,
+    TO_HOST AS host_usuario,
+    WITH_ADMIN_OPTION
+FROM mysql.role_edges
+WHERE TO_USER IN (
+    'Marianna.Gayosso',
+    'marco.ramirez',
+    'Diego.Garrido',
+    'Jeysi.Lara',
+    'Dara',
+    'jhona.leal',
+    'Samuel',
+    'Josue'
+)
+ORDER BY TO_USER, FROM_USER;
+
+
+/*
+============================================================
+VERIFICACIÓN DE ROLES PREDETERMINADOS
+============================================================
+*/
+
+SELECT
+    USER,
+    HOST,
+    DEFAULT_ROLE_USER,
+    DEFAULT_ROLE_HOST
+FROM mysql.default_roles
+WHERE USER IN (
+    'Marianna.Gayosso',
+    'marco.ramirez',
+    'Diego.Garrido',
+    'Jeysi.Lara',
+    'Dara',
+    'jhona.leal',
+    'Samuel',
+    'Josue'
+)
+ORDER BY USER, HOST;
 
 
 /*
@@ -269,27 +317,33 @@ SHOW GRANTS FOR 'user_not_registered';
 
 /*
 ============================================================
-VERIFICACIÓN DE USUARIOS Y ROLES
+VERIFICACIÓN DE PRIVILEGIOS EFECTIVOS DE LOS USUARIOS
 ============================================================
 */
 
-SELECT
-    TO_USER AS usuario,
-    TO_HOST AS host,
-    FROM_USER AS rol,
-    FROM_HOST AS rol_host
-FROM mysql.role_edges
-WHERE TO_USER IN (
-    'Marianna.Gayosso',
-    'marco.ramirez',
-    'Diego.Garrido',
-    'Jeysi.Lara',
-    'Dara',
-    'jhona.leal',
-    'Samuel',
-    'Josue'
-)
-ORDER BY TO_USER, FROM_USER;
+SHOW GRANTS FOR 'Marianna.Gayosso'@'%'
+USING 'super_admin';
+
+SHOW GRANTS FOR 'marco.ramirez'@'%'
+USING 'admin';
+
+SHOW GRANTS FOR 'Diego.Garrido'@'%'
+USING 'seller';
+
+SHOW GRANTS FOR 'Jeysi.Lara'@'%'
+USING 'seller';
+
+SHOW GRANTS FOR 'Dara'@'%'
+USING 'common_user';
+
+SHOW GRANTS FOR 'jhona.leal'@'%'
+USING 'buyer';
+
+SHOW GRANTS FOR 'Samuel'@'%'
+USING 'common_user';
+
+SHOW GRANTS FOR 'Josue'@'%'
+USING 'support';
 
 
 /*
@@ -299,5 +353,5 @@ MENSAJE DE CONFIRMACIÓN
 */
 
 SELECT
-    'Los usuarios, roles y privilegios han sido creados correctamente'
+    'Los usuarios, roles y privilegios han sido creados y verificados correctamente.'
     AS mensaje;
