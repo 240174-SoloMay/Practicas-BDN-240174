@@ -1,64 +1,46 @@
+
 USE db_test_7b;
 
 /*
 ============================================================
-ELIMINAR USUARIOS Y ROLES ANTERIORES
+1. CREACION DE USUARIOS
 ============================================================
 */
 
-DROP USER IF EXISTS 'Jeysi.Lara'@'%';
-DROP USER IF EXISTS 'marco.ramirez'@'%';
-DROP USER IF EXISTS 'Diego.Garrido'@'%';
-DROP USER IF EXISTS 'Marianna.Gayosso'@'%';
-DROP USER IF EXISTS 'jhona.leal'@'%';
-DROP USER IF EXISTS 'Dara'@'%';
-DROP USER IF EXISTS 'Samuel'@'%';
-DROP USER IF EXISTS 'Josue'@'%';
-
-
-DROP ROLE IF EXISTS 'super_admin';
-DROP ROLE IF EXISTS 'admin';
-DROP ROLE IF EXISTS 'seller';
-DROP ROLE IF EXISTS 'buyer';
-DROP ROLE IF EXISTS 'support';
-DROP ROLE IF EXISTS 'common_user';
-DROP ROLE IF EXISTS 'user_not_registered';
-
-
-/*
-============================================================
-CREACIÓN DE USUARIOS
-============================================================
-*/
-
-CREATE USER 'Jeysi.Lara'@'%'
+CREATE USER IF NOT EXISTS 'Jeysi.Lara'@'%'
 IDENTIFIED BY '240234';
 
-CREATE USER 'marco.ramirez'@'%'
+CREATE USER IF NOT EXISTS 'marco.ramirez'@'%'
 IDENTIFIED BY 'qwerty123';
 
-CREATE USER 'Diego.Garrido'@'%'
+CREATE USER IF NOT EXISTS 'Diego.Garrido'@'%'
 IDENTIFIED BY '240709';
 
-CREATE USER 'Marianna.Gayosso'@'%'
+CREATE USER IF NOT EXISTS 'Marianna.Gayosso'@'%'
 IDENTIFIED BY '240174';
 
-CREATE USER 'jhona.leal'@'%'
+CREATE USER IF NOT EXISTS 'jhona.leal'@'%'
 IDENTIFIED BY '240603';
 
-CREATE USER 'Dara'@'%'
+CREATE USER IF NOT EXISTS 'Dara'@'%'
 IDENTIFIED BY '240765';
 
-CREATE USER 'Samuel'@'%'
+CREATE USER IF NOT EXISTS 'Samuel'@'%'
 IDENTIFIED BY '240023';
 
-CREATE USER 'Josue'@'%'
+CREATE USER IF NOT EXISTS 'Josue'@'%'
 IDENTIFIED BY '240272';
+
+CREATE USER IF NOT EXISTS 'app_web'@'%'
+IDENTIFIED BY 'web123';
+
+CREATE USER IF NOT EXISTS 'app_mobile'@'%'
+IDENTIFIED BY 'mobile890';
 
 
 /*
 ============================================================
-VERIFICACIÓN DE USUARIOS
+2. VERIFICACION DE USUARIOS
 ============================================================
 */
 
@@ -76,29 +58,31 @@ WHERE User IN (
     'jhona.leal',
     'Dara',
     'Samuel',
-    'Josue'
+    'Josue',
+    'app_web',
+    'app_mobile'
 )
 ORDER BY User, Host;
 
 
 /*
 ============================================================
-CREACIÓN DE ROLES
+3. CREACION DE ROLES
 ============================================================
 */
 
-CREATE ROLE 'super_admin';
-CREATE ROLE 'admin';
-CREATE ROLE 'seller';
-CREATE ROLE 'buyer';
-CREATE ROLE 'support';
-CREATE ROLE 'common_user';
-CREATE ROLE 'user_not_registered';
+CREATE ROLE IF NOT EXISTS 'super_admin'@'%';
+CREATE ROLE IF NOT EXISTS 'admin'@'%';
+CREATE ROLE IF NOT EXISTS 'seller'@'%';
+CREATE ROLE IF NOT EXISTS 'buyer'@'%';
+CREATE ROLE IF NOT EXISTS 'support'@'%';
+CREATE ROLE IF NOT EXISTS 'common_user'@'%';
+CREATE ROLE IF NOT EXISTS 'user_not_registered'@'%';
 
 
 /*
 ============================================================
-VERIFICACIÓN DE ROLES
+4. VERIFICACION DE ROLES
 ============================================================
 */
 
@@ -120,138 +104,202 @@ ORDER BY User, Host;
 
 /*
 ============================================================
-PRIVILEGIOS DE SUPER ADMIN
+5. PRIVILEGIOS DE LOS ROLES
 ============================================================
 */
+
+-- SUPER ADMIN
 
 GRANT ALL PRIVILEGES
 ON *.*
-TO 'super_admin'
+TO 'super_admin'@'%'
 WITH GRANT OPTION;
 
 
-/*
-============================================================
-PRIVILEGIOS DE ADMIN
-============================================================
-*/
+-- ADMIN
 
 GRANT ALL PRIVILEGES
 ON db_test_7b.*
-TO 'admin';
+TO 'admin'@'%';
 
 
-/*
-============================================================
-PRIVILEGIOS DE SELLER
-============================================================
-*/
+-- SELLER
 
 GRANT SELECT, INSERT, UPDATE, DELETE
 ON db_test_7b.tb_products
-TO 'seller';
+TO 'seller'@'%';
+
+GRANT EXECUTE
+ON PROCEDURE db_test_7b.sp_soft_delete_product
+TO 'seller'@'%';
+
+GRANT EXECUTE
+ON PROCEDURE db_test_7b.sp_restore_product
+TO 'seller'@'%';
 
 
-/*
-============================================================
-PRIVILEGIOS DE SUPPORT
-============================================================
-*/
+-- SUPPORT
 
 GRANT SELECT, INSERT, UPDATE
 ON db_test_7b.tb_user
-TO 'support';
+TO 'support'@'%';
 
 GRANT SELECT, INSERT, UPDATE
 ON db_test_7b.tb_products
-TO 'support';
+TO 'support'@'%';
 
 GRANT SELECT, INSERT, UPDATE
 ON db_test_7b.tb_categories
-TO 'support';
+TO 'support'@'%';
 
 GRANT SELECT, INSERT, UPDATE
 ON db_test_7b.tb_product_categories
-TO 'support';
+TO 'support'@'%';
+
+GRANT EXECUTE
+ON PROCEDURE db_test_7b.sp_soft_delete_product
+TO 'support'@'%';
+
+GRANT EXECUTE
+ON PROCEDURE db_test_7b.sp_restore_product
+TO 'support'@'%';
 
 
-/*
-============================================================
-PRIVILEGIOS DE BUYER
-============================================================
-*/
+-- BUYER
 
 GRANT SELECT
 ON db_test_7b.tb_products
-TO 'buyer';
+TO 'buyer'@'%';
+
+GRANT SELECT
+ON db_test_7b.vw_total_products_by_category
+TO 'buyer'@'%';
 
 
-/*
-============================================================
-PRIVILEGIOS DE COMMON USER
-============================================================
-*/
+-- COMMON USER
 
 GRANT SELECT
 ON db_test_7b.*
-TO 'common_user';
+TO 'common_user'@'%';
+
+GRANT EXECUTE
+ON PROCEDURE db_test_7b.sp_register_new_user
+TO 'common_user'@'%';
+
+
+-- USER NOT REGISTERED
+
+GRANT SELECT
+ON db_test_7b.tb_products
+TO 'user_not_registered'@'%';
+
+GRANT EXECUTE
+ON PROCEDURE db_test_7b.sp_register_new_user
+TO 'user_not_registered'@'%';
 
 
 /*
 ============================================================
-ASIGNACIÓN DE ROLES A LOS USUARIOS
+6. ASIGNACION DE ROLES
 ============================================================
 */
 
-GRANT 'super_admin' TO 'Marianna.Gayosso'@'%';
+-- SUPER ADMIN
 
-GRANT 'admin' TO 'marco.ramirez'@'%';
-
-GRANT 'seller' TO 'Diego.Garrido'@'%';
-GRANT 'seller' TO 'Jeysi.Lara'@'%';
-
-GRANT 'common_user' TO 'Dara'@'%';
-GRANT 'common_user' TO 'Samuel'@'%';
-
-GRANT 'buyer' TO 'jhona.leal'@'%';
-
-GRANT 'support' TO 'Josue'@'%';
-
-
-/*
-============================================================
-ESTABLECER ROLES PREDETERMINADOS
-============================================================
-*/
-
-SET DEFAULT ROLE 'super_admin'
+GRANT 'super_admin'@'%'
 TO 'Marianna.Gayosso'@'%';
 
-SET DEFAULT ROLE 'admin'
+
+-- ADMIN
+
+GRANT 'admin'@'%'
 TO 'marco.ramirez'@'%';
 
-SET DEFAULT ROLE 'seller'
-TO 'Diego.Garrido'@'%';
 
-SET DEFAULT ROLE 'seller'
-TO 'Jeysi.Lara'@'%';
+-- SELLER
 
-SET DEFAULT ROLE 'common_user'
-TO 'Dara'@'%';
+GRANT 'seller'@'%'
+TO 'Diego.Garrido'@'%',
+   'Jeysi.Lara'@'%';
 
-SET DEFAULT ROLE 'buyer'
+
+-- BUYER
+
+GRANT 'buyer'@'%'
 TO 'jhona.leal'@'%';
 
-SET DEFAULT ROLE 'common_user'
-TO 'Samuel'@'%';
 
-SET DEFAULT ROLE 'support'
+-- SUPPORT
+
+GRANT 'support'@'%'
 TO 'Josue'@'%';
 
 
+-- COMMON USER
+
+GRANT 'common_user'@'%'
+TO 'Dara'@'%',
+   'Samuel'@'%';
+
+
+-- USER NOT REGISTERED
+
+GRANT 'user_not_registered'@'%'
+TO 'app_web'@'%',
+   'app_mobile'@'%';
+
+
 /*
 ============================================================
-VERIFICACIÓN DE ROLES ASIGNADOS
+7. ROLES PREDETERMINADOS
+============================================================
+*/
+
+SET DEFAULT ROLE 'super_admin'@'%'
+TO 'Marianna.Gayosso'@'%';
+
+SET DEFAULT ROLE 'admin'@'%'
+TO 'marco.ramirez'@'%';
+
+SET DEFAULT ROLE 'seller'@'%'
+TO 'Diego.Garrido'@'%',
+   'Jeysi.Lara'@'%';
+
+SET DEFAULT ROLE 'buyer'@'%'
+TO 'jhona.leal'@'%';
+
+SET DEFAULT ROLE 'support'@'%'
+TO 'Josue'@'%';
+
+SET DEFAULT ROLE 'common_user'@'%'
+TO 'Dara'@'%',
+   'Samuel'@'%';
+
+SET DEFAULT ROLE 'user_not_registered'@'%'
+TO 'app_web'@'%',
+   'app_mobile'@'%';
+
+
+/*
+============================================================
+8. VERIFICAR EL DEFINER DEL PROCEDIMIENTO
+============================================================
+*/
+
+SELECT
+    ROUTINE_SCHEMA,
+    ROUTINE_NAME,
+    DEFINER,
+    SECURITY_TYPE
+FROM information_schema.ROUTINES
+WHERE ROUTINE_SCHEMA = 'db_test_7b'
+  AND ROUTINE_NAME = 'sp_register_new_user'
+  AND ROUTINE_TYPE = 'PROCEDURE';
+
+
+/*
+============================================================
+9. VERIFICAR ASIGNACIONES DE ROLES
 ============================================================
 */
 
@@ -263,21 +311,23 @@ SELECT
     WITH_ADMIN_OPTION
 FROM mysql.role_edges
 WHERE TO_USER IN (
-    'Marianna.Gayosso',
+    'Jeysi.Lara',
     'marco.ramirez',
     'Diego.Garrido',
-    'Jeysi.Lara',
-    'Dara',
+    'Marianna.Gayosso',
     'jhona.leal',
+    'Dara',
     'Samuel',
-    'Josue'
+    'Josue',
+    'app_web',
+    'app_mobile'
 )
 ORDER BY TO_USER, FROM_USER;
 
 
 /*
 ============================================================
-VERIFICACIÓN DE ROLES PREDETERMINADOS
+10. VERIFICAR ROLES PREDETERMINADOS
 ============================================================
 */
 
@@ -288,70 +338,142 @@ SELECT
     DEFAULT_ROLE_HOST
 FROM mysql.default_roles
 WHERE USER IN (
-    'Marianna.Gayosso',
+    'Jeysi.Lara',
     'marco.ramirez',
     'Diego.Garrido',
-    'Jeysi.Lara',
-    'Dara',
+    'Marianna.Gayosso',
     'jhona.leal',
+    'Dara',
     'Samuel',
-    'Josue'
+    'Josue',
+    'app_web',
+    'app_mobile'
 )
 ORDER BY USER, HOST;
 
 
 /*
 ============================================================
-VERIFICACIÓN DE PRIVILEGIOS DE LOS ROLES
+11. VERIFICAR PRIVILEGIOS DE LOS ROLES
 ============================================================
 */
 
-SHOW GRANTS FOR 'super_admin';
-SHOW GRANTS FOR 'admin';
-SHOW GRANTS FOR 'seller';
-SHOW GRANTS FOR 'buyer';
-SHOW GRANTS FOR 'support';
-SHOW GRANTS FOR 'common_user';
-SHOW GRANTS FOR 'user_not_registered';
+SHOW GRANTS FOR 'super_admin'@'%';
+SHOW GRANTS FOR 'admin'@'%';
+SHOW GRANTS FOR 'seller'@'%';
+SHOW GRANTS FOR 'buyer'@'%';
+SHOW GRANTS FOR 'support'@'%';
+SHOW GRANTS FOR 'common_user'@'%';
+SHOW GRANTS FOR 'user_not_registered'@'%';
 
 
 /*
 ============================================================
-VERIFICACIÓN DE PRIVILEGIOS EFECTIVOS DE LOS USUARIOS
+12. VERIFICAR PRIVILEGIOS EFECTIVOS
 ============================================================
 */
 
 SHOW GRANTS FOR 'Marianna.Gayosso'@'%'
-USING 'super_admin';
+USING 'super_admin'@'%';
 
 SHOW GRANTS FOR 'marco.ramirez'@'%'
-USING 'admin';
+USING 'admin'@'%';
 
 SHOW GRANTS FOR 'Diego.Garrido'@'%'
-USING 'seller';
+USING 'seller'@'%';
 
 SHOW GRANTS FOR 'Jeysi.Lara'@'%'
-USING 'seller';
-
-SHOW GRANTS FOR 'Dara'@'%'
-USING 'common_user';
+USING 'seller'@'%';
 
 SHOW GRANTS FOR 'jhona.leal'@'%'
-USING 'buyer';
-
-SHOW GRANTS FOR 'Samuel'@'%'
-USING 'common_user';
+USING 'buyer'@'%';
 
 SHOW GRANTS FOR 'Josue'@'%'
-USING 'support';
+USING 'support'@'%';
+
+SHOW GRANTS FOR 'Dara'@'%'
+USING 'common_user'@'%';
+
+SHOW GRANTS FOR 'Samuel'@'%'
+USING 'common_user'@'%';
+
+SHOW GRANTS FOR 'app_web'@'%'
+USING 'user_not_registered'@'%';
+
+SHOW GRANTS FOR 'app_mobile'@'%'
+USING 'user_not_registered'@'%';
 
 
 /*
 ============================================================
-MENSAJE DE CONFIRMACIÓN
+13. COMPROBACION DE PRIVILEGIOS DIRECTOS
 ============================================================
 */
 
 SELECT
-    'Los usuarios, roles y privilegios han sido creados y verificados correctamente.'
+    GRANTEE,
+    TABLE_SCHEMA,
+    TABLE_NAME,
+    PRIVILEGE_TYPE
+FROM information_schema.TABLE_PRIVILEGES
+WHERE TABLE_SCHEMA = 'db_test_7b'
+  AND GRANTEE IN (
+      '''app_web''@''%''',
+      '''app_mobile''@''%'''
+  )
+ORDER BY GRANTEE, TABLE_NAME, PRIVILEGE_TYPE;
+
+
+/*
+============================================================
+14. COMPROBACION FINAL
+============================================================
+*/
+
+SELECT
+    (SELECT COUNT(*)
+     FROM mysql.user
+     WHERE User IN (
+         'Jeysi.Lara',
+         'marco.ramirez',
+         'Diego.Garrido',
+         'Marianna.Gayosso',
+         'jhona.leal',
+         'Dara',
+         'Samuel',
+         'Josue',
+         'app_web',
+         'app_mobile'
+     )) AS cuentas_encontradas,
+
+    (SELECT COUNT(*)
+     FROM mysql.user
+     WHERE User IN (
+         'super_admin',
+         'admin',
+         'seller',
+         'buyer',
+         'support',
+         'common_user',
+         'user_not_registered'
+     )) AS roles_encontrados,
+
+    (SELECT COUNT(*)
+     FROM mysql.role_edges
+     WHERE TO_USER IN (
+         'Jeysi.Lara',
+         'marco.ramirez',
+         'Diego.Garrido',
+         'Marianna.Gayosso',
+         'jhona.leal',
+         'Dara',
+         'Samuel',
+         'Josue',
+         'app_web',
+         'app_mobile'
+     )) AS asignaciones_de_roles;
+
+
+SELECT
+    'Verificacion final ejecutada. Revisar los resultados anteriores.'
     AS mensaje;
