@@ -1,0 +1,3162 @@
+{
+  "database": "db_test_7b",
+  "project": "Practicas-BDN-240174",
+  "source": "Practica03/backups/respaldo05_11_26.sql",
+  "sourceModified": "2026-11-07 22:18:15",
+  "sourceSha256": "B4E81FD8411D2A859E3A8A261CE57EACF4BCC628E8C9B92F1DE2B101CA2206F9",
+  "mysqlVersion": "8.0.46",
+  "charset": "utf8mb4",
+  "collation": "utf8mb4_0900_ai_ci",
+  "tables": [
+    {
+      "name": "tb_carts",
+      "engine": "InnoDB",
+      "options": "DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "columns": [
+        {
+          "name": "ID",
+          "type": "int unsigned",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": true,
+          "primaryKey": true,
+          "foreignKeys": []
+        },
+        {
+          "name": "user_ID",
+          "type": "int",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": [
+            "tb_carts_ibfk_1"
+          ]
+        },
+        {
+          "name": "creation_date",
+          "type": "datetime",
+          "nullable": false,
+          "default": "CURRENT_TIMESTAMP",
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        }
+      ],
+      "primaryKey": [
+        "ID"
+      ],
+      "indexes": [
+        {
+          "name": "uk_cart_user",
+          "unique": true,
+          "columns": [
+            "user_ID"
+          ]
+        }
+      ],
+      "foreignKeys": [
+        {
+          "name": "tb_carts_ibfk_1",
+          "columns": [
+            "user_ID"
+          ],
+          "refTable": "tb_user",
+          "refColumns": [
+            "ID"
+          ],
+          "onDelete": null,
+          "onUpdate": null
+        }
+      ],
+      "group": "tb"
+    },
+    {
+      "name": "tb_categories",
+      "engine": "InnoDB",
+      "options": "AUTO_INCREMENT=10000 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "columns": [
+        {
+          "name": "ID",
+          "type": "int unsigned",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": true,
+          "primaryKey": true,
+          "foreignKeys": []
+        },
+        {
+          "name": "name",
+          "type": "varchar(120)",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "sup_id_category",
+          "type": "int unsigned DEFAULT",
+          "nullable": true,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": [
+            "fk_superior_category"
+          ]
+        },
+        {
+          "name": "status",
+          "type": "bit(1)",
+          "nullable": false,
+          "default": "b'1'",
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "creation_date",
+          "type": "datetime",
+          "nullable": false,
+          "default": "CURRENT_TIMESTAMP",
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "last_update",
+          "type": "datetime",
+          "nullable": false,
+          "default": "CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP",
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        }
+      ],
+      "primaryKey": [
+        "ID"
+      ],
+      "indexes": [
+        {
+          "name": "name",
+          "unique": true,
+          "columns": [
+            "name"
+          ]
+        },
+        {
+          "name": "fk_superior_category",
+          "unique": false,
+          "columns": [
+            "sup_id_category"
+          ]
+        }
+      ],
+      "foreignKeys": [
+        {
+          "name": "fk_superior_category",
+          "columns": [
+            "sup_id_category"
+          ],
+          "refTable": "tb_categories",
+          "refColumns": [
+            "ID"
+          ],
+          "onDelete": null,
+          "onUpdate": null
+        }
+      ],
+      "group": "tb"
+    },
+    {
+      "name": "tb_logs",
+      "engine": "InnoDB",
+      "options": "AUTO_INCREMENT=34857 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "columns": [
+        {
+          "name": "ID",
+          "type": "int",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": true,
+          "primaryKey": true,
+          "foreignKeys": []
+        },
+        {
+          "name": "table_name",
+          "type": "varchar(80)",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "record_id",
+          "type": "int unsigned DEFAULT",
+          "nullable": true,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "table_operation",
+          "type": "enum('Create','Read','Update','Delete') DEFAULT",
+          "nullable": true,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "db_user",
+          "type": "varchar(288)",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "operation_date",
+          "type": "datetime",
+          "nullable": false,
+          "default": "CURRENT_TIMESTAMP",
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "operation_description",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        }
+      ],
+      "primaryKey": [
+        "ID"
+      ],
+      "indexes": [
+        {
+          "name": "idx_logs_table_op",
+          "unique": false,
+          "columns": [
+            "table_name",
+            "table_operation"
+          ]
+        },
+        {
+          "name": "idx_logs_tabla_registro",
+          "unique": false,
+          "columns": [
+            "table_name",
+            "record_id"
+          ]
+        }
+      ],
+      "foreignKeys": [],
+      "group": "tb"
+    },
+    {
+      "name": "tb_order_cancellations",
+      "engine": "InnoDB",
+      "options": "DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "columns": [
+        {
+          "name": "ID",
+          "type": "int unsigned",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": true,
+          "primaryKey": true,
+          "foreignKeys": []
+        },
+        {
+          "name": "order_ID",
+          "type": "int unsigned",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": [
+            "fk_order_cancellations_order"
+          ]
+        },
+        {
+          "name": "requested_by",
+          "type": "int",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": [
+            "fk_order_cancellations_user"
+          ]
+        },
+        {
+          "name": "reason",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "status",
+          "type": "enum('Requested','Approved','Rejected','Completed')",
+          "nullable": false,
+          "default": "'Requested'",
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "creation_date",
+          "type": "datetime",
+          "nullable": false,
+          "default": "CURRENT_TIMESTAMP",
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        }
+      ],
+      "primaryKey": [
+        "ID"
+      ],
+      "indexes": [
+        {
+          "name": "fk_order_cancellations_order",
+          "unique": false,
+          "columns": [
+            "order_ID"
+          ]
+        },
+        {
+          "name": "fk_order_cancellations_user",
+          "unique": false,
+          "columns": [
+            "requested_by"
+          ]
+        }
+      ],
+      "foreignKeys": [
+        {
+          "name": "fk_order_cancellations_order",
+          "columns": [
+            "order_ID"
+          ],
+          "refTable": "tb_orders",
+          "refColumns": [
+            "ID"
+          ],
+          "onDelete": null,
+          "onUpdate": null
+        },
+        {
+          "name": "fk_order_cancellations_user",
+          "columns": [
+            "requested_by"
+          ],
+          "refTable": "tb_user",
+          "refColumns": [
+            "ID"
+          ],
+          "onDelete": null,
+          "onUpdate": null
+        }
+      ],
+      "group": "tb"
+    },
+    {
+      "name": "tb_orders",
+      "engine": "InnoDB",
+      "options": "DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "columns": [
+        {
+          "name": "ID",
+          "type": "int unsigned",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": true,
+          "primaryKey": true,
+          "foreignKeys": []
+        },
+        {
+          "name": "seller_ID",
+          "type": "int",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": [
+            "tb_orders_ibfk_1"
+          ]
+        },
+        {
+          "name": "subtotal",
+          "type": "decimal(12,2)",
+          "nullable": false,
+          "default": "'0.00'",
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "shipping_cost",
+          "type": "decimal(12,2)",
+          "nullable": false,
+          "default": "'0.00'",
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "fulfillment_status",
+          "type": "enum('Pending','Accepted','Preparing','Sent','Delivered','Canceled','Returned')",
+          "nullable": false,
+          "default": "'Pending'",
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "status",
+          "type": "bit(1)",
+          "nullable": false,
+          "default": "b'1'",
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "creation_date",
+          "type": "datetime",
+          "nullable": false,
+          "default": "CURRENT_TIMESTAMP",
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        }
+      ],
+      "primaryKey": [
+        "ID"
+      ],
+      "indexes": [
+        {
+          "name": "seller_ID",
+          "unique": false,
+          "columns": [
+            "seller_ID"
+          ]
+        }
+      ],
+      "foreignKeys": [
+        {
+          "name": "tb_orders_ibfk_1",
+          "columns": [
+            "seller_ID"
+          ],
+          "refTable": "tb_user",
+          "refColumns": [
+            "ID"
+          ],
+          "onDelete": null,
+          "onUpdate": null
+        }
+      ],
+      "group": "tb"
+    },
+    {
+      "name": "tb_payment_methods",
+      "engine": "InnoDB",
+      "options": "DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "columns": [
+        {
+          "name": "ID",
+          "type": "int unsigned",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": true,
+          "primaryKey": true,
+          "foreignKeys": []
+        },
+        {
+          "name": "name",
+          "type": "varchar(100)",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "status",
+          "type": "bit(1)",
+          "nullable": false,
+          "default": "b'1'",
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "creation_date",
+          "type": "datetime",
+          "nullable": false,
+          "default": "CURRENT_TIMESTAMP",
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        }
+      ],
+      "primaryKey": [
+        "ID"
+      ],
+      "indexes": [],
+      "foreignKeys": [],
+      "group": "tb"
+    },
+    {
+      "name": "tb_payment_transaction",
+      "engine": "InnoDB",
+      "options": "DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "columns": [
+        {
+          "name": "ID",
+          "type": "int unsigned",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": true,
+          "primaryKey": true,
+          "foreignKeys": []
+        },
+        {
+          "name": "payment_ID",
+          "type": "int unsigned",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": [
+            "fk_trans_payment"
+          ]
+        },
+        {
+          "name": "transaction_reference",
+          "type": "varchar(255)",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "status",
+          "type": "bit(1)",
+          "nullable": false,
+          "default": "b'1'",
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "creation_date",
+          "type": "datetime",
+          "nullable": false,
+          "default": "CURRENT_TIMESTAMP",
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        }
+      ],
+      "primaryKey": [
+        "ID"
+      ],
+      "indexes": [
+        {
+          "name": "fk_trans_payment",
+          "unique": false,
+          "columns": [
+            "payment_ID"
+          ]
+        }
+      ],
+      "foreignKeys": [
+        {
+          "name": "fk_trans_payment",
+          "columns": [
+            "payment_ID"
+          ],
+          "refTable": "tb_payments",
+          "refColumns": [
+            "ID"
+          ],
+          "onDelete": null,
+          "onUpdate": null
+        }
+      ],
+      "group": "tb"
+    },
+    {
+      "name": "tb_payments",
+      "engine": "InnoDB",
+      "options": "DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "columns": [
+        {
+          "name": "ID",
+          "type": "int unsigned",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": true,
+          "primaryKey": true,
+          "foreignKeys": []
+        },
+        {
+          "name": "order_ID",
+          "type": "int unsigned",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": [
+            "fk_payments_order"
+          ]
+        },
+        {
+          "name": "user_payment_method_ID",
+          "type": "bigint unsigned DEFAULT",
+          "nullable": true,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": [
+            "fk_payments_user_method"
+          ]
+        },
+        {
+          "name": "amount",
+          "type": "decimal(12,2)",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "payment_status",
+          "type": "enum('Pending','Approved','Rejected','Refunded')",
+          "nullable": false,
+          "default": "'Pending'",
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "creation_date",
+          "type": "datetime",
+          "nullable": false,
+          "default": "CURRENT_TIMESTAMP",
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        }
+      ],
+      "primaryKey": [
+        "ID"
+      ],
+      "indexes": [
+        {
+          "name": "fk_payments_order",
+          "unique": false,
+          "columns": [
+            "order_ID"
+          ]
+        },
+        {
+          "name": "fk_payments_user_method",
+          "unique": false,
+          "columns": [
+            "user_payment_method_ID"
+          ]
+        }
+      ],
+      "foreignKeys": [
+        {
+          "name": "fk_payments_order",
+          "columns": [
+            "order_ID"
+          ],
+          "refTable": "tb_orders",
+          "refColumns": [
+            "ID"
+          ],
+          "onDelete": null,
+          "onUpdate": null
+        },
+        {
+          "name": "fk_payments_user_method",
+          "columns": [
+            "user_payment_method_ID"
+          ],
+          "refTable": "tbd_user_payment_methods",
+          "refColumns": [
+            "ID"
+          ],
+          "onDelete": null,
+          "onUpdate": null
+        }
+      ],
+      "group": "tb"
+    },
+    {
+      "name": "tb_people",
+      "engine": "InnoDB",
+      "options": "AUTO_INCREMENT=7503 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "columns": [
+        {
+          "name": "person_ID",
+          "type": "bigint unsigned",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": true,
+          "primaryKey": true,
+          "foreignKeys": []
+        },
+        {
+          "name": "user_ID",
+          "type": "int DEFAULT",
+          "nullable": true,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": [
+            "fk_people_users"
+          ]
+        },
+        {
+          "name": "courtesy_title",
+          "type": "varchar(20) DEFAULT",
+          "nullable": true,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "given_names",
+          "type": "varchar(150)",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "family_names",
+          "type": "varchar(150) DEFAULT",
+          "nullable": true,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "birth_date",
+          "type": "date DEFAULT",
+          "nullable": true,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "gender",
+          "type": "enum('Hombre','Mujer','Prefiero no decirlo')",
+          "nullable": false,
+          "default": "'Prefiero no decirlo'",
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "country_code",
+          "type": "char(2) DEFAULT",
+          "nullable": true,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "phone",
+          "type": "varchar(25) DEFAULT",
+          "nullable": true,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        }
+      ],
+      "primaryKey": [
+        "person_ID"
+      ],
+      "indexes": [
+        {
+          "name": "user_ID",
+          "unique": true,
+          "columns": [
+            "user_ID"
+          ]
+        }
+      ],
+      "foreignKeys": [
+        {
+          "name": "fk_people_users",
+          "columns": [
+            "user_ID"
+          ],
+          "refTable": "tb_user",
+          "refColumns": [
+            "ID"
+          ],
+          "onDelete": null,
+          "onUpdate": null
+        }
+      ],
+      "group": "tb"
+    },
+    {
+      "name": "tb_product_categories",
+      "engine": "InnoDB",
+      "options": "DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "columns": [
+        {
+          "name": "product_Id",
+          "type": "int unsigned",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": true,
+          "foreignKeys": [
+            "fk_pc_product"
+          ]
+        },
+        {
+          "name": "category_Id",
+          "type": "int unsigned",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": true,
+          "foreignKeys": [
+            "fk_pc_category"
+          ]
+        },
+        {
+          "name": "status",
+          "type": "bit(1)",
+          "nullable": false,
+          "default": "b'1'",
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "creation_date",
+          "type": "datetime",
+          "nullable": false,
+          "default": "CURRENT_TIMESTAMP",
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "last_update",
+          "type": "datetime",
+          "nullable": false,
+          "default": "CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP",
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        }
+      ],
+      "primaryKey": [
+        "product_Id",
+        "category_Id"
+      ],
+      "indexes": [
+        {
+          "name": "idx_pc_category",
+          "unique": false,
+          "columns": [
+            "category_Id"
+          ]
+        }
+      ],
+      "foreignKeys": [
+        {
+          "name": "fk_pc_category",
+          "columns": [
+            "category_Id"
+          ],
+          "refTable": "tb_categories",
+          "refColumns": [
+            "ID"
+          ],
+          "onDelete": "CASCADE ON UPDATE CASCADE",
+          "onUpdate": "CASCADE"
+        },
+        {
+          "name": "fk_pc_product",
+          "columns": [
+            "product_Id"
+          ],
+          "refTable": "tb_products",
+          "refColumns": [
+            "ID"
+          ],
+          "onDelete": "CASCADE ON UPDATE CASCADE",
+          "onUpdate": "CASCADE"
+        }
+      ],
+      "group": "tb"
+    },
+    {
+      "name": "tb_products",
+      "engine": "InnoDB",
+      "options": "AUTO_INCREMENT=8243 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "columns": [
+        {
+          "name": "ID",
+          "type": "int unsigned",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": true,
+          "primaryKey": true,
+          "foreignKeys": []
+        },
+        {
+          "name": "SKU",
+          "type": "varchar(50)",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "name",
+          "type": "varchar(250)",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "current_price",
+          "type": "decimal(10,2)",
+          "nullable": false,
+          "default": "'0.00'",
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "current_stock",
+          "type": "int unsigned",
+          "nullable": false,
+          "default": "'0'",
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "creation_date",
+          "type": "datetime",
+          "nullable": false,
+          "default": "CURRENT_TIMESTAMP",
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "last_update",
+          "type": "datetime",
+          "nullable": false,
+          "default": "CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP",
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        }
+      ],
+      "primaryKey": [
+        "ID"
+      ],
+      "indexes": [
+        {
+          "name": "SKU",
+          "unique": true,
+          "columns": [
+            "SKU"
+          ]
+        }
+      ],
+      "foreignKeys": [],
+      "group": "tb"
+    },
+    {
+      "name": "tb_products_users_providers",
+      "engine": "InnoDB",
+      "options": "DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "columns": [
+        {
+          "name": "user_ID",
+          "type": "int",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": true,
+          "foreignKeys": [
+            "fk_products_users_providers_user"
+          ]
+        },
+        {
+          "name": "product_ID",
+          "type": "int unsigned",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": true,
+          "foreignKeys": [
+            "fk_products_users_providers_product"
+          ]
+        },
+        {
+          "name": "type_ownership",
+          "type": "enum('Owner','Reseller','Distributor') DEFAULT",
+          "nullable": true,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "status",
+          "type": "bit(1)",
+          "nullable": false,
+          "default": "b'1'",
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "available_date",
+          "type": "datetime",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "creation_date",
+          "type": "datetime",
+          "nullable": false,
+          "default": "CURRENT_TIMESTAMP",
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "last_date",
+          "type": "datetime",
+          "nullable": false,
+          "default": "CURRENT_TIMESTAMP",
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        }
+      ],
+      "primaryKey": [
+        "user_ID",
+        "product_ID"
+      ],
+      "indexes": [
+        {
+          "name": "idx_products_users_providers_product",
+          "unique": false,
+          "columns": [
+            "product_ID"
+          ]
+        }
+      ],
+      "foreignKeys": [
+        {
+          "name": "fk_products_users_providers_product",
+          "columns": [
+            "product_ID"
+          ],
+          "refTable": "tb_products",
+          "refColumns": [
+            "ID"
+          ],
+          "onDelete": null,
+          "onUpdate": null
+        },
+        {
+          "name": "fk_products_users_providers_user",
+          "columns": [
+            "user_ID"
+          ],
+          "refTable": "tb_user",
+          "refColumns": [
+            "ID"
+          ],
+          "onDelete": null,
+          "onUpdate": null
+        }
+      ],
+      "group": "tb"
+    },
+    {
+      "name": "tb_refunds",
+      "engine": "InnoDB",
+      "options": "DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "columns": [
+        {
+          "name": "ID",
+          "type": "int unsigned",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": true,
+          "primaryKey": true,
+          "foreignKeys": []
+        },
+        {
+          "name": "payment_ID",
+          "type": "int unsigned",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": [
+            "fk_refunds_payment"
+          ]
+        },
+        {
+          "name": "amount",
+          "type": "decimal(12,2)",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "creation_date",
+          "type": "datetime",
+          "nullable": false,
+          "default": "CURRENT_TIMESTAMP",
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        }
+      ],
+      "primaryKey": [
+        "ID"
+      ],
+      "indexes": [
+        {
+          "name": "fk_refunds_payment",
+          "unique": false,
+          "columns": [
+            "payment_ID"
+          ]
+        }
+      ],
+      "foreignKeys": [
+        {
+          "name": "fk_refunds_payment",
+          "columns": [
+            "payment_ID"
+          ],
+          "refTable": "tb_payments",
+          "refColumns": [
+            "ID"
+          ],
+          "onDelete": null,
+          "onUpdate": null
+        }
+      ],
+      "group": "tb"
+    },
+    {
+      "name": "tb_returns",
+      "engine": "InnoDB",
+      "options": "DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "columns": [
+        {
+          "name": "ID",
+          "type": "int unsigned",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": true,
+          "primaryKey": true,
+          "foreignKeys": []
+        },
+        {
+          "name": "order_ID",
+          "type": "int unsigned",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": [
+            "fk_returns_order_hdr"
+          ]
+        },
+        {
+          "name": "requested_by",
+          "type": "int",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": [
+            "fk_returns_user"
+          ]
+        },
+        {
+          "name": "reason",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "status",
+          "type": "enum('Requested','Approved','Rejected','Completed')",
+          "nullable": false,
+          "default": "'Requested'",
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "creation_date",
+          "type": "datetime",
+          "nullable": false,
+          "default": "CURRENT_TIMESTAMP",
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        }
+      ],
+      "primaryKey": [
+        "ID"
+      ],
+      "indexes": [
+        {
+          "name": "fk_returns_order_hdr",
+          "unique": false,
+          "columns": [
+            "order_ID"
+          ]
+        },
+        {
+          "name": "fk_returns_user",
+          "unique": false,
+          "columns": [
+            "requested_by"
+          ]
+        }
+      ],
+      "foreignKeys": [
+        {
+          "name": "fk_returns_order_hdr",
+          "columns": [
+            "order_ID"
+          ],
+          "refTable": "tb_orders",
+          "refColumns": [
+            "ID"
+          ],
+          "onDelete": null,
+          "onUpdate": null
+        },
+        {
+          "name": "fk_returns_user",
+          "columns": [
+            "requested_by"
+          ],
+          "refTable": "tb_user",
+          "refColumns": [
+            "ID"
+          ],
+          "onDelete": null,
+          "onUpdate": null
+        }
+      ],
+      "group": "tb"
+    },
+    {
+      "name": "tb_shipments",
+      "engine": "InnoDB",
+      "options": "DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "columns": [
+        {
+          "name": "ID",
+          "type": "int unsigned",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": true,
+          "primaryKey": true,
+          "foreignKeys": []
+        },
+        {
+          "name": "order_ID",
+          "type": "int unsigned",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": [
+            "fk_shipments_order"
+          ]
+        },
+        {
+          "name": "tracking_number",
+          "type": "varchar(100) DEFAULT",
+          "nullable": true,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "carrier",
+          "type": "varchar(100) DEFAULT",
+          "nullable": true,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "shipping_status",
+          "type": "enum('Preparing','In_Transit','Delivered','Failed')",
+          "nullable": false,
+          "default": "'Preparing'",
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "shipped_date",
+          "type": "datetime DEFAULT",
+          "nullable": true,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "delivered_date",
+          "type": "datetime DEFAULT",
+          "nullable": true,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        }
+      ],
+      "primaryKey": [
+        "ID"
+      ],
+      "indexes": [
+        {
+          "name": "fk_shipments_order",
+          "unique": false,
+          "columns": [
+            "order_ID"
+          ]
+        }
+      ],
+      "foreignKeys": [
+        {
+          "name": "fk_shipments_order",
+          "columns": [
+            "order_ID"
+          ],
+          "refTable": "tb_orders",
+          "refColumns": [
+            "ID"
+          ],
+          "onDelete": null,
+          "onUpdate": null
+        }
+      ],
+      "group": "tb"
+    },
+    {
+      "name": "tb_user",
+      "engine": "InnoDB",
+      "options": "AUTO_INCREMENT=7531 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "columns": [
+        {
+          "name": "ID",
+          "type": "int",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": true,
+          "primaryKey": true,
+          "foreignKeys": []
+        },
+        {
+          "name": "email",
+          "type": "varchar(100)",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "nick",
+          "type": "varchar(50)",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "password",
+          "type": "varchar(255)",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "creation_date",
+          "type": "datetime",
+          "nullable": false,
+          "default": "CURRENT_TIMESTAMP",
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "last_login",
+          "type": "datetime DEFAULT",
+          "nullable": true,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        }
+      ],
+      "primaryKey": [
+        "ID"
+      ],
+      "indexes": [
+        {
+          "name": "email",
+          "unique": true,
+          "columns": [
+            "email"
+          ]
+        },
+        {
+          "name": "nick",
+          "unique": true,
+          "columns": [
+            "nick"
+          ]
+        }
+      ],
+      "foreignKeys": [],
+      "group": "tb"
+    },
+    {
+      "name": "tb_user_addresses",
+      "engine": "InnoDB",
+      "options": "DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "columns": [
+        {
+          "name": "ID",
+          "type": "bigint unsigned",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": true,
+          "primaryKey": true,
+          "foreignKeys": []
+        },
+        {
+          "name": "user_ID",
+          "type": "int",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": [
+            "fk_addresses_users"
+          ]
+        },
+        {
+          "name": "address_label",
+          "type": "varchar(100)",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "recipient_name",
+          "type": "varchar(150) DEFAULT",
+          "nullable": true,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "recipient_phone",
+          "type": "varchar(25) DEFAULT",
+          "nullable": true,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "delivery_instructions",
+          "type": "varchar(500) DEFAULT",
+          "nullable": true,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "latitude",
+          "type": "decimal(10,7) DEFAULT",
+          "nullable": true,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "longitude",
+          "type": "decimal(10,7) DEFAULT",
+          "nullable": true,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "is_default",
+          "type": "tinyint(1)",
+          "nullable": false,
+          "default": "'0'",
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "status",
+          "type": "bit(1)",
+          "nullable": false,
+          "default": "b'1'",
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "creation_date",
+          "type": "datetime",
+          "nullable": false,
+          "default": "CURRENT_TIMESTAMP",
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        }
+      ],
+      "primaryKey": [
+        "ID"
+      ],
+      "indexes": [
+        {
+          "name": "uq_tb_user_addresses_default_user",
+          "unique": true,
+          "columns": [
+            "default_user_ID"
+          ]
+        },
+        {
+          "name": "idx_user_addresses",
+          "unique": false,
+          "columns": [
+            "user_ID"
+          ]
+        }
+      ],
+      "foreignKeys": [
+        {
+          "name": "fk_addresses_users",
+          "columns": [
+            "user_ID"
+          ],
+          "refTable": "tb_user",
+          "refColumns": [
+            "ID"
+          ],
+          "onDelete": null,
+          "onUpdate": null
+        }
+      ],
+      "group": "tb"
+    },
+    {
+      "name": "tbc_payment_methods_types",
+      "engine": "InnoDB",
+      "options": "DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "columns": [
+        {
+          "name": "ID",
+          "type": "int unsigned",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": true,
+          "primaryKey": true,
+          "foreignKeys": []
+        },
+        {
+          "name": "name",
+          "type": "varchar(50)",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "description",
+          "type": "varchar(255) DEFAULT",
+          "nullable": true,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "status",
+          "type": "bit(1)",
+          "nullable": false,
+          "default": "b'1'",
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "creation_date",
+          "type": "datetime",
+          "nullable": false,
+          "default": "CURRENT_TIMESTAMP",
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        }
+      ],
+      "primaryKey": [
+        "ID"
+      ],
+      "indexes": [],
+      "foreignKeys": [],
+      "group": "tbc"
+    },
+    {
+      "name": "tbd_address_components",
+      "engine": "InnoDB",
+      "options": "DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "columns": [
+        {
+          "name": "ID",
+          "type": "bigint unsigned",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": true,
+          "primaryKey": true,
+          "foreignKeys": []
+        },
+        {
+          "name": "address_ID",
+          "type": "bigint unsigned",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": [
+            "fk_component_address",
+            "fk_component_parent"
+          ]
+        },
+        {
+          "name": "value",
+          "type": "varchar(255)",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "component_type",
+          "type": "varchar(50)",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "status",
+          "type": "bit(1)",
+          "nullable": false,
+          "default": "b'1'",
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "address_sup_ID",
+          "type": "bigint unsigned DEFAULT",
+          "nullable": true,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": [
+            "fk_component_parent"
+          ]
+        },
+        {
+          "name": "creation_date",
+          "type": "datetime",
+          "nullable": false,
+          "default": "CURRENT_TIMESTAMP",
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        }
+      ],
+      "primaryKey": [
+        "ID"
+      ],
+      "indexes": [
+        {
+          "name": "uk_address_component",
+          "unique": true,
+          "columns": [
+            "address_ID",
+            "ID"
+          ]
+        },
+        {
+          "name": "idx_address_parent",
+          "unique": false,
+          "columns": [
+            "address_ID",
+            "address_sup_ID"
+          ]
+        }
+      ],
+      "foreignKeys": [
+        {
+          "name": "fk_component_address",
+          "columns": [
+            "address_ID"
+          ],
+          "refTable": "tb_user_addresses",
+          "refColumns": [
+            "ID"
+          ],
+          "onDelete": "RESTRICT",
+          "onUpdate": null
+        },
+        {
+          "name": "fk_component_parent",
+          "columns": [
+            "address_ID",
+            "address_sup_ID"
+          ],
+          "refTable": "tbd_address_components",
+          "refColumns": [
+            "address_ID",
+            "ID"
+          ],
+          "onDelete": "RESTRICT",
+          "onUpdate": null
+        }
+      ],
+      "group": "tbd"
+    },
+    {
+      "name": "tbd_cancellation_items",
+      "engine": "InnoDB",
+      "options": "DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "columns": [
+        {
+          "name": "ID",
+          "type": "int unsigned",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": true,
+          "primaryKey": true,
+          "foreignKeys": []
+        },
+        {
+          "name": "cancellation_ID",
+          "type": "int unsigned DEFAULT",
+          "nullable": true,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": [
+            "fk_cancellation_items_header"
+          ]
+        },
+        {
+          "name": "order_ID",
+          "type": "int unsigned",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": [
+            "fk_cancellations_order"
+          ]
+        },
+        {
+          "name": "reason",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "requested_by",
+          "type": "int",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": [
+            "fk_cancellations_user"
+          ]
+        },
+        {
+          "name": "creation_date",
+          "type": "datetime",
+          "nullable": false,
+          "default": "CURRENT_TIMESTAMP",
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        }
+      ],
+      "primaryKey": [
+        "ID"
+      ],
+      "indexes": [
+        {
+          "name": "fk_cancellations_order",
+          "unique": false,
+          "columns": [
+            "order_ID"
+          ]
+        },
+        {
+          "name": "fk_cancellations_user",
+          "unique": false,
+          "columns": [
+            "requested_by"
+          ]
+        },
+        {
+          "name": "fk_cancellation_items_header",
+          "unique": false,
+          "columns": [
+            "cancellation_ID"
+          ]
+        }
+      ],
+      "foreignKeys": [
+        {
+          "name": "fk_cancellation_items_header",
+          "columns": [
+            "cancellation_ID"
+          ],
+          "refTable": "tb_order_cancellations",
+          "refColumns": [
+            "ID"
+          ],
+          "onDelete": null,
+          "onUpdate": null
+        },
+        {
+          "name": "fk_cancellations_order",
+          "columns": [
+            "order_ID"
+          ],
+          "refTable": "tb_orders",
+          "refColumns": [
+            "ID"
+          ],
+          "onDelete": null,
+          "onUpdate": null
+        },
+        {
+          "name": "fk_cancellations_user",
+          "columns": [
+            "requested_by"
+          ],
+          "refTable": "tb_user",
+          "refColumns": [
+            "ID"
+          ],
+          "onDelete": null,
+          "onUpdate": null
+        }
+      ],
+      "group": "tbd"
+    },
+    {
+      "name": "tbd_cart_items",
+      "engine": "InnoDB",
+      "options": "DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "columns": [
+        {
+          "name": "cart_ID",
+          "type": "int unsigned",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": true,
+          "foreignKeys": [
+            "fk_cart_items_cart"
+          ]
+        },
+        {
+          "name": "provider_ID",
+          "type": "int",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": true,
+          "foreignKeys": [
+            "fk_cart_items_provider_product"
+          ]
+        },
+        {
+          "name": "product_ID",
+          "type": "int unsigned",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": true,
+          "foreignKeys": [
+            "fk_cart_items_provider_product"
+          ]
+        },
+        {
+          "name": "quantity",
+          "type": "int unsigned",
+          "nullable": false,
+          "default": "'1'",
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "creation_date",
+          "type": "datetime",
+          "nullable": false,
+          "default": "CURRENT_TIMESTAMP",
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        }
+      ],
+      "primaryKey": [
+        "cart_ID",
+        "provider_ID",
+        "product_ID"
+      ],
+      "indexes": [
+        {
+          "name": "idx_cart_items_provider_product",
+          "unique": false,
+          "columns": [
+            "provider_ID",
+            "product_ID"
+          ]
+        }
+      ],
+      "foreignKeys": [
+        {
+          "name": "fk_cart_items_cart",
+          "columns": [
+            "cart_ID"
+          ],
+          "refTable": "tb_carts",
+          "refColumns": [
+            "ID"
+          ],
+          "onDelete": null,
+          "onUpdate": null
+        },
+        {
+          "name": "fk_cart_items_provider_product",
+          "columns": [
+            "provider_ID",
+            "product_ID"
+          ],
+          "refTable": "tb_products_users_providers",
+          "refColumns": [
+            "user_ID",
+            "product_ID"
+          ],
+          "onDelete": null,
+          "onUpdate": null
+        }
+      ],
+      "group": "tbd"
+    },
+    {
+      "name": "tbd_order_items",
+      "engine": "InnoDB",
+      "options": "DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "columns": [
+        {
+          "name": "ID",
+          "type": "int unsigned",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": true,
+          "primaryKey": true,
+          "foreignKeys": []
+        },
+        {
+          "name": "seller_order_ID",
+          "type": "int unsigned",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": [
+            "tbd_order_items_ibfk_1"
+          ]
+        },
+        {
+          "name": "product_ID",
+          "type": "int unsigned",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": [
+            "tbd_order_items_ibfk_2"
+          ]
+        },
+        {
+          "name": "provider_ID",
+          "type": "int",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": [
+            "tbd_order_items_ibfk_2"
+          ]
+        },
+        {
+          "name": "product_name",
+          "type": "varchar(255)",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "quantity",
+          "type": "int unsigned",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "unit_price",
+          "type": "decimal(12,2)",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "creation_date",
+          "type": "datetime",
+          "nullable": false,
+          "default": "CURRENT_TIMESTAMP",
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        }
+      ],
+      "primaryKey": [
+        "ID"
+      ],
+      "indexes": [
+        {
+          "name": "seller_order_ID",
+          "unique": false,
+          "columns": [
+            "seller_order_ID"
+          ]
+        },
+        {
+          "name": "product_ID_provider_ID",
+          "unique": false,
+          "columns": [
+            "product_ID",
+            "provider_ID"
+          ]
+        }
+      ],
+      "foreignKeys": [
+        {
+          "name": "tbd_order_items_ibfk_1",
+          "columns": [
+            "seller_order_ID"
+          ],
+          "refTable": "tb_orders",
+          "refColumns": [
+            "ID"
+          ],
+          "onDelete": null,
+          "onUpdate": null
+        },
+        {
+          "name": "tbd_order_items_ibfk_2",
+          "columns": [
+            "product_ID",
+            "provider_ID"
+          ],
+          "refTable": "tb_products_users_providers",
+          "refColumns": [
+            "product_ID",
+            "user_ID"
+          ],
+          "onDelete": null,
+          "onUpdate": null
+        }
+      ],
+      "group": "tbd"
+    },
+    {
+      "name": "tbd_return_items",
+      "engine": "InnoDB",
+      "options": "DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "columns": [
+        {
+          "name": "ID",
+          "type": "int unsigned",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": true,
+          "primaryKey": true,
+          "foreignKeys": []
+        },
+        {
+          "name": "return_ID",
+          "type": "int unsigned DEFAULT",
+          "nullable": true,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": [
+            "fk_return_items_header"
+          ]
+        },
+        {
+          "name": "order_ID",
+          "type": "int unsigned",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": [
+            "fk_returns_order"
+          ]
+        },
+        {
+          "name": "reason",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "status",
+          "type": "enum('Requested','Approved','Rejected','Completed')",
+          "nullable": false,
+          "default": "'Requested'",
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "creation_date",
+          "type": "datetime",
+          "nullable": false,
+          "default": "CURRENT_TIMESTAMP",
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        }
+      ],
+      "primaryKey": [
+        "ID"
+      ],
+      "indexes": [
+        {
+          "name": "fk_returns_order",
+          "unique": false,
+          "columns": [
+            "order_ID"
+          ]
+        },
+        {
+          "name": "fk_return_items_header",
+          "unique": false,
+          "columns": [
+            "return_ID"
+          ]
+        }
+      ],
+      "foreignKeys": [
+        {
+          "name": "fk_return_items_header",
+          "columns": [
+            "return_ID"
+          ],
+          "refTable": "tb_returns",
+          "refColumns": [
+            "ID"
+          ],
+          "onDelete": null,
+          "onUpdate": null
+        },
+        {
+          "name": "fk_returns_order",
+          "columns": [
+            "order_ID"
+          ],
+          "refTable": "tb_orders",
+          "refColumns": [
+            "ID"
+          ],
+          "onDelete": null,
+          "onUpdate": null
+        }
+      ],
+      "group": "tbd"
+    },
+    {
+      "name": "tbd_user_payment_methods",
+      "engine": "InnoDB",
+      "options": "DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "columns": [
+        {
+          "name": "ID",
+          "type": "bigint unsigned",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": true,
+          "primaryKey": true,
+          "foreignKeys": []
+        },
+        {
+          "name": "user_ID",
+          "type": "int",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": [
+            "tbd_user_payment_methods_ibfk_1"
+          ]
+        },
+        {
+          "name": "payment_method_type_ID",
+          "type": "int unsigned",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": [
+            "tbd_user_payment_methods_ibfk_2"
+          ]
+        },
+        {
+          "name": "provider",
+          "type": "varchar(60)",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "provider_method_ref",
+          "type": "varchar(255)",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "label",
+          "type": "varchar(100) DEFAULT",
+          "nullable": true,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "last_four",
+          "type": "char(4) DEFAULT",
+          "nullable": true,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "is_default",
+          "type": "tinyint(1)",
+          "nullable": false,
+          "default": "'0'",
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "status",
+          "type": "bit(1)",
+          "nullable": false,
+          "default": "b'1'",
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "creation_date",
+          "type": "datetime",
+          "nullable": false,
+          "default": "CURRENT_TIMESTAMP",
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        }
+      ],
+      "primaryKey": [
+        "ID"
+      ],
+      "indexes": [
+        {
+          "name": "uk_provider_method",
+          "unique": true,
+          "columns": [
+            "provider",
+            "provider_method_ref"
+          ]
+        },
+        {
+          "name": "user_ID",
+          "unique": false,
+          "columns": [
+            "user_ID"
+          ]
+        },
+        {
+          "name": "payment_method_type_ID",
+          "unique": false,
+          "columns": [
+            "payment_method_type_ID"
+          ]
+        }
+      ],
+      "foreignKeys": [
+        {
+          "name": "tbd_user_payment_methods_ibfk_1",
+          "columns": [
+            "user_ID"
+          ],
+          "refTable": "tb_user",
+          "refColumns": [
+            "ID"
+          ],
+          "onDelete": null,
+          "onUpdate": null
+        },
+        {
+          "name": "tbd_user_payment_methods_ibfk_2",
+          "columns": [
+            "payment_method_type_ID"
+          ],
+          "refTable": "tbc_payment_methods_types",
+          "refColumns": [
+            "ID"
+          ],
+          "onDelete": null,
+          "onUpdate": null
+        }
+      ],
+      "group": "tbd"
+    },
+    {
+      "name": "tbd_users_wishlist_products",
+      "engine": "InnoDB",
+      "options": "DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "columns": [
+        {
+          "name": "user_ID",
+          "type": "int",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": true,
+          "foreignKeys": [
+            "fk_user2"
+          ]
+        },
+        {
+          "name": "product_ID",
+          "type": "int unsigned",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "primaryKey": true,
+          "foreignKeys": [
+            "fk_products3"
+          ]
+        },
+        {
+          "name": "status",
+          "type": "bit(1)",
+          "nullable": false,
+          "default": "b'1'",
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        },
+        {
+          "name": "creation_date",
+          "type": "datetime",
+          "nullable": false,
+          "default": "CURRENT_TIMESTAMP",
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": []
+        }
+      ],
+      "primaryKey": [
+        "user_ID",
+        "product_ID"
+      ],
+      "indexes": [
+        {
+          "name": "fk_products3",
+          "unique": false,
+          "columns": [
+            "product_ID"
+          ]
+        }
+      ],
+      "foreignKeys": [
+        {
+          "name": "fk_products3",
+          "columns": [
+            "product_ID"
+          ],
+          "refTable": "tb_products",
+          "refColumns": [
+            "ID"
+          ],
+          "onDelete": null,
+          "onUpdate": null
+        },
+        {
+          "name": "fk_user2",
+          "columns": [
+            "user_ID"
+          ],
+          "refTable": "tb_user",
+          "refColumns": [
+            "ID"
+          ],
+          "onDelete": null,
+          "onUpdate": null
+        }
+      ],
+      "group": "tbd"
+    }
+  ],
+  "relations": [
+    {
+      "fromTable": "tb_carts",
+      "fromColumns": [
+        "user_ID"
+      ],
+      "toTable": "tb_user",
+      "toColumns": [
+        "ID"
+      ],
+      "constraint": "tb_carts_ibfk_1",
+      "kind": "Declarada por FK",
+      "cardinality": "1:1",
+      "onDelete": null,
+      "onUpdate": null
+    },
+    {
+      "fromTable": "tb_categories",
+      "fromColumns": [
+        "sup_id_category"
+      ],
+      "toTable": "tb_categories",
+      "toColumns": [
+        "ID"
+      ],
+      "constraint": "fk_superior_category",
+      "kind": "Declarada por FK",
+      "cardinality": "1:1",
+      "onDelete": null,
+      "onUpdate": null
+    },
+    {
+      "fromTable": "tb_order_cancellations",
+      "fromColumns": [
+        "order_ID"
+      ],
+      "toTable": "tb_orders",
+      "toColumns": [
+        "ID"
+      ],
+      "constraint": "fk_order_cancellations_order",
+      "kind": "Declarada por FK",
+      "cardinality": "1:1",
+      "onDelete": null,
+      "onUpdate": null
+    },
+    {
+      "fromTable": "tb_order_cancellations",
+      "fromColumns": [
+        "requested_by"
+      ],
+      "toTable": "tb_user",
+      "toColumns": [
+        "ID"
+      ],
+      "constraint": "fk_order_cancellations_user",
+      "kind": "Declarada por FK",
+      "cardinality": "1:1",
+      "onDelete": null,
+      "onUpdate": null
+    },
+    {
+      "fromTable": "tb_orders",
+      "fromColumns": [
+        "seller_ID"
+      ],
+      "toTable": "tb_user",
+      "toColumns": [
+        "ID"
+      ],
+      "constraint": "tb_orders_ibfk_1",
+      "kind": "Declarada por FK",
+      "cardinality": "1:1",
+      "onDelete": null,
+      "onUpdate": null
+    },
+    {
+      "fromTable": "tb_payment_transaction",
+      "fromColumns": [
+        "payment_ID"
+      ],
+      "toTable": "tb_payments",
+      "toColumns": [
+        "ID"
+      ],
+      "constraint": "fk_trans_payment",
+      "kind": "Declarada por FK",
+      "cardinality": "1:1",
+      "onDelete": null,
+      "onUpdate": null
+    },
+    {
+      "fromTable": "tb_payments",
+      "fromColumns": [
+        "order_ID"
+      ],
+      "toTable": "tb_orders",
+      "toColumns": [
+        "ID"
+      ],
+      "constraint": "fk_payments_order",
+      "kind": "Declarada por FK",
+      "cardinality": "1:1",
+      "onDelete": null,
+      "onUpdate": null
+    },
+    {
+      "fromTable": "tb_payments",
+      "fromColumns": [
+        "user_payment_method_ID"
+      ],
+      "toTable": "tbd_user_payment_methods",
+      "toColumns": [
+        "ID"
+      ],
+      "constraint": "fk_payments_user_method",
+      "kind": "Declarada por FK",
+      "cardinality": "1:1",
+      "onDelete": null,
+      "onUpdate": null
+    },
+    {
+      "fromTable": "tb_people",
+      "fromColumns": [
+        "user_ID"
+      ],
+      "toTable": "tb_user",
+      "toColumns": [
+        "ID"
+      ],
+      "constraint": "fk_people_users",
+      "kind": "Declarada por FK",
+      "cardinality": "1:1",
+      "onDelete": null,
+      "onUpdate": null
+    },
+    {
+      "fromTable": "tb_product_categories",
+      "fromColumns": [
+        "category_Id"
+      ],
+      "toTable": "tb_categories",
+      "toColumns": [
+        "ID"
+      ],
+      "constraint": "fk_pc_category",
+      "kind": "Declarada por FK",
+      "cardinality": "1:1",
+      "onDelete": "CASCADE ON UPDATE CASCADE",
+      "onUpdate": "CASCADE"
+    },
+    {
+      "fromTable": "tb_product_categories",
+      "fromColumns": [
+        "product_Id"
+      ],
+      "toTable": "tb_products",
+      "toColumns": [
+        "ID"
+      ],
+      "constraint": "fk_pc_product",
+      "kind": "Declarada por FK",
+      "cardinality": "1:1",
+      "onDelete": "CASCADE ON UPDATE CASCADE",
+      "onUpdate": "CASCADE"
+    },
+    {
+      "fromTable": "tb_products_users_providers",
+      "fromColumns": [
+        "product_ID"
+      ],
+      "toTable": "tb_products",
+      "toColumns": [
+        "ID"
+      ],
+      "constraint": "fk_products_users_providers_product",
+      "kind": "Declarada por FK",
+      "cardinality": "1:1",
+      "onDelete": null,
+      "onUpdate": null
+    },
+    {
+      "fromTable": "tb_products_users_providers",
+      "fromColumns": [
+        "user_ID"
+      ],
+      "toTable": "tb_user",
+      "toColumns": [
+        "ID"
+      ],
+      "constraint": "fk_products_users_providers_user",
+      "kind": "Declarada por FK",
+      "cardinality": "1:1",
+      "onDelete": null,
+      "onUpdate": null
+    },
+    {
+      "fromTable": "tb_refunds",
+      "fromColumns": [
+        "payment_ID"
+      ],
+      "toTable": "tb_payments",
+      "toColumns": [
+        "ID"
+      ],
+      "constraint": "fk_refunds_payment",
+      "kind": "Declarada por FK",
+      "cardinality": "1:1",
+      "onDelete": null,
+      "onUpdate": null
+    },
+    {
+      "fromTable": "tb_returns",
+      "fromColumns": [
+        "order_ID"
+      ],
+      "toTable": "tb_orders",
+      "toColumns": [
+        "ID"
+      ],
+      "constraint": "fk_returns_order_hdr",
+      "kind": "Declarada por FK",
+      "cardinality": "1:1",
+      "onDelete": null,
+      "onUpdate": null
+    },
+    {
+      "fromTable": "tb_returns",
+      "fromColumns": [
+        "requested_by"
+      ],
+      "toTable": "tb_user",
+      "toColumns": [
+        "ID"
+      ],
+      "constraint": "fk_returns_user",
+      "kind": "Declarada por FK",
+      "cardinality": "1:1",
+      "onDelete": null,
+      "onUpdate": null
+    },
+    {
+      "fromTable": "tb_shipments",
+      "fromColumns": [
+        "order_ID"
+      ],
+      "toTable": "tb_orders",
+      "toColumns": [
+        "ID"
+      ],
+      "constraint": "fk_shipments_order",
+      "kind": "Declarada por FK",
+      "cardinality": "1:1",
+      "onDelete": null,
+      "onUpdate": null
+    },
+    {
+      "fromTable": "tb_user_addresses",
+      "fromColumns": [
+        "user_ID"
+      ],
+      "toTable": "tb_user",
+      "toColumns": [
+        "ID"
+      ],
+      "constraint": "fk_addresses_users",
+      "kind": "Declarada por FK",
+      "cardinality": "1:1",
+      "onDelete": null,
+      "onUpdate": null
+    },
+    {
+      "fromTable": "tbd_address_components",
+      "fromColumns": [
+        "address_ID"
+      ],
+      "toTable": "tb_user_addresses",
+      "toColumns": [
+        "ID"
+      ],
+      "constraint": "fk_component_address",
+      "kind": "Declarada por FK",
+      "cardinality": "1:1",
+      "onDelete": "RESTRICT",
+      "onUpdate": null
+    },
+    {
+      "fromTable": "tbd_address_components",
+      "fromColumns": [
+        "address_ID",
+        "address_sup_ID"
+      ],
+      "toTable": "tbd_address_components",
+      "toColumns": [
+        "address_ID",
+        "ID"
+      ],
+      "constraint": "fk_component_parent",
+      "kind": "Declarada por FK",
+      "cardinality": "1:1",
+      "onDelete": "RESTRICT",
+      "onUpdate": null
+    },
+    {
+      "fromTable": "tbd_cancellation_items",
+      "fromColumns": [
+        "cancellation_ID"
+      ],
+      "toTable": "tb_order_cancellations",
+      "toColumns": [
+        "ID"
+      ],
+      "constraint": "fk_cancellation_items_header",
+      "kind": "Declarada por FK",
+      "cardinality": "1:1",
+      "onDelete": null,
+      "onUpdate": null
+    },
+    {
+      "fromTable": "tbd_cancellation_items",
+      "fromColumns": [
+        "order_ID"
+      ],
+      "toTable": "tb_orders",
+      "toColumns": [
+        "ID"
+      ],
+      "constraint": "fk_cancellations_order",
+      "kind": "Declarada por FK",
+      "cardinality": "1:1",
+      "onDelete": null,
+      "onUpdate": null
+    },
+    {
+      "fromTable": "tbd_cancellation_items",
+      "fromColumns": [
+        "requested_by"
+      ],
+      "toTable": "tb_user",
+      "toColumns": [
+        "ID"
+      ],
+      "constraint": "fk_cancellations_user",
+      "kind": "Declarada por FK",
+      "cardinality": "1:1",
+      "onDelete": null,
+      "onUpdate": null
+    },
+    {
+      "fromTable": "tbd_cart_items",
+      "fromColumns": [
+        "cart_ID"
+      ],
+      "toTable": "tb_carts",
+      "toColumns": [
+        "ID"
+      ],
+      "constraint": "fk_cart_items_cart",
+      "kind": "Declarada por FK",
+      "cardinality": "1:1",
+      "onDelete": null,
+      "onUpdate": null
+    },
+    {
+      "fromTable": "tbd_cart_items",
+      "fromColumns": [
+        "provider_ID",
+        "product_ID"
+      ],
+      "toTable": "tb_products_users_providers",
+      "toColumns": [
+        "user_ID",
+        "product_ID"
+      ],
+      "constraint": "fk_cart_items_provider_product",
+      "kind": "Declarada por FK",
+      "cardinality": "1:1",
+      "onDelete": null,
+      "onUpdate": null
+    },
+    {
+      "fromTable": "tbd_order_items",
+      "fromColumns": [
+        "seller_order_ID"
+      ],
+      "toTable": "tb_orders",
+      "toColumns": [
+        "ID"
+      ],
+      "constraint": "tbd_order_items_ibfk_1",
+      "kind": "Declarada por FK",
+      "cardinality": "1:1",
+      "onDelete": null,
+      "onUpdate": null
+    },
+    {
+      "fromTable": "tbd_order_items",
+      "fromColumns": [
+        "product_ID",
+        "provider_ID"
+      ],
+      "toTable": "tb_products_users_providers",
+      "toColumns": [
+        "product_ID",
+        "user_ID"
+      ],
+      "constraint": "tbd_order_items_ibfk_2",
+      "kind": "Declarada por FK",
+      "cardinality": "1:1",
+      "onDelete": null,
+      "onUpdate": null
+    },
+    {
+      "fromTable": "tbd_return_items",
+      "fromColumns": [
+        "return_ID"
+      ],
+      "toTable": "tb_returns",
+      "toColumns": [
+        "ID"
+      ],
+      "constraint": "fk_return_items_header",
+      "kind": "Declarada por FK",
+      "cardinality": "1:1",
+      "onDelete": null,
+      "onUpdate": null
+    },
+    {
+      "fromTable": "tbd_return_items",
+      "fromColumns": [
+        "order_ID"
+      ],
+      "toTable": "tb_orders",
+      "toColumns": [
+        "ID"
+      ],
+      "constraint": "fk_returns_order",
+      "kind": "Declarada por FK",
+      "cardinality": "1:1",
+      "onDelete": null,
+      "onUpdate": null
+    },
+    {
+      "fromTable": "tbd_user_payment_methods",
+      "fromColumns": [
+        "user_ID"
+      ],
+      "toTable": "tb_user",
+      "toColumns": [
+        "ID"
+      ],
+      "constraint": "tbd_user_payment_methods_ibfk_1",
+      "kind": "Declarada por FK",
+      "cardinality": "1:1",
+      "onDelete": null,
+      "onUpdate": null
+    },
+    {
+      "fromTable": "tbd_user_payment_methods",
+      "fromColumns": [
+        "payment_method_type_ID"
+      ],
+      "toTable": "tbc_payment_methods_types",
+      "toColumns": [
+        "ID"
+      ],
+      "constraint": "tbd_user_payment_methods_ibfk_2",
+      "kind": "Declarada por FK",
+      "cardinality": "1:1",
+      "onDelete": null,
+      "onUpdate": null
+    },
+    {
+      "fromTable": "tbd_users_wishlist_products",
+      "fromColumns": [
+        "product_ID"
+      ],
+      "toTable": "tb_products",
+      "toColumns": [
+        "ID"
+      ],
+      "constraint": "fk_products3",
+      "kind": "Declarada por FK",
+      "cardinality": "1:1",
+      "onDelete": null,
+      "onUpdate": null
+    },
+    {
+      "fromTable": "tbd_users_wishlist_products",
+      "fromColumns": [
+        "user_ID"
+      ],
+      "toTable": "tb_user",
+      "toColumns": [
+        "ID"
+      ],
+      "constraint": "fk_user2",
+      "kind": "Declarada por FK",
+      "cardinality": "1:1",
+      "onDelete": null,
+      "onUpdate": null
+    }
+  ],
+  "views": [
+    {
+      "name": "vw_address_hierarchical_details",
+      "definition": "SELECT \r\n 1 AS `address_id`,\r\n 1 AS `address_label`,\r\n 1 AS `component_id`,\r\n 1 AS `component_type`,\r\n 1 AS `component_value`,\r\n 1 AS `parent_component_type`,\r\n 1 AS `parent_component_value`,\r\n 1 AS `component_status`*/"
+    },
+    {
+      "name": "vw_people_details",
+      "definition": "SELECT \r\n 1 AS `person_ID`,\r\n 1 AS `user_ID`,\r\n 1 AS `courtesy_title`,\r\n 1 AS `given_names`,\r\n 1 AS `family_names`,\r\n 1 AS `full_name`,\r\n 1 AS `birth_date`,\r\n 1 AS `gender`,\r\n 1 AS `country_code`,\r\n 1 AS `phone`,\r\n 1 AS `status`,\r\n 1 AS `creation_date`,\r\n 1 AS `last_update`*/"
+    },
+    {
+      "name": "vw_total_products_by_category",
+      "definition": "SELECT \r\n 1 AS `category_id`,\r\n 1 AS `category_path`,\r\n 1 AS `category_level`,\r\n 1 AS `total_products`,\r\n 1 AS `total_active_products`,\r\n 1 AS `total_inactive_products`,\r\n 1 AS `total_uncategorized_products`*/"
+    },
+    {
+      "name": "vw_trazabilidad_tb_carts",
+      "definition": "SELECT \r\n 1 AS `log_ID`,\r\n 1 AS `table_name`,\r\n 1 AS `record_ID`,\r\n 1 AS `operation`,\r\n 1 AS `db_user`,\r\n 1 AS `description`,\r\n 1 AS `operation_date`,\r\n 1 AS `operation_status`*/"
+    },
+    {
+      "name": "vw_trazabilidad_tb_categories",
+      "definition": "SELECT \r\n 1 AS `log_ID`,\r\n 1 AS `table_name`,\r\n 1 AS `record_ID`,\r\n 1 AS `operation`,\r\n 1 AS `db_user`,\r\n 1 AS `description`,\r\n 1 AS `operation_date`,\r\n 1 AS `operation_status`*/"
+    },
+    {
+      "name": "vw_trazabilidad_tb_order_cancellations",
+      "definition": "SELECT \r\n 1 AS `log_ID`,\r\n 1 AS `table_name`,\r\n 1 AS `record_ID`,\r\n 1 AS `operation`,\r\n 1 AS `db_user`,\r\n 1 AS `description`,\r\n 1 AS `operation_date`,\r\n 1 AS `operation_status`*/"
+    },
+    {
+      "name": "vw_trazabilidad_tb_orders",
+      "definition": "SELECT \r\n 1 AS `log_ID`,\r\n 1 AS `table_name`,\r\n 1 AS `record_ID`,\r\n 1 AS `operation`,\r\n 1 AS `db_user`,\r\n 1 AS `description`,\r\n 1 AS `operation_date`,\r\n 1 AS `operation_status`*/"
+    },
+    {
+      "name": "vw_trazabilidad_tb_payment_methods",
+      "definition": "SELECT \r\n 1 AS `log_ID`,\r\n 1 AS `table_name`,\r\n 1 AS `record_ID`,\r\n 1 AS `operation`,\r\n 1 AS `db_user`,\r\n 1 AS `description`,\r\n 1 AS `operation_date`,\r\n 1 AS `operation_status`*/"
+    },
+    {
+      "name": "vw_trazabilidad_tb_payment_transaction",
+      "definition": "SELECT \r\n 1 AS `log_ID`,\r\n 1 AS `table_name`,\r\n 1 AS `record_ID`,\r\n 1 AS `operation`,\r\n 1 AS `db_user`,\r\n 1 AS `description`,\r\n 1 AS `operation_date`,\r\n 1 AS `operation_status`*/"
+    },
+    {
+      "name": "vw_trazabilidad_tb_payments",
+      "definition": "SELECT \r\n 1 AS `log_ID`,\r\n 1 AS `table_name`,\r\n 1 AS `record_ID`,\r\n 1 AS `operation`,\r\n 1 AS `db_user`,\r\n 1 AS `description`,\r\n 1 AS `operation_date`,\r\n 1 AS `operation_status`*/"
+    },
+    {
+      "name": "vw_trazabilidad_tb_people",
+      "definition": "SELECT \r\n 1 AS `log_ID`,\r\n 1 AS `table_name`,\r\n 1 AS `record_ID`,\r\n 1 AS `operation`,\r\n 1 AS `db_user`,\r\n 1 AS `description`,\r\n 1 AS `operation_date`,\r\n 1 AS `operation_status`*/"
+    },
+    {
+      "name": "vw_trazabilidad_tb_product_categories",
+      "definition": "SELECT \r\n 1 AS `log_ID`,\r\n 1 AS `table_name`,\r\n 1 AS `record_ID`,\r\n 1 AS `product_ID`,\r\n 1 AS `category_ID`,\r\n 1 AS `operation`,\r\n 1 AS `db_user`,\r\n 1 AS `description`,\r\n 1 AS `operation_date`,\r\n 1 AS `operation_status`*/"
+    },
+    {
+      "name": "vw_trazabilidad_tb_products",
+      "definition": "SELECT \r\n 1 AS `log_ID`,\r\n 1 AS `table_name`,\r\n 1 AS `record_ID`,\r\n 1 AS `operation`,\r\n 1 AS `db_user`,\r\n 1 AS `description`,\r\n 1 AS `operation_date`,\r\n 1 AS `operation_status`*/"
+    },
+    {
+      "name": "vw_trazabilidad_tb_products_users_providers",
+      "definition": "SELECT \r\n 1 AS `log_ID`,\r\n 1 AS `table_name`,\r\n 1 AS `record_ID`,\r\n 1 AS `operation`,\r\n 1 AS `db_user`,\r\n 1 AS `description`,\r\n 1 AS `operation_date`,\r\n 1 AS `operation_status`*/"
+    },
+    {
+      "name": "vw_trazabilidad_tb_refunds",
+      "definition": "SELECT \r\n 1 AS `log_ID`,\r\n 1 AS `table_name`,\r\n 1 AS `record_ID`,\r\n 1 AS `operation`,\r\n 1 AS `db_user`,\r\n 1 AS `description`,\r\n 1 AS `operation_date`,\r\n 1 AS `operation_status`*/"
+    },
+    {
+      "name": "vw_trazabilidad_tb_returns",
+      "definition": "SELECT \r\n 1 AS `log_ID`,\r\n 1 AS `table_name`,\r\n 1 AS `record_ID`,\r\n 1 AS `operation`,\r\n 1 AS `db_user`,\r\n 1 AS `description`,\r\n 1 AS `operation_date`,\r\n 1 AS `operation_status`*/"
+    },
+    {
+      "name": "vw_trazabilidad_tb_shipments",
+      "definition": "SELECT \r\n 1 AS `log_ID`,\r\n 1 AS `table_name`,\r\n 1 AS `record_ID`,\r\n 1 AS `operation`,\r\n 1 AS `db_user`,\r\n 1 AS `description`,\r\n 1 AS `operation_date`,\r\n 1 AS `operation_status`*/"
+    },
+    {
+      "name": "vw_trazabilidad_tb_user",
+      "definition": "SELECT \r\n 1 AS `log_ID`,\r\n 1 AS `table_name`,\r\n 1 AS `record_ID`,\r\n 1 AS `operation`,\r\n 1 AS `db_user`,\r\n 1 AS `description`,\r\n 1 AS `operation_date`,\r\n 1 AS `operation_status`*/"
+    },
+    {
+      "name": "vw_trazabilidad_tb_user_addresses",
+      "definition": "SELECT \r\n 1 AS `log_ID`,\r\n 1 AS `table_name`,\r\n 1 AS `record_ID`,\r\n 1 AS `operation`,\r\n 1 AS `db_user`,\r\n 1 AS `description`,\r\n 1 AS `operation_date`,\r\n 1 AS `operation_status`*/"
+    },
+    {
+      "name": "vw_trazabilidad_tbc_payment_methods_types",
+      "definition": "SELECT \r\n 1 AS `log_ID`,\r\n 1 AS `table_name`,\r\n 1 AS `record_ID`,\r\n 1 AS `operation`,\r\n 1 AS `db_user`,\r\n 1 AS `description`,\r\n 1 AS `operation_date`,\r\n 1 AS `operation_status`*/"
+    },
+    {
+      "name": "vw_trazabilidad_tbd_address_components",
+      "definition": "SELECT \r\n 1 AS `log_ID`,\r\n 1 AS `table_name`,\r\n 1 AS `record_ID`,\r\n 1 AS `operation`,\r\n 1 AS `db_user`,\r\n 1 AS `description`,\r\n 1 AS `operation_date`,\r\n 1 AS `operation_status`*/"
+    },
+    {
+      "name": "vw_trazabilidad_tbd_cancellation_items",
+      "definition": "SELECT \r\n 1 AS `log_ID`,\r\n 1 AS `table_name`,\r\n 1 AS `record_ID`,\r\n 1 AS `operation`,\r\n 1 AS `db_user`,\r\n 1 AS `description`,\r\n 1 AS `operation_date`,\r\n 1 AS `operation_status`*/"
+    },
+    {
+      "name": "vw_trazabilidad_tbd_cart_items",
+      "definition": "SELECT \r\n 1 AS `log_ID`,\r\n 1 AS `table_name`,\r\n 1 AS `record_ID`,\r\n 1 AS `operation`,\r\n 1 AS `db_user`,\r\n 1 AS `description`,\r\n 1 AS `operation_date`,\r\n 1 AS `operation_status`*/"
+    },
+    {
+      "name": "vw_trazabilidad_tbd_order_items",
+      "definition": "SELECT \r\n 1 AS `log_ID`,\r\n 1 AS `table_name`,\r\n 1 AS `record_ID`,\r\n 1 AS `operation`,\r\n 1 AS `db_user`,\r\n 1 AS `description`,\r\n 1 AS `operation_date`,\r\n 1 AS `operation_status`*/"
+    },
+    {
+      "name": "vw_trazabilidad_tbd_return_items",
+      "definition": "SELECT \r\n 1 AS `log_ID`,\r\n 1 AS `table_name`,\r\n 1 AS `record_ID`,\r\n 1 AS `operation`,\r\n 1 AS `db_user`,\r\n 1 AS `description`,\r\n 1 AS `operation_date`,\r\n 1 AS `operation_status`*/"
+    },
+    {
+      "name": "vw_trazabilidad_tbd_user_payment_methods",
+      "definition": "SELECT \r\n 1 AS `log_ID`,\r\n 1 AS `table_name`,\r\n 1 AS `record_ID`,\r\n 1 AS `operation`,\r\n 1 AS `db_user`,\r\n 1 AS `description`,\r\n 1 AS `operation_date`,\r\n 1 AS `operation_status`*/"
+    },
+    {
+      "name": "vw_trazabilidad_tbd_users_wishlist_products",
+      "definition": "SELECT \r\n 1 AS `log_ID`,\r\n 1 AS `table_name`,\r\n 1 AS `record_ID`,\r\n 1 AS `operation`,\r\n 1 AS `db_user`,\r\n 1 AS `description`,\r\n 1 AS `operation_date`,\r\n 1 AS `operation_status`*/"
+    },
+    {
+      "name": "vw_user_default_shipping_addresses",
+      "definition": "SELECT \r\n 1 AS `address_id`,\r\n 1 AS `user_id`,\r\n 1 AS `user_email`,\r\n 1 AS `address_label`,\r\n 1 AS `recipient_name`,\r\n 1 AS `recipient_phone`,\r\n 1 AS `delivery_instructions`,\r\n 1 AS `latitude`,\r\n 1 AS `longitude`,\r\n 1 AS `address_creation_date`*/"
+    },
+    {
+      "name": "vw_wishlist_carritos",
+      "definition": "SELECT \r\n 1 AS `user_ID`,\r\n 1 AS `user_nick`,\r\n 1 AS `user_email`,\r\n 1 AS `product_ID`,\r\n 1 AS `product_SKU`,\r\n 1 AS `product_name`,\r\n 1 AS `product_price`,\r\n 1 AS `wishlist_status`,\r\n 1 AS `wishlist_creation_date`,\r\n 1 AS `wishlist_last_update`,\r\n 1 AS `cart_ID`,\r\n 1 AS `cart_status`,\r\n 1 AS `cart_creation_date`,\r\n 1 AS `cart_last_update`*/"
+    }
+  ],
+  "procedures": [],
+  "functions": [],
+  "triggers": [],
+  "notes": "Análisis estático del dump. No se ejecutó SQL. Relaciones limitadas a FK explícitas."
+}
