@@ -1,1 +1,96 @@
-﻿<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Explorador ER · db_test_7b</title><link rel="stylesheet" href="styles.css"></head><body><header><div><small>MODELO RELACIONAL · MYSQL 8</small><h1>Explorador ER</h1><p>db_test_7b <span id="counts"></span></p></div><div class="toolbar"><input id="search" placeholder="Buscar tabla o columna…"><select id="groups"><option value="">Todos los grupos</option></select><button id="show">Mostrar todas</button><button id="fit">Ajustar</button><button id="reset">Restablecer</button><button id="pause">Pausar flujo</button><label>Velocidad <input id="speed" type="range" min=".3" max="2.5" step=".1" value="1"></label></div></header><main><section class="canvas" id="canvas"><div id="world"><svg id="edges"></svg><div id="nodes"></div></div></section><aside id="details"><h2>Explora una entidad</h2><p>Selecciona una tarjeta para inspeccionar sus columnas, índices y relaciones.</p></aside></main><footer><span>PK clave primaria</span><span>FK clave foránea declarada</span><span>Flujo animado: simulación visual basada en FK</span></footer><script src="app.js"></script></body></html>
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Diagrama ER interactivo de db_test_7b, contrastado con el respaldo SQL."
+    />
+    <title>Diagrama ER interactivo · db_test_7b</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="brand">
+        <p class="eyebrow">MODELO RELACIONAL · MYSQL 8.0.46</p>
+        <h1>Diagrama ER interactivo</h1>
+        <p class="subtitle">
+          <strong>db_test_7b</strong>
+          <span id="counts" aria-live="polite">Cargando esquema…</span>
+        </p>
+      </div>
+
+      <div class="toolbar" aria-label="Controles del diagrama">
+        <label class="search-label" for="search">Buscar</label>
+        <input
+          id="search"
+          type="search"
+          placeholder="Tabla o columna…"
+          autocomplete="off"
+        />
+        <select id="groups" aria-label="Filtrar por grupo">
+          <option value="">Todos los grupos</option>
+        </select>
+        <button id="show" type="button">Mostrar todas</button>
+        <button id="zoom-out" type="button" aria-label="Alejar">−</button>
+        <output id="zoom-level" aria-live="polite">100%</output>
+        <button id="zoom-in" type="button" aria-label="Acercar">+</button>
+        <button id="fit" type="button">Ajustar</button>
+        <button id="reset" type="button">Restablecer</button>
+        <button id="pause" type="button" aria-pressed="false">
+          Pausar animación
+        </button>
+        <label class="speed-control" for="speed">
+          Movimiento
+          <input
+            id="speed"
+            type="range"
+            min="0.4"
+            max="2.2"
+            step="0.1"
+            value="1"
+          />
+        </label>
+      </div>
+    </header>
+
+    <main class="workspace">
+      <section
+        class="canvas"
+        id="canvas"
+        aria-label="Lienzo del diagrama; arrastra para desplazar y usa la rueda para acercar"
+      >
+        <div id="world">
+          <svg id="edges" aria-hidden="true"></svg>
+          <div id="nodes"></div>
+        </div>
+        <div id="load-error" class="load-error" role="alert" hidden>
+          No se pudo cargar el esquema. Inicia un servidor local desde esta
+          carpeta y vuelve a abrir la página.
+        </div>
+      </section>
+
+      <aside id="details" class="details-panel" aria-live="polite">
+        <div class="details-empty">
+          <p class="eyebrow">INSPECCIÓN</p>
+          <h2>Explora una tabla</h2>
+          <p>
+            Selecciona una tarjeta para consultar su descripción, cantidad de
+            registros, columnas e interrelaciones.
+          </p>
+        </div>
+      </aside>
+    </main>
+
+    <footer class="legend">
+      <span><b class="legend-key pk">PK</b> Clave primaria</span>
+      <span><b class="legend-key fk">FK</b> Clave foránea</span>
+      <span><i class="legend-line"></i> Relación declarada por FK</span>
+      <span class="legend-note"
+        >Los conteos corresponden al respaldo SQL; no son una consulta en vivo.</span
+      >
+    </footer>
+    <script src="app.js"></script>
+  </body>
+</html>

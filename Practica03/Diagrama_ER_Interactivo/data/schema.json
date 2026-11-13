@@ -1,46 +1,92 @@
 {
   "database": "db_test_7b",
   "project": "Practicas-BDN-240174",
-  "source": "Practica03/backups/respaldo05_11_26.sql",
-  "sourceModified": "2026-11-07 22:18:15",
-  "sourceSha256": "B4E81FD8411D2A859E3A8A261CE57EACF4BCC628E8C9B92F1DE2B101CA2206F9",
   "mysqlVersion": "8.0.46",
   "charset": "utf8mb4",
   "collation": "utf8mb4_0900_ai_ci",
+  "source": "respaldo_111126_1794591103484.sql",
+  "sourceSha256": "335554beff65d9117b70947d65cda5a562b575b31c8420f77ac79d1fb8466b12",
+  "notes": [
+    "Estructura y conteos reconstruidos del respaldo SQL adjunto.",
+    "Los conteos corresponden a filas INSERT incluidas por tabla en el respaldo; no son una consulta en vivo.",
+    "Las descripciones se muestran solo cuando el respaldo declara COMMENT; en este archivo no se encontraron comentarios de tabla ni de columna.",
+    "Las relaciones solo representan FOREIGN KEY explícitas."
+  ],
   "tables": [
     {
       "name": "tb_carts",
       "engine": "InnoDB",
-      "options": "DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "options": "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "description": "Sin descripción declarada en el respaldo.",
       "columns": [
         {
           "name": "ID",
           "type": "int unsigned",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": true,
           "primaryKey": true,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "user_ID",
           "type": "int",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": false,
           "primaryKey": false,
           "foreignKeys": [
             "tb_carts_ibfk_1"
+          ],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": [
+            "tb_user.ID"
           ]
+        },
+        {
+          "name": "status",
+          "type": "bit(1)",
+          "nullable": true,
+          "default": "b'1'",
+          "defaultDeclared": true,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "creation_date",
           "type": "datetime",
           "nullable": false,
           "default": "CURRENT_TIMESTAMP",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
+        },
+        {
+          "name": "last_update",
+          "type": "datetime",
+          "nullable": true,
+          "default": "NULL",
+          "defaultDeclared": true,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": [],
+          "onUpdate": "CURRENT_TIMESTAMP",
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         }
       ],
       "primaryKey": [
@@ -69,40 +115,71 @@
           "onUpdate": null
         }
       ],
-      "group": "tb"
+      "group": "tb",
+      "rowCount": 0,
+      "rowCountVerifiable": true,
+      "columnCount": 5
     },
     {
       "name": "tb_categories",
       "engine": "InnoDB",
-      "options": "AUTO_INCREMENT=10000 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "options": "ENGINE=InnoDB AUTO_INCREMENT=10000 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "description": "Sin descripción declarada en el respaldo.",
       "columns": [
         {
           "name": "ID",
           "type": "int unsigned",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": true,
           "primaryKey": true,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "name",
           "type": "varchar(120)",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
+        },
+        {
+          "name": "description",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "defaultDeclared": false,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "sup_id_category",
-          "type": "int unsigned DEFAULT",
+          "type": "int unsigned",
           "nullable": true,
-          "default": null,
+          "default": "NULL",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
           "foreignKeys": [
             "fk_superior_category"
+          ],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": [
+            "tb_categories.ID"
           ]
         },
         {
@@ -110,27 +187,39 @@
           "type": "bit(1)",
           "nullable": false,
           "default": "b'1'",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "creation_date",
           "type": "datetime",
           "nullable": false,
           "default": "CURRENT_TIMESTAMP",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "last_update",
           "type": "datetime",
           "nullable": false,
-          "default": "CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP",
+          "default": "CURRENT_TIMESTAMP",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": "CURRENT_TIMESTAMP",
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         }
       ],
       "primaryKey": [
@@ -166,75 +255,120 @@
           "onUpdate": null
         }
       ],
-      "group": "tb"
+      "group": "tb",
+      "rowCount": 100,
+      "rowCountVerifiable": true,
+      "columnCount": 7
     },
     {
       "name": "tb_logs",
       "engine": "InnoDB",
-      "options": "AUTO_INCREMENT=34857 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "options": "ENGINE=InnoDB AUTO_INCREMENT=54859 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "description": "Sin descripción declarada en el respaldo.",
       "columns": [
         {
           "name": "ID",
           "type": "int",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": true,
           "primaryKey": true,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "table_name",
           "type": "varchar(80)",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "record_id",
-          "type": "int unsigned DEFAULT",
+          "type": "int unsigned",
           "nullable": true,
-          "default": null,
+          "default": "NULL",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "table_operation",
-          "type": "enum('Create','Read','Update','Delete') DEFAULT",
+          "type": "enum('Create','Read','Update','Delete')",
           "nullable": true,
-          "default": null,
+          "default": "NULL",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "db_user",
           "type": "varchar(288)",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "operation_date",
           "type": "datetime",
           "nullable": false,
           "default": "CURRENT_TIMESTAMP",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "operation_description",
           "type": "text",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
+        },
+        {
+          "name": "operation_status",
+          "type": "bit(1)",
+          "nullable": true,
+          "default": "b'1'",
+          "defaultDeclared": true,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         }
       ],
       "primaryKey": [
@@ -259,31 +393,45 @@
         }
       ],
       "foreignKeys": [],
-      "group": "tb"
+      "group": "tb",
+      "rowCount": 49745,
+      "rowCountVerifiable": true,
+      "columnCount": 8
     },
     {
       "name": "tb_order_cancellations",
       "engine": "InnoDB",
-      "options": "DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "options": "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "description": "Sin descripción declarada en el respaldo.",
       "columns": [
         {
           "name": "ID",
           "type": "int unsigned",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": true,
           "primaryKey": true,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "order_ID",
           "type": "int unsigned",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": false,
           "primaryKey": false,
           "foreignKeys": [
             "fk_order_cancellations_order"
+          ],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": [
+            "tb_orders.ID"
           ]
         },
         {
@@ -291,10 +439,16 @@
           "type": "int",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": false,
           "primaryKey": false,
           "foreignKeys": [
             "fk_order_cancellations_user"
+          ],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": [
+            "tb_user.ID"
           ]
         },
         {
@@ -302,27 +456,52 @@
           "type": "text",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "status",
           "type": "enum('Requested','Approved','Rejected','Completed')",
           "nullable": false,
           "default": "'Requested'",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "creation_date",
           "type": "datetime",
           "nullable": false,
           "default": "CURRENT_TIMESTAMP",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
+        },
+        {
+          "name": "last_update",
+          "type": "datetime",
+          "nullable": true,
+          "default": "NULL",
+          "defaultDeclared": true,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": [],
+          "onUpdate": "CURRENT_TIMESTAMP",
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         }
       ],
       "primaryKey": [
@@ -370,31 +549,45 @@
           "onUpdate": null
         }
       ],
-      "group": "tb"
+      "group": "tb",
+      "rowCount": 0,
+      "rowCountVerifiable": true,
+      "columnCount": 7
     },
     {
       "name": "tb_orders",
       "engine": "InnoDB",
-      "options": "DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "options": "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "description": "Sin descripción declarada en el respaldo.",
       "columns": [
         {
           "name": "ID",
           "type": "int unsigned",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": true,
           "primaryKey": true,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "seller_ID",
           "type": "int",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": false,
           "primaryKey": false,
           "foreignKeys": [
             "tb_orders_ibfk_1"
+          ],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": [
+            "tb_user.ID"
           ]
         },
         {
@@ -402,45 +595,78 @@
           "type": "decimal(12,2)",
           "nullable": false,
           "default": "'0.00'",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "shipping_cost",
           "type": "decimal(12,2)",
           "nullable": false,
           "default": "'0.00'",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "fulfillment_status",
           "type": "enum('Pending','Accepted','Preparing','Sent','Delivered','Canceled','Returned')",
           "nullable": false,
           "default": "'Pending'",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "status",
           "type": "bit(1)",
           "nullable": false,
           "default": "b'1'",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "creation_date",
           "type": "datetime",
           "nullable": false,
           "default": "CURRENT_TIMESTAMP",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
+        },
+        {
+          "name": "last_update",
+          "type": "datetime",
+          "nullable": true,
+          "default": "NULL",
+          "defaultDeclared": true,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": [],
+          "onUpdate": "CURRENT_TIMESTAMP",
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         }
       ],
       "primaryKey": [
@@ -469,48 +695,94 @@
           "onUpdate": null
         }
       ],
-      "group": "tb"
+      "group": "tb",
+      "rowCount": 0,
+      "rowCountVerifiable": true,
+      "columnCount": 8
     },
     {
       "name": "tb_payment_methods",
       "engine": "InnoDB",
-      "options": "DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "options": "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "description": "Sin descripción declarada en el respaldo.",
       "columns": [
         {
           "name": "ID",
           "type": "int unsigned",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": true,
           "primaryKey": true,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "name",
           "type": "varchar(100)",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
+        },
+        {
+          "name": "description",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "defaultDeclared": false,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "status",
           "type": "bit(1)",
           "nullable": false,
           "default": "b'1'",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "creation_date",
           "type": "datetime",
           "nullable": false,
           "default": "CURRENT_TIMESTAMP",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
+        },
+        {
+          "name": "last_update",
+          "type": "datetime",
+          "nullable": true,
+          "default": "NULL",
+          "defaultDeclared": true,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": [],
+          "onUpdate": "CURRENT_TIMESTAMP",
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         }
       ],
       "primaryKey": [
@@ -518,31 +790,45 @@
       ],
       "indexes": [],
       "foreignKeys": [],
-      "group": "tb"
+      "group": "tb",
+      "rowCount": 0,
+      "rowCountVerifiable": true,
+      "columnCount": 6
     },
     {
       "name": "tb_payment_transaction",
       "engine": "InnoDB",
-      "options": "DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "options": "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "description": "Sin descripción declarada en el respaldo.",
       "columns": [
         {
           "name": "ID",
           "type": "int unsigned",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": true,
           "primaryKey": true,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "payment_ID",
           "type": "int unsigned",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": false,
           "primaryKey": false,
           "foreignKeys": [
             "fk_trans_payment"
+          ],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": [
+            "tb_payments.ID"
           ]
         },
         {
@@ -550,27 +836,65 @@
           "type": "varchar(255)",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
+        },
+        {
+          "name": "gateway_response",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "defaultDeclared": false,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "status",
           "type": "bit(1)",
           "nullable": false,
           "default": "b'1'",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "creation_date",
           "type": "datetime",
           "nullable": false,
           "default": "CURRENT_TIMESTAMP",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
+        },
+        {
+          "name": "last_update",
+          "type": "datetime",
+          "nullable": true,
+          "default": "NULL",
+          "defaultDeclared": true,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": [],
+          "onUpdate": "CURRENT_TIMESTAMP",
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         }
       ],
       "primaryKey": [
@@ -599,42 +923,62 @@
           "onUpdate": null
         }
       ],
-      "group": "tb"
+      "group": "tb",
+      "rowCount": 0,
+      "rowCountVerifiable": true,
+      "columnCount": 7
     },
     {
       "name": "tb_payments",
       "engine": "InnoDB",
-      "options": "DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "options": "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "description": "Sin descripción declarada en el respaldo.",
       "columns": [
         {
           "name": "ID",
           "type": "int unsigned",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": true,
           "primaryKey": true,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "order_ID",
           "type": "int unsigned",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": false,
           "primaryKey": false,
           "foreignKeys": [
             "fk_payments_order"
+          ],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": [
+            "tb_orders.ID"
           ]
         },
         {
           "name": "user_payment_method_ID",
-          "type": "bigint unsigned DEFAULT",
+          "type": "bigint unsigned",
           "nullable": true,
-          "default": null,
+          "default": "NULL",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
           "foreignKeys": [
             "fk_payments_user_method"
+          ],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": [
+            "tbd_user_payment_methods.ID"
           ]
         },
         {
@@ -642,27 +986,52 @@
           "type": "decimal(12,2)",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "payment_status",
           "type": "enum('Pending','Approved','Rejected','Refunded')",
           "nullable": false,
           "default": "'Pending'",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "creation_date",
           "type": "datetime",
           "nullable": false,
           "default": "CURRENT_TIMESTAMP",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
+        },
+        {
+          "name": "last_update",
+          "type": "datetime",
+          "nullable": true,
+          "default": "NULL",
+          "defaultDeclared": true,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": [],
+          "onUpdate": "CURRENT_TIMESTAMP",
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         }
       ],
       "primaryKey": [
@@ -710,95 +1079,176 @@
           "onUpdate": null
         }
       ],
-      "group": "tb"
+      "group": "tb",
+      "rowCount": 0,
+      "rowCountVerifiable": true,
+      "columnCount": 7
     },
     {
       "name": "tb_people",
       "engine": "InnoDB",
-      "options": "AUTO_INCREMENT=7503 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "options": "ENGINE=InnoDB AUTO_INCREMENT=7504 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "description": "Sin descripción declarada en el respaldo.",
       "columns": [
         {
           "name": "person_ID",
           "type": "bigint unsigned",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": true,
           "primaryKey": true,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "user_ID",
-          "type": "int DEFAULT",
+          "type": "int",
           "nullable": true,
-          "default": null,
+          "default": "NULL",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
           "foreignKeys": [
             "fk_people_users"
+          ],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": [
+            "tb_user.ID"
           ]
         },
         {
           "name": "courtesy_title",
-          "type": "varchar(20) DEFAULT",
+          "type": "varchar(20)",
           "nullable": true,
-          "default": null,
+          "default": "NULL",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "given_names",
           "type": "varchar(150)",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "family_names",
-          "type": "varchar(150) DEFAULT",
+          "type": "varchar(150)",
           "nullable": true,
-          "default": null,
+          "default": "NULL",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "birth_date",
-          "type": "date DEFAULT",
+          "type": "date",
           "nullable": true,
-          "default": null,
+          "default": "NULL",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "gender",
           "type": "enum('Hombre','Mujer','Prefiero no decirlo')",
           "nullable": false,
           "default": "'Prefiero no decirlo'",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "country_code",
-          "type": "char(2) DEFAULT",
+          "type": "char(2)",
           "nullable": true,
-          "default": null,
+          "default": "NULL",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "phone",
-          "type": "varchar(25) DEFAULT",
+          "type": "varchar(25)",
           "nullable": true,
-          "default": null,
+          "default": "NULL",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
+        },
+        {
+          "name": "status",
+          "type": "bit(1)",
+          "nullable": true,
+          "default": "b'1'",
+          "defaultDeclared": true,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
+        },
+        {
+          "name": "creation_date",
+          "type": "datetime",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "defaultDeclared": true,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
+        },
+        {
+          "name": "last_update",
+          "type": "datetime",
+          "nullable": true,
+          "default": "NULL",
+          "defaultDeclared": true,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": [],
+          "onUpdate": "CURRENT_TIMESTAMP",
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         }
       ],
       "primaryKey": [
@@ -827,22 +1277,32 @@
           "onUpdate": null
         }
       ],
-      "group": "tb"
+      "group": "tb",
+      "rowCount": 7503,
+      "rowCountVerifiable": true,
+      "columnCount": 12
     },
     {
       "name": "tb_product_categories",
       "engine": "InnoDB",
-      "options": "DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "options": "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "description": "Sin descripción declarada en el respaldo.",
       "columns": [
         {
           "name": "product_Id",
           "type": "int unsigned",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": false,
           "primaryKey": true,
           "foreignKeys": [
             "fk_pc_product"
+          ],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": [
+            "tb_products.ID"
           ]
         },
         {
@@ -850,10 +1310,16 @@
           "type": "int unsigned",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": false,
           "primaryKey": true,
           "foreignKeys": [
             "fk_pc_category"
+          ],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": [
+            "tb_categories.ID"
           ]
         },
         {
@@ -861,27 +1327,39 @@
           "type": "bit(1)",
           "nullable": false,
           "default": "b'1'",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "creation_date",
           "type": "datetime",
           "nullable": false,
           "default": "CURRENT_TIMESTAMP",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "last_update",
           "type": "datetime",
           "nullable": false,
-          "default": "CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP",
+          "default": "CURRENT_TIMESTAMP",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": "CURRENT_TIMESTAMP",
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         }
       ],
       "primaryKey": [
@@ -907,7 +1385,7 @@
           "refColumns": [
             "ID"
           ],
-          "onDelete": "CASCADE ON UPDATE CASCADE",
+          "onDelete": "CASCADE",
           "onUpdate": "CASCADE"
         },
         {
@@ -919,79 +1397,137 @@
           "refColumns": [
             "ID"
           ],
-          "onDelete": "CASCADE ON UPDATE CASCADE",
+          "onDelete": "CASCADE",
           "onUpdate": "CASCADE"
         }
       ],
-      "group": "tb"
+      "group": "tb",
+      "rowCount": 17572,
+      "rowCountVerifiable": true,
+      "columnCount": 5
     },
     {
       "name": "tb_products",
       "engine": "InnoDB",
-      "options": "AUTO_INCREMENT=8243 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "options": "ENGINE=InnoDB AUTO_INCREMENT=24626 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "description": "Sin descripción declarada en el respaldo.",
       "columns": [
         {
           "name": "ID",
           "type": "int unsigned",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": true,
           "primaryKey": true,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "SKU",
           "type": "varchar(50)",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "name",
           "type": "varchar(250)",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
+        },
+        {
+          "name": "description",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "defaultDeclared": false,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "current_price",
           "type": "decimal(10,2)",
           "nullable": false,
           "default": "'0.00'",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "current_stock",
           "type": "int unsigned",
           "nullable": false,
           "default": "'0'",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
+        },
+        {
+          "name": "status",
+          "type": "bit(1)",
+          "nullable": true,
+          "default": "b'1'",
+          "defaultDeclared": true,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "creation_date",
           "type": "datetime",
           "nullable": false,
           "default": "CURRENT_TIMESTAMP",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "last_update",
           "type": "datetime",
           "nullable": false,
-          "default": "CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP",
+          "default": "CURRENT_TIMESTAMP",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": "CURRENT_TIMESTAMP",
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         }
       ],
       "primaryKey": [
@@ -1007,22 +1543,32 @@
         }
       ],
       "foreignKeys": [],
-      "group": "tb"
+      "group": "tb",
+      "rowCount": 15024,
+      "rowCountVerifiable": true,
+      "columnCount": 9
     },
     {
       "name": "tb_products_users_providers",
       "engine": "InnoDB",
-      "options": "DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "options": "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "description": "Sin descripción declarada en el respaldo.",
       "columns": [
         {
           "name": "user_ID",
           "type": "int",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": false,
           "primaryKey": true,
           "foreignKeys": [
             "fk_products_users_providers_user"
+          ],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": [
+            "tb_user.ID"
           ]
         },
         {
@@ -1030,56 +1576,82 @@
           "type": "int unsigned",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": false,
           "primaryKey": true,
           "foreignKeys": [
             "fk_products_users_providers_product"
+          ],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": [
+            "tb_products.ID"
           ]
         },
         {
           "name": "type_ownership",
-          "type": "enum('Owner','Reseller','Distributor') DEFAULT",
+          "type": "enum('Owner','Reseller','Distributor')",
           "nullable": true,
-          "default": null,
+          "default": "NULL",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "status",
           "type": "bit(1)",
           "nullable": false,
           "default": "b'1'",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "available_date",
           "type": "datetime",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "creation_date",
           "type": "datetime",
           "nullable": false,
           "default": "CURRENT_TIMESTAMP",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "last_date",
           "type": "datetime",
           "nullable": false,
           "default": "CURRENT_TIMESTAMP",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         }
       ],
       "primaryKey": [
@@ -1121,31 +1693,45 @@
           "onUpdate": null
         }
       ],
-      "group": "tb"
+      "group": "tb",
+      "rowCount": 0,
+      "rowCountVerifiable": true,
+      "columnCount": 7
     },
     {
       "name": "tb_refunds",
       "engine": "InnoDB",
-      "options": "DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "options": "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "description": "Sin descripción declarada en el respaldo.",
       "columns": [
         {
           "name": "ID",
           "type": "int unsigned",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": true,
           "primaryKey": true,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "payment_ID",
           "type": "int unsigned",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": false,
           "primaryKey": false,
           "foreignKeys": [
             "fk_refunds_payment"
+          ],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": [
+            "tb_payments.ID"
           ]
         },
         {
@@ -1153,18 +1739,52 @@
           "type": "decimal(12,2)",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
+        },
+        {
+          "name": "reason",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "defaultDeclared": false,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "creation_date",
           "type": "datetime",
           "nullable": false,
           "default": "CURRENT_TIMESTAMP",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
+        },
+        {
+          "name": "last_update",
+          "type": "datetime",
+          "nullable": true,
+          "default": "NULL",
+          "defaultDeclared": true,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": [],
+          "onUpdate": "CURRENT_TIMESTAMP",
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         }
       ],
       "primaryKey": [
@@ -1193,31 +1813,45 @@
           "onUpdate": null
         }
       ],
-      "group": "tb"
+      "group": "tb",
+      "rowCount": 0,
+      "rowCountVerifiable": true,
+      "columnCount": 6
     },
     {
       "name": "tb_returns",
       "engine": "InnoDB",
-      "options": "DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "options": "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "description": "Sin descripción declarada en el respaldo.",
       "columns": [
         {
           "name": "ID",
           "type": "int unsigned",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": true,
           "primaryKey": true,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "order_ID",
           "type": "int unsigned",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": false,
           "primaryKey": false,
           "foreignKeys": [
             "fk_returns_order_hdr"
+          ],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": [
+            "tb_orders.ID"
           ]
         },
         {
@@ -1225,10 +1859,16 @@
           "type": "int",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": false,
           "primaryKey": false,
           "foreignKeys": [
             "fk_returns_user"
+          ],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": [
+            "tb_user.ID"
           ]
         },
         {
@@ -1236,27 +1876,52 @@
           "type": "text",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "status",
           "type": "enum('Requested','Approved','Rejected','Completed')",
           "nullable": false,
           "default": "'Requested'",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "creation_date",
           "type": "datetime",
           "nullable": false,
           "default": "CURRENT_TIMESTAMP",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
+        },
+        {
+          "name": "last_update",
+          "type": "datetime",
+          "nullable": true,
+          "default": "NULL",
+          "defaultDeclared": true,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": [],
+          "onUpdate": "CURRENT_TIMESTAMP",
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         }
       ],
       "primaryKey": [
@@ -1304,77 +1969,124 @@
           "onUpdate": null
         }
       ],
-      "group": "tb"
+      "group": "tb",
+      "rowCount": 0,
+      "rowCountVerifiable": true,
+      "columnCount": 7
     },
     {
       "name": "tb_shipments",
       "engine": "InnoDB",
-      "options": "DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "options": "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "description": "Sin descripción declarada en el respaldo.",
       "columns": [
         {
           "name": "ID",
           "type": "int unsigned",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": true,
           "primaryKey": true,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "order_ID",
           "type": "int unsigned",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": false,
           "primaryKey": false,
           "foreignKeys": [
             "fk_shipments_order"
+          ],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": [
+            "tb_orders.ID"
           ]
         },
         {
           "name": "tracking_number",
-          "type": "varchar(100) DEFAULT",
+          "type": "varchar(100)",
           "nullable": true,
-          "default": null,
+          "default": "NULL",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "carrier",
-          "type": "varchar(100) DEFAULT",
+          "type": "varchar(100)",
           "nullable": true,
-          "default": null,
+          "default": "NULL",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "shipping_status",
           "type": "enum('Preparing','In_Transit','Delivered','Failed')",
           "nullable": false,
           "default": "'Preparing'",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "shipped_date",
-          "type": "datetime DEFAULT",
+          "type": "datetime",
           "nullable": true,
-          "default": null,
+          "default": "NULL",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "delivered_date",
-          "type": "datetime DEFAULT",
+          "type": "datetime",
           "nullable": true,
-          "default": null,
+          "default": "NULL",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
+        },
+        {
+          "name": "last_update",
+          "type": "datetime",
+          "nullable": true,
+          "default": "NULL",
+          "defaultDeclared": true,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": [],
+          "onUpdate": "CURRENT_TIMESTAMP",
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         }
       ],
       "primaryKey": [
@@ -1403,66 +2115,120 @@
           "onUpdate": null
         }
       ],
-      "group": "tb"
+      "group": "tb",
+      "rowCount": 0,
+      "rowCountVerifiable": true,
+      "columnCount": 8
     },
     {
       "name": "tb_user",
       "engine": "InnoDB",
-      "options": "AUTO_INCREMENT=7531 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "options": "ENGINE=InnoDB AUTO_INCREMENT=7532 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "description": "Sin descripción declarada en el respaldo.",
       "columns": [
         {
           "name": "ID",
           "type": "int",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": true,
           "primaryKey": true,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "email",
           "type": "varchar(100)",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "nick",
           "type": "varchar(50)",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "password",
           "type": "varchar(255)",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "creation_date",
           "type": "datetime",
           "nullable": false,
           "default": "CURRENT_TIMESTAMP",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
+        },
+        {
+          "name": "last_update",
+          "type": "datetime",
+          "nullable": true,
+          "default": "NULL",
+          "defaultDeclared": true,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": [],
+          "onUpdate": "CURRENT_TIMESTAMP",
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "last_login",
-          "type": "datetime DEFAULT",
+          "type": "datetime",
           "nullable": true,
-          "default": null,
+          "default": "NULL",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
+        },
+        {
+          "name": "status",
+          "type": "bit(1)",
+          "nullable": true,
+          "default": "b'1'",
+          "defaultDeclared": true,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         }
       ],
       "primaryKey": [
@@ -1485,31 +2251,45 @@
         }
       ],
       "foreignKeys": [],
-      "group": "tb"
+      "group": "tb",
+      "rowCount": 7528,
+      "rowCountVerifiable": true,
+      "columnCount": 8
     },
     {
       "name": "tb_user_addresses",
       "engine": "InnoDB",
-      "options": "DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "options": "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "description": "Sin descripción declarada en el respaldo.",
       "columns": [
         {
           "name": "ID",
           "type": "bigint unsigned",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": true,
           "primaryKey": true,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "user_ID",
           "type": "int",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": false,
           "primaryKey": false,
           "foreignKeys": [
             "fk_addresses_users"
+          ],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": [
+            "tb_user.ID"
           ]
         },
         {
@@ -1517,81 +2297,143 @@
           "type": "varchar(100)",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "recipient_name",
-          "type": "varchar(150) DEFAULT",
+          "type": "varchar(150)",
           "nullable": true,
-          "default": null,
+          "default": "NULL",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "recipient_phone",
-          "type": "varchar(25) DEFAULT",
+          "type": "varchar(25)",
           "nullable": true,
-          "default": null,
+          "default": "NULL",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "delivery_instructions",
-          "type": "varchar(500) DEFAULT",
+          "type": "varchar(500)",
           "nullable": true,
-          "default": null,
+          "default": "NULL",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "latitude",
-          "type": "decimal(10,7) DEFAULT",
+          "type": "decimal(10,7)",
           "nullable": true,
-          "default": null,
+          "default": "NULL",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "longitude",
-          "type": "decimal(10,7) DEFAULT",
+          "type": "decimal(10,7)",
           "nullable": true,
-          "default": null,
+          "default": "NULL",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "is_default",
           "type": "tinyint(1)",
           "nullable": false,
           "default": "'0'",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "status",
           "type": "bit(1)",
           "nullable": false,
           "default": "b'1'",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "creation_date",
           "type": "datetime",
           "nullable": false,
           "default": "CURRENT_TIMESTAMP",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
+        },
+        {
+          "name": "last_update",
+          "type": "datetime",
+          "nullable": true,
+          "default": "NULL",
+          "defaultDeclared": true,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": [],
+          "onUpdate": "CURRENT_TIMESTAMP",
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
+        },
+        {
+          "name": "default_user_ID",
+          "type": "int",
+          "nullable": true,
+          "default": null,
+          "defaultDeclared": false,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         }
       ],
       "primaryKey": [
@@ -1627,57 +2469,94 @@
           "onUpdate": null
         }
       ],
-      "group": "tb"
+      "group": "tb",
+      "rowCount": 0,
+      "rowCountVerifiable": true,
+      "columnCount": 13
     },
     {
       "name": "tbc_payment_methods_types",
       "engine": "InnoDB",
-      "options": "DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "options": "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "description": "Sin descripción declarada en el respaldo.",
       "columns": [
         {
           "name": "ID",
           "type": "int unsigned",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": true,
           "primaryKey": true,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "name",
           "type": "varchar(50)",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "description",
-          "type": "varchar(255) DEFAULT",
+          "type": "varchar(255)",
           "nullable": true,
-          "default": null,
+          "default": "NULL",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "status",
           "type": "bit(1)",
           "nullable": false,
           "default": "b'1'",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "creation_date",
           "type": "datetime",
           "nullable": false,
           "default": "CURRENT_TIMESTAMP",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
+        },
+        {
+          "name": "last_update",
+          "type": "datetime",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "defaultDeclared": true,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": [],
+          "onUpdate": "CURRENT_TIMESTAMP",
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         }
       ],
       "primaryKey": [
@@ -1685,32 +2564,47 @@
       ],
       "indexes": [],
       "foreignKeys": [],
-      "group": "tbc"
+      "group": "tbc",
+      "rowCount": 0,
+      "rowCountVerifiable": true,
+      "columnCount": 6
     },
     {
       "name": "tbd_address_components",
       "engine": "InnoDB",
-      "options": "DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "options": "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "description": "Sin descripción declarada en el respaldo.",
       "columns": [
         {
           "name": "ID",
           "type": "bigint unsigned",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": true,
           "primaryKey": true,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "address_ID",
           "type": "bigint unsigned",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": false,
           "primaryKey": false,
           "foreignKeys": [
             "fk_component_address",
             "fk_component_parent"
+          ],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": [
+            "tb_user_addresses.ID",
+            "tbd_address_components.address_ID"
           ]
         },
         {
@@ -1718,37 +2612,55 @@
           "type": "varchar(255)",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "component_type",
           "type": "varchar(50)",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "status",
           "type": "bit(1)",
           "nullable": false,
           "default": "b'1'",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "address_sup_ID",
-          "type": "bigint unsigned DEFAULT",
+          "type": "bigint unsigned",
           "nullable": true,
-          "default": null,
+          "default": "NULL",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
           "foreignKeys": [
             "fk_component_parent"
+          ],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": [
+            "tbd_address_components.ID"
           ]
         },
         {
@@ -1756,9 +2668,26 @@
           "type": "datetime",
           "nullable": false,
           "default": "CURRENT_TIMESTAMP",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
+        },
+        {
+          "name": "last_update",
+          "type": "datetime",
+          "nullable": true,
+          "default": "NULL",
+          "defaultDeclared": true,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": [],
+          "onUpdate": "CURRENT_TIMESTAMP",
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         }
       ],
       "primaryKey": [
@@ -1810,31 +2739,45 @@
           "onUpdate": null
         }
       ],
-      "group": "tbd"
+      "group": "tbd",
+      "rowCount": 0,
+      "rowCountVerifiable": true,
+      "columnCount": 8
     },
     {
       "name": "tbd_cancellation_items",
       "engine": "InnoDB",
-      "options": "DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "options": "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "description": "Sin descripción declarada en el respaldo.",
       "columns": [
         {
           "name": "ID",
           "type": "int unsigned",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": true,
           "primaryKey": true,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "cancellation_ID",
-          "type": "int unsigned DEFAULT",
+          "type": "int unsigned",
           "nullable": true,
-          "default": null,
+          "default": "NULL",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
           "foreignKeys": [
             "fk_cancellation_items_header"
+          ],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": [
+            "tb_order_cancellations.ID"
           ]
         },
         {
@@ -1842,10 +2785,16 @@
           "type": "int unsigned",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": false,
           "primaryKey": false,
           "foreignKeys": [
             "fk_cancellations_order"
+          ],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": [
+            "tb_orders.ID"
           ]
         },
         {
@@ -1853,19 +2802,29 @@
           "type": "text",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "requested_by",
           "type": "int",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": false,
           "primaryKey": false,
           "foreignKeys": [
             "fk_cancellations_user"
+          ],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": [
+            "tb_user.ID"
           ]
         },
         {
@@ -1873,9 +2832,26 @@
           "type": "datetime",
           "nullable": false,
           "default": "CURRENT_TIMESTAMP",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
+        },
+        {
+          "name": "last_update",
+          "type": "datetime",
+          "nullable": true,
+          "default": "NULL",
+          "defaultDeclared": true,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": [],
+          "onUpdate": "CURRENT_TIMESTAMP",
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         }
       ],
       "primaryKey": [
@@ -1942,22 +2918,32 @@
           "onUpdate": null
         }
       ],
-      "group": "tbd"
+      "group": "tbd",
+      "rowCount": 0,
+      "rowCountVerifiable": true,
+      "columnCount": 7
     },
     {
       "name": "tbd_cart_items",
       "engine": "InnoDB",
-      "options": "DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "options": "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "description": "Sin descripción declarada en el respaldo.",
       "columns": [
         {
           "name": "cart_ID",
           "type": "int unsigned",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": false,
           "primaryKey": true,
           "foreignKeys": [
             "fk_cart_items_cart"
+          ],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": [
+            "tb_carts.ID"
           ]
         },
         {
@@ -1965,10 +2951,16 @@
           "type": "int",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": false,
           "primaryKey": true,
           "foreignKeys": [
             "fk_cart_items_provider_product"
+          ],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": [
+            "tb_products_users_providers.user_ID"
           ]
         },
         {
@@ -1976,10 +2968,16 @@
           "type": "int unsigned",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": false,
           "primaryKey": true,
           "foreignKeys": [
             "fk_cart_items_provider_product"
+          ],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": [
+            "tb_products_users_providers.product_ID"
           ]
         },
         {
@@ -1987,18 +2985,39 @@
           "type": "int unsigned",
           "nullable": false,
           "default": "'1'",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "creation_date",
           "type": "datetime",
           "nullable": false,
           "default": "CURRENT_TIMESTAMP",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
+        },
+        {
+          "name": "last_update",
+          "type": "datetime",
+          "nullable": true,
+          "default": "NULL",
+          "defaultDeclared": true,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": [],
+          "onUpdate": "CURRENT_TIMESTAMP",
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         }
       ],
       "primaryKey": [
@@ -2044,31 +3063,45 @@
           "onUpdate": null
         }
       ],
-      "group": "tbd"
+      "group": "tbd",
+      "rowCount": 0,
+      "rowCountVerifiable": true,
+      "columnCount": 6
     },
     {
       "name": "tbd_order_items",
       "engine": "InnoDB",
-      "options": "DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "options": "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "description": "Sin descripción declarada en el respaldo.",
       "columns": [
         {
           "name": "ID",
           "type": "int unsigned",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": true,
           "primaryKey": true,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "seller_order_ID",
           "type": "int unsigned",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": false,
           "primaryKey": false,
           "foreignKeys": [
             "tbd_order_items_ibfk_1"
+          ],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": [
+            "tb_orders.ID"
           ]
         },
         {
@@ -2076,10 +3109,16 @@
           "type": "int unsigned",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": false,
           "primaryKey": false,
           "foreignKeys": [
             "tbd_order_items_ibfk_2"
+          ],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": [
+            "tb_products_users_providers.product_ID"
           ]
         },
         {
@@ -2087,10 +3126,16 @@
           "type": "int",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": false,
           "primaryKey": false,
           "foreignKeys": [
             "tbd_order_items_ibfk_2"
+          ],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": [
+            "tb_products_users_providers.user_ID"
           ]
         },
         {
@@ -2098,36 +3143,78 @@
           "type": "varchar(255)",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "quantity",
           "type": "int unsigned",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "unit_price",
           "type": "decimal(12,2)",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
+        },
+        {
+          "name": "subtotal",
+          "type": "decimal(12,2)",
+          "nullable": true,
+          "default": null,
+          "defaultDeclared": false,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "creation_date",
           "type": "datetime",
           "nullable": false,
           "default": "CURRENT_TIMESTAMP",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
+        },
+        {
+          "name": "last_update",
+          "type": "datetime",
+          "nullable": true,
+          "default": "NULL",
+          "defaultDeclared": true,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": [],
+          "onUpdate": "CURRENT_TIMESTAMP",
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         }
       ],
       "primaryKey": [
@@ -2178,31 +3265,45 @@
           "onUpdate": null
         }
       ],
-      "group": "tbd"
+      "group": "tbd",
+      "rowCount": 0,
+      "rowCountVerifiable": true,
+      "columnCount": 10
     },
     {
       "name": "tbd_return_items",
       "engine": "InnoDB",
-      "options": "DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "options": "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "description": "Sin descripción declarada en el respaldo.",
       "columns": [
         {
           "name": "ID",
           "type": "int unsigned",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": true,
           "primaryKey": true,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "return_ID",
-          "type": "int unsigned DEFAULT",
+          "type": "int unsigned",
           "nullable": true,
-          "default": null,
+          "default": "NULL",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
           "foreignKeys": [
             "fk_return_items_header"
+          ],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": [
+            "tb_returns.ID"
           ]
         },
         {
@@ -2210,10 +3311,16 @@
           "type": "int unsigned",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": false,
           "primaryKey": false,
           "foreignKeys": [
             "fk_returns_order"
+          ],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": [
+            "tb_orders.ID"
           ]
         },
         {
@@ -2221,27 +3328,52 @@
           "type": "text",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "status",
           "type": "enum('Requested','Approved','Rejected','Completed')",
           "nullable": false,
           "default": "'Requested'",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "creation_date",
           "type": "datetime",
           "nullable": false,
           "default": "CURRENT_TIMESTAMP",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
+        },
+        {
+          "name": "last_update",
+          "type": "datetime",
+          "nullable": true,
+          "default": "NULL",
+          "defaultDeclared": true,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": [],
+          "onUpdate": "CURRENT_TIMESTAMP",
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         }
       ],
       "primaryKey": [
@@ -2289,31 +3421,45 @@
           "onUpdate": null
         }
       ],
-      "group": "tbd"
+      "group": "tbd",
+      "rowCount": 0,
+      "rowCountVerifiable": true,
+      "columnCount": 7
     },
     {
       "name": "tbd_user_payment_methods",
       "engine": "InnoDB",
-      "options": "DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "options": "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "description": "Sin descripción declarada en el respaldo.",
       "columns": [
         {
           "name": "ID",
           "type": "bigint unsigned",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": true,
           "primaryKey": true,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "user_ID",
           "type": "int",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": false,
           "primaryKey": false,
           "foreignKeys": [
             "tbd_user_payment_methods_ibfk_1"
+          ],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": [
+            "tb_user.ID"
           ]
         },
         {
@@ -2321,10 +3467,16 @@
           "type": "int unsigned",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": false,
           "primaryKey": false,
           "foreignKeys": [
             "tbd_user_payment_methods_ibfk_2"
+          ],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": [
+            "tbc_payment_methods_types.ID"
           ]
         },
         {
@@ -2332,63 +3484,104 @@
           "type": "varchar(60)",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "provider_method_ref",
           "type": "varchar(255)",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "label",
-          "type": "varchar(100) DEFAULT",
+          "type": "varchar(100)",
           "nullable": true,
-          "default": null,
+          "default": "NULL",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "last_four",
-          "type": "char(4) DEFAULT",
+          "type": "char(4)",
           "nullable": true,
-          "default": null,
+          "default": "NULL",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "is_default",
           "type": "tinyint(1)",
           "nullable": false,
           "default": "'0'",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "status",
           "type": "bit(1)",
           "nullable": false,
           "default": "b'1'",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "creation_date",
           "type": "datetime",
           "nullable": false,
           "default": "CURRENT_TIMESTAMP",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
+        },
+        {
+          "name": "last_update",
+          "type": "datetime",
+          "nullable": true,
+          "default": "NULL",
+          "defaultDeclared": true,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": [],
+          "onUpdate": "CURRENT_TIMESTAMP",
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         }
       ],
       "primaryKey": [
@@ -2444,22 +3637,32 @@
           "onUpdate": null
         }
       ],
-      "group": "tbd"
+      "group": "tbd",
+      "rowCount": 0,
+      "rowCountVerifiable": true,
+      "columnCount": 11
     },
     {
       "name": "tbd_users_wishlist_products",
       "engine": "InnoDB",
-      "options": "DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "options": "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "description": "Sin descripción declarada en el respaldo.",
       "columns": [
         {
           "name": "user_ID",
           "type": "int",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": false,
           "primaryKey": true,
           "foreignKeys": [
             "fk_user2"
+          ],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": [
+            "tb_user.ID"
           ]
         },
         {
@@ -2467,10 +3670,16 @@
           "type": "int unsigned",
           "nullable": false,
           "default": null,
+          "defaultDeclared": false,
           "autoIncrement": false,
           "primaryKey": true,
           "foreignKeys": [
             "fk_products3"
+          ],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": [
+            "tb_products.ID"
           ]
         },
         {
@@ -2478,18 +3687,39 @@
           "type": "bit(1)",
           "nullable": false,
           "default": "b'1'",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         },
         {
           "name": "creation_date",
           "type": "datetime",
           "nullable": false,
           "default": "CURRENT_TIMESTAMP",
+          "defaultDeclared": true,
           "autoIncrement": false,
           "primaryKey": false,
-          "foreignKeys": []
+          "foreignKeys": [],
+          "onUpdate": null,
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
+        },
+        {
+          "name": "last_update",
+          "type": "datetime",
+          "nullable": true,
+          "default": "NULL",
+          "defaultDeclared": true,
+          "autoIncrement": false,
+          "primaryKey": false,
+          "foreignKeys": [],
+          "onUpdate": "CURRENT_TIMESTAMP",
+          "description": "Sin descripción declarada en el respaldo.",
+          "foreignKeyTargets": []
         }
       ],
       "primaryKey": [
@@ -2531,7 +3761,10 @@
           "onUpdate": null
         }
       ],
-      "group": "tbd"
+      "group": "tbd",
+      "rowCount": 0,
+      "rowCountVerifiable": true,
+      "columnCount": 5
     }
   ],
   "relations": [
@@ -2561,7 +3794,7 @@
       ],
       "constraint": "fk_superior_category",
       "kind": "Declarada por FK",
-      "cardinality": "1:1",
+      "cardinality": "N:1",
       "onDelete": null,
       "onUpdate": null
     },
@@ -2576,7 +3809,7 @@
       ],
       "constraint": "fk_order_cancellations_order",
       "kind": "Declarada por FK",
-      "cardinality": "1:1",
+      "cardinality": "N:1",
       "onDelete": null,
       "onUpdate": null
     },
@@ -2591,7 +3824,7 @@
       ],
       "constraint": "fk_order_cancellations_user",
       "kind": "Declarada por FK",
-      "cardinality": "1:1",
+      "cardinality": "N:1",
       "onDelete": null,
       "onUpdate": null
     },
@@ -2606,7 +3839,7 @@
       ],
       "constraint": "tb_orders_ibfk_1",
       "kind": "Declarada por FK",
-      "cardinality": "1:1",
+      "cardinality": "N:1",
       "onDelete": null,
       "onUpdate": null
     },
@@ -2621,7 +3854,7 @@
       ],
       "constraint": "fk_trans_payment",
       "kind": "Declarada por FK",
-      "cardinality": "1:1",
+      "cardinality": "N:1",
       "onDelete": null,
       "onUpdate": null
     },
@@ -2636,7 +3869,7 @@
       ],
       "constraint": "fk_payments_order",
       "kind": "Declarada por FK",
-      "cardinality": "1:1",
+      "cardinality": "N:1",
       "onDelete": null,
       "onUpdate": null
     },
@@ -2651,7 +3884,7 @@
       ],
       "constraint": "fk_payments_user_method",
       "kind": "Declarada por FK",
-      "cardinality": "1:1",
+      "cardinality": "N:1",
       "onDelete": null,
       "onUpdate": null
     },
@@ -2681,8 +3914,8 @@
       ],
       "constraint": "fk_pc_category",
       "kind": "Declarada por FK",
-      "cardinality": "1:1",
-      "onDelete": "CASCADE ON UPDATE CASCADE",
+      "cardinality": "N:1",
+      "onDelete": "CASCADE",
       "onUpdate": "CASCADE"
     },
     {
@@ -2696,8 +3929,8 @@
       ],
       "constraint": "fk_pc_product",
       "kind": "Declarada por FK",
-      "cardinality": "1:1",
-      "onDelete": "CASCADE ON UPDATE CASCADE",
+      "cardinality": "N:1",
+      "onDelete": "CASCADE",
       "onUpdate": "CASCADE"
     },
     {
@@ -2711,7 +3944,7 @@
       ],
       "constraint": "fk_products_users_providers_product",
       "kind": "Declarada por FK",
-      "cardinality": "1:1",
+      "cardinality": "N:1",
       "onDelete": null,
       "onUpdate": null
     },
@@ -2726,7 +3959,7 @@
       ],
       "constraint": "fk_products_users_providers_user",
       "kind": "Declarada por FK",
-      "cardinality": "1:1",
+      "cardinality": "N:1",
       "onDelete": null,
       "onUpdate": null
     },
@@ -2741,7 +3974,7 @@
       ],
       "constraint": "fk_refunds_payment",
       "kind": "Declarada por FK",
-      "cardinality": "1:1",
+      "cardinality": "N:1",
       "onDelete": null,
       "onUpdate": null
     },
@@ -2756,7 +3989,7 @@
       ],
       "constraint": "fk_returns_order_hdr",
       "kind": "Declarada por FK",
-      "cardinality": "1:1",
+      "cardinality": "N:1",
       "onDelete": null,
       "onUpdate": null
     },
@@ -2771,7 +4004,7 @@
       ],
       "constraint": "fk_returns_user",
       "kind": "Declarada por FK",
-      "cardinality": "1:1",
+      "cardinality": "N:1",
       "onDelete": null,
       "onUpdate": null
     },
@@ -2786,7 +4019,7 @@
       ],
       "constraint": "fk_shipments_order",
       "kind": "Declarada por FK",
-      "cardinality": "1:1",
+      "cardinality": "N:1",
       "onDelete": null,
       "onUpdate": null
     },
@@ -2801,7 +4034,7 @@
       ],
       "constraint": "fk_addresses_users",
       "kind": "Declarada por FK",
-      "cardinality": "1:1",
+      "cardinality": "N:1",
       "onDelete": null,
       "onUpdate": null
     },
@@ -2816,7 +4049,7 @@
       ],
       "constraint": "fk_component_address",
       "kind": "Declarada por FK",
-      "cardinality": "1:1",
+      "cardinality": "N:1",
       "onDelete": "RESTRICT",
       "onUpdate": null
     },
@@ -2833,7 +4066,7 @@
       ],
       "constraint": "fk_component_parent",
       "kind": "Declarada por FK",
-      "cardinality": "1:1",
+      "cardinality": "N:1",
       "onDelete": "RESTRICT",
       "onUpdate": null
     },
@@ -2848,7 +4081,7 @@
       ],
       "constraint": "fk_cancellation_items_header",
       "kind": "Declarada por FK",
-      "cardinality": "1:1",
+      "cardinality": "N:1",
       "onDelete": null,
       "onUpdate": null
     },
@@ -2863,7 +4096,7 @@
       ],
       "constraint": "fk_cancellations_order",
       "kind": "Declarada por FK",
-      "cardinality": "1:1",
+      "cardinality": "N:1",
       "onDelete": null,
       "onUpdate": null
     },
@@ -2878,7 +4111,7 @@
       ],
       "constraint": "fk_cancellations_user",
       "kind": "Declarada por FK",
-      "cardinality": "1:1",
+      "cardinality": "N:1",
       "onDelete": null,
       "onUpdate": null
     },
@@ -2893,7 +4126,7 @@
       ],
       "constraint": "fk_cart_items_cart",
       "kind": "Declarada por FK",
-      "cardinality": "1:1",
+      "cardinality": "N:1",
       "onDelete": null,
       "onUpdate": null
     },
@@ -2910,7 +4143,7 @@
       ],
       "constraint": "fk_cart_items_provider_product",
       "kind": "Declarada por FK",
-      "cardinality": "1:1",
+      "cardinality": "N:1",
       "onDelete": null,
       "onUpdate": null
     },
@@ -2925,7 +4158,7 @@
       ],
       "constraint": "tbd_order_items_ibfk_1",
       "kind": "Declarada por FK",
-      "cardinality": "1:1",
+      "cardinality": "N:1",
       "onDelete": null,
       "onUpdate": null
     },
@@ -2942,7 +4175,7 @@
       ],
       "constraint": "tbd_order_items_ibfk_2",
       "kind": "Declarada por FK",
-      "cardinality": "1:1",
+      "cardinality": "N:1",
       "onDelete": null,
       "onUpdate": null
     },
@@ -2957,7 +4190,7 @@
       ],
       "constraint": "fk_return_items_header",
       "kind": "Declarada por FK",
-      "cardinality": "1:1",
+      "cardinality": "N:1",
       "onDelete": null,
       "onUpdate": null
     },
@@ -2972,7 +4205,7 @@
       ],
       "constraint": "fk_returns_order",
       "kind": "Declarada por FK",
-      "cardinality": "1:1",
+      "cardinality": "N:1",
       "onDelete": null,
       "onUpdate": null
     },
@@ -2987,7 +4220,7 @@
       ],
       "constraint": "tbd_user_payment_methods_ibfk_1",
       "kind": "Declarada por FK",
-      "cardinality": "1:1",
+      "cardinality": "N:1",
       "onDelete": null,
       "onUpdate": null
     },
@@ -3002,7 +4235,7 @@
       ],
       "constraint": "tbd_user_payment_methods_ibfk_2",
       "kind": "Declarada por FK",
-      "cardinality": "1:1",
+      "cardinality": "N:1",
       "onDelete": null,
       "onUpdate": null
     },
@@ -3017,7 +4250,7 @@
       ],
       "constraint": "fk_products3",
       "kind": "Declarada por FK",
-      "cardinality": "1:1",
+      "cardinality": "N:1",
       "onDelete": null,
       "onUpdate": null
     },
@@ -3032,131 +4265,148 @@
       ],
       "constraint": "fk_user2",
       "kind": "Declarada por FK",
-      "cardinality": "1:1",
+      "cardinality": "N:1",
       "onDelete": null,
       "onUpdate": null
     }
   ],
   "views": [
-    {
-      "name": "vw_address_hierarchical_details",
-      "definition": "SELECT \r\n 1 AS `address_id`,\r\n 1 AS `address_label`,\r\n 1 AS `component_id`,\r\n 1 AS `component_type`,\r\n 1 AS `component_value`,\r\n 1 AS `parent_component_type`,\r\n 1 AS `parent_component_value`,\r\n 1 AS `component_status`*/"
-    },
-    {
-      "name": "vw_people_details",
-      "definition": "SELECT \r\n 1 AS `person_ID`,\r\n 1 AS `user_ID`,\r\n 1 AS `courtesy_title`,\r\n 1 AS `given_names`,\r\n 1 AS `family_names`,\r\n 1 AS `full_name`,\r\n 1 AS `birth_date`,\r\n 1 AS `gender`,\r\n 1 AS `country_code`,\r\n 1 AS `phone`,\r\n 1 AS `status`,\r\n 1 AS `creation_date`,\r\n 1 AS `last_update`*/"
-    },
-    {
-      "name": "vw_total_products_by_category",
-      "definition": "SELECT \r\n 1 AS `category_id`,\r\n 1 AS `category_path`,\r\n 1 AS `category_level`,\r\n 1 AS `total_products`,\r\n 1 AS `total_active_products`,\r\n 1 AS `total_inactive_products`,\r\n 1 AS `total_uncategorized_products`*/"
-    },
-    {
-      "name": "vw_trazabilidad_tb_carts",
-      "definition": "SELECT \r\n 1 AS `log_ID`,\r\n 1 AS `table_name`,\r\n 1 AS `record_ID`,\r\n 1 AS `operation`,\r\n 1 AS `db_user`,\r\n 1 AS `description`,\r\n 1 AS `operation_date`,\r\n 1 AS `operation_status`*/"
-    },
-    {
-      "name": "vw_trazabilidad_tb_categories",
-      "definition": "SELECT \r\n 1 AS `log_ID`,\r\n 1 AS `table_name`,\r\n 1 AS `record_ID`,\r\n 1 AS `operation`,\r\n 1 AS `db_user`,\r\n 1 AS `description`,\r\n 1 AS `operation_date`,\r\n 1 AS `operation_status`*/"
-    },
-    {
-      "name": "vw_trazabilidad_tb_order_cancellations",
-      "definition": "SELECT \r\n 1 AS `log_ID`,\r\n 1 AS `table_name`,\r\n 1 AS `record_ID`,\r\n 1 AS `operation`,\r\n 1 AS `db_user`,\r\n 1 AS `description`,\r\n 1 AS `operation_date`,\r\n 1 AS `operation_status`*/"
-    },
-    {
-      "name": "vw_trazabilidad_tb_orders",
-      "definition": "SELECT \r\n 1 AS `log_ID`,\r\n 1 AS `table_name`,\r\n 1 AS `record_ID`,\r\n 1 AS `operation`,\r\n 1 AS `db_user`,\r\n 1 AS `description`,\r\n 1 AS `operation_date`,\r\n 1 AS `operation_status`*/"
-    },
-    {
-      "name": "vw_trazabilidad_tb_payment_methods",
-      "definition": "SELECT \r\n 1 AS `log_ID`,\r\n 1 AS `table_name`,\r\n 1 AS `record_ID`,\r\n 1 AS `operation`,\r\n 1 AS `db_user`,\r\n 1 AS `description`,\r\n 1 AS `operation_date`,\r\n 1 AS `operation_status`*/"
-    },
-    {
-      "name": "vw_trazabilidad_tb_payment_transaction",
-      "definition": "SELECT \r\n 1 AS `log_ID`,\r\n 1 AS `table_name`,\r\n 1 AS `record_ID`,\r\n 1 AS `operation`,\r\n 1 AS `db_user`,\r\n 1 AS `description`,\r\n 1 AS `operation_date`,\r\n 1 AS `operation_status`*/"
-    },
-    {
-      "name": "vw_trazabilidad_tb_payments",
-      "definition": "SELECT \r\n 1 AS `log_ID`,\r\n 1 AS `table_name`,\r\n 1 AS `record_ID`,\r\n 1 AS `operation`,\r\n 1 AS `db_user`,\r\n 1 AS `description`,\r\n 1 AS `operation_date`,\r\n 1 AS `operation_status`*/"
-    },
-    {
-      "name": "vw_trazabilidad_tb_people",
-      "definition": "SELECT \r\n 1 AS `log_ID`,\r\n 1 AS `table_name`,\r\n 1 AS `record_ID`,\r\n 1 AS `operation`,\r\n 1 AS `db_user`,\r\n 1 AS `description`,\r\n 1 AS `operation_date`,\r\n 1 AS `operation_status`*/"
-    },
-    {
-      "name": "vw_trazabilidad_tb_product_categories",
-      "definition": "SELECT \r\n 1 AS `log_ID`,\r\n 1 AS `table_name`,\r\n 1 AS `record_ID`,\r\n 1 AS `product_ID`,\r\n 1 AS `category_ID`,\r\n 1 AS `operation`,\r\n 1 AS `db_user`,\r\n 1 AS `description`,\r\n 1 AS `operation_date`,\r\n 1 AS `operation_status`*/"
-    },
-    {
-      "name": "vw_trazabilidad_tb_products",
-      "definition": "SELECT \r\n 1 AS `log_ID`,\r\n 1 AS `table_name`,\r\n 1 AS `record_ID`,\r\n 1 AS `operation`,\r\n 1 AS `db_user`,\r\n 1 AS `description`,\r\n 1 AS `operation_date`,\r\n 1 AS `operation_status`*/"
-    },
-    {
-      "name": "vw_trazabilidad_tb_products_users_providers",
-      "definition": "SELECT \r\n 1 AS `log_ID`,\r\n 1 AS `table_name`,\r\n 1 AS `record_ID`,\r\n 1 AS `operation`,\r\n 1 AS `db_user`,\r\n 1 AS `description`,\r\n 1 AS `operation_date`,\r\n 1 AS `operation_status`*/"
-    },
-    {
-      "name": "vw_trazabilidad_tb_refunds",
-      "definition": "SELECT \r\n 1 AS `log_ID`,\r\n 1 AS `table_name`,\r\n 1 AS `record_ID`,\r\n 1 AS `operation`,\r\n 1 AS `db_user`,\r\n 1 AS `description`,\r\n 1 AS `operation_date`,\r\n 1 AS `operation_status`*/"
-    },
-    {
-      "name": "vw_trazabilidad_tb_returns",
-      "definition": "SELECT \r\n 1 AS `log_ID`,\r\n 1 AS `table_name`,\r\n 1 AS `record_ID`,\r\n 1 AS `operation`,\r\n 1 AS `db_user`,\r\n 1 AS `description`,\r\n 1 AS `operation_date`,\r\n 1 AS `operation_status`*/"
-    },
-    {
-      "name": "vw_trazabilidad_tb_shipments",
-      "definition": "SELECT \r\n 1 AS `log_ID`,\r\n 1 AS `table_name`,\r\n 1 AS `record_ID`,\r\n 1 AS `operation`,\r\n 1 AS `db_user`,\r\n 1 AS `description`,\r\n 1 AS `operation_date`,\r\n 1 AS `operation_status`*/"
-    },
-    {
-      "name": "vw_trazabilidad_tb_user",
-      "definition": "SELECT \r\n 1 AS `log_ID`,\r\n 1 AS `table_name`,\r\n 1 AS `record_ID`,\r\n 1 AS `operation`,\r\n 1 AS `db_user`,\r\n 1 AS `description`,\r\n 1 AS `operation_date`,\r\n 1 AS `operation_status`*/"
-    },
-    {
-      "name": "vw_trazabilidad_tb_user_addresses",
-      "definition": "SELECT \r\n 1 AS `log_ID`,\r\n 1 AS `table_name`,\r\n 1 AS `record_ID`,\r\n 1 AS `operation`,\r\n 1 AS `db_user`,\r\n 1 AS `description`,\r\n 1 AS `operation_date`,\r\n 1 AS `operation_status`*/"
-    },
-    {
-      "name": "vw_trazabilidad_tbc_payment_methods_types",
-      "definition": "SELECT \r\n 1 AS `log_ID`,\r\n 1 AS `table_name`,\r\n 1 AS `record_ID`,\r\n 1 AS `operation`,\r\n 1 AS `db_user`,\r\n 1 AS `description`,\r\n 1 AS `operation_date`,\r\n 1 AS `operation_status`*/"
-    },
-    {
-      "name": "vw_trazabilidad_tbd_address_components",
-      "definition": "SELECT \r\n 1 AS `log_ID`,\r\n 1 AS `table_name`,\r\n 1 AS `record_ID`,\r\n 1 AS `operation`,\r\n 1 AS `db_user`,\r\n 1 AS `description`,\r\n 1 AS `operation_date`,\r\n 1 AS `operation_status`*/"
-    },
-    {
-      "name": "vw_trazabilidad_tbd_cancellation_items",
-      "definition": "SELECT \r\n 1 AS `log_ID`,\r\n 1 AS `table_name`,\r\n 1 AS `record_ID`,\r\n 1 AS `operation`,\r\n 1 AS `db_user`,\r\n 1 AS `description`,\r\n 1 AS `operation_date`,\r\n 1 AS `operation_status`*/"
-    },
-    {
-      "name": "vw_trazabilidad_tbd_cart_items",
-      "definition": "SELECT \r\n 1 AS `log_ID`,\r\n 1 AS `table_name`,\r\n 1 AS `record_ID`,\r\n 1 AS `operation`,\r\n 1 AS `db_user`,\r\n 1 AS `description`,\r\n 1 AS `operation_date`,\r\n 1 AS `operation_status`*/"
-    },
-    {
-      "name": "vw_trazabilidad_tbd_order_items",
-      "definition": "SELECT \r\n 1 AS `log_ID`,\r\n 1 AS `table_name`,\r\n 1 AS `record_ID`,\r\n 1 AS `operation`,\r\n 1 AS `db_user`,\r\n 1 AS `description`,\r\n 1 AS `operation_date`,\r\n 1 AS `operation_status`*/"
-    },
-    {
-      "name": "vw_trazabilidad_tbd_return_items",
-      "definition": "SELECT \r\n 1 AS `log_ID`,\r\n 1 AS `table_name`,\r\n 1 AS `record_ID`,\r\n 1 AS `operation`,\r\n 1 AS `db_user`,\r\n 1 AS `description`,\r\n 1 AS `operation_date`,\r\n 1 AS `operation_status`*/"
-    },
-    {
-      "name": "vw_trazabilidad_tbd_user_payment_methods",
-      "definition": "SELECT \r\n 1 AS `log_ID`,\r\n 1 AS `table_name`,\r\n 1 AS `record_ID`,\r\n 1 AS `operation`,\r\n 1 AS `db_user`,\r\n 1 AS `description`,\r\n 1 AS `operation_date`,\r\n 1 AS `operation_status`*/"
-    },
-    {
-      "name": "vw_trazabilidad_tbd_users_wishlist_products",
-      "definition": "SELECT \r\n 1 AS `log_ID`,\r\n 1 AS `table_name`,\r\n 1 AS `record_ID`,\r\n 1 AS `operation`,\r\n 1 AS `db_user`,\r\n 1 AS `description`,\r\n 1 AS `operation_date`,\r\n 1 AS `operation_status`*/"
-    },
-    {
-      "name": "vw_user_default_shipping_addresses",
-      "definition": "SELECT \r\n 1 AS `address_id`,\r\n 1 AS `user_id`,\r\n 1 AS `user_email`,\r\n 1 AS `address_label`,\r\n 1 AS `recipient_name`,\r\n 1 AS `recipient_phone`,\r\n 1 AS `delivery_instructions`,\r\n 1 AS `latitude`,\r\n 1 AS `longitude`,\r\n 1 AS `address_creation_date`*/"
-    },
-    {
-      "name": "vw_wishlist_carritos",
-      "definition": "SELECT \r\n 1 AS `user_ID`,\r\n 1 AS `user_nick`,\r\n 1 AS `user_email`,\r\n 1 AS `product_ID`,\r\n 1 AS `product_SKU`,\r\n 1 AS `product_name`,\r\n 1 AS `product_price`,\r\n 1 AS `wishlist_status`,\r\n 1 AS `wishlist_creation_date`,\r\n 1 AS `wishlist_last_update`,\r\n 1 AS `cart_ID`,\r\n 1 AS `cart_status`,\r\n 1 AS `cart_creation_date`,\r\n 1 AS `cart_last_update`*/"
-    }
+    "vw_address_hierarchical_details",
+    "vw_people_details",
+    "vw_total_products_by_category",
+    "vw_trazabilidad_tb_carts",
+    "vw_trazabilidad_tb_categories",
+    "vw_trazabilidad_tb_order_cancellations",
+    "vw_trazabilidad_tb_orders",
+    "vw_trazabilidad_tb_payment_methods",
+    "vw_trazabilidad_tb_payment_transaction",
+    "vw_trazabilidad_tb_payments",
+    "vw_trazabilidad_tb_people",
+    "vw_trazabilidad_tb_product_categories",
+    "vw_trazabilidad_tb_products",
+    "vw_trazabilidad_tb_products_users_providers",
+    "vw_trazabilidad_tb_refunds",
+    "vw_trazabilidad_tb_returns",
+    "vw_trazabilidad_tb_shipments",
+    "vw_trazabilidad_tb_user",
+    "vw_trazabilidad_tb_user_addresses",
+    "vw_trazabilidad_tbc_payment_methods_types",
+    "vw_trazabilidad_tbd_address_components",
+    "vw_trazabilidad_tbd_cancellation_items",
+    "vw_trazabilidad_tbd_cart_items",
+    "vw_trazabilidad_tbd_order_items",
+    "vw_trazabilidad_tbd_return_items",
+    "vw_trazabilidad_tbd_user_payment_methods",
+    "vw_trazabilidad_tbd_users_wishlist_products",
+    "vw_user_default_shipping_addresses",
+    "vw_wishlist_carritos"
   ],
-  "procedures": [],
+  "procedures": [
+    "sp_register_new_user",
+    "sp_restore_product",
+    "sp_soft_delete_product"
+  ],
   "functions": [],
-  "triggers": [],
-  "notes": "Análisis estático del dump. No se ejecutó SQL. Relaciones limitadas a FK explícitas."
+  "triggers": [
+    "trg_tb_carts_ad",
+    "trg_tb_carts_ai",
+    "trg_tb_carts_au",
+    "trg_tb_order_cancellations_ad",
+    "trg_tb_order_cancellations_ai",
+    "trg_tb_order_cancellations_au",
+    "trg_tb_orders_ad",
+    "trg_tb_orders_ai",
+    "trg_tb_orders_au",
+    "trg_tb_payment_methods_ad",
+    "trg_tb_payment_methods_ai",
+    "trg_tb_payment_methods_au",
+    "trg_tb_payment_transaction_ad",
+    "trg_tb_payment_transaction_ai",
+    "trg_tb_payment_transaction_au",
+    "trg_tb_payments_ad",
+    "trg_tb_payments_ai",
+    "trg_tb_payments_au",
+    "trg_tb_people_ad",
+    "trg_tb_people_ai",
+    "trg_tb_people_au",
+    "trg_tb_product_categories_after_delete",
+    "trg_tb_product_categories_after_insert",
+    "trg_tb_product_categories_after_update",
+    "trg_tb_products_after_delete",
+    "trg_tb_products_after_insert",
+    "trg_tb_products_after_update",
+    "trg_tb_refunds_ad",
+    "trg_tb_refunds_ai",
+    "trg_tb_refunds_au",
+    "trg_tb_returns_ad",
+    "trg_tb_returns_ai",
+    "trg_tb_returns_au",
+    "trg_tb_shipments_ad",
+    "trg_tb_shipments_ai",
+    "trg_tb_shipments_au",
+    "trg_tb_user_addresses_ad",
+    "trg_tb_user_addresses_ai",
+    "trg_tb_user_addresses_au",
+    "trg_tbc_categories_after_delete",
+    "trg_tbc_categories_after_insert",
+    "trg_tbc_categories_after_update",
+    "trg_tbc_payment_methods_types_ad",
+    "trg_tbc_payment_methods_types_ai",
+    "trg_tbc_payment_methods_types_au",
+    "trg_tbd_address_components_ad",
+    "trg_tbd_address_components_ai",
+    "trg_tbd_address_components_au",
+    "trg_tbd_cancellation_items_ad",
+    "trg_tbd_cancellation_items_ai",
+    "trg_tbd_cancellation_items_au",
+    "trg_tbd_cart_items_ad",
+    "trg_tbd_cart_items_ai",
+    "trg_tbd_cart_items_au",
+    "trg_tbd_order_items_ad",
+    "trg_tbd_order_items_ai",
+    "trg_tbd_order_items_au",
+    "trg_tbd_products_users_providers_ad",
+    "trg_tbd_products_users_providers_ai",
+    "trg_tbd_products_users_providers_au",
+    "trg_tbd_return_items_ad",
+    "trg_tbd_return_items_ai",
+    "trg_tbd_return_items_au",
+    "trg_tbd_user_payment_methods_ad",
+    "trg_tbd_user_payment_methods_ai",
+    "trg_tbd_user_payment_methods_au",
+    "trg_tbd_users_wishlist_products_ad",
+    "trg_tbd_users_wishlist_products_ai",
+    "trg_tbd_users_wishlist_products_au",
+    "trq_user_after_delete",
+    "trq_user_after_insert",
+    "trq_user_after_update"
+  ],
+  "dumpSections": [
+    "tb_carts",
+    "tb_categories",
+    "tb_logs",
+    "tb_order_cancellations",
+    "tb_orders",
+    "tb_payment_methods",
+    "tb_payment_transaction",
+    "tb_payments",
+    "tb_people",
+    "tb_product_categories",
+    "tb_products",
+    "tb_products_users_providers",
+    "tb_refunds",
+    "tb_returns",
+    "tb_shipments",
+    "tb_user",
+    "tb_user_addresses",
+    "tbc_payment_methods_types",
+    "tbd_address_components",
+    "tbd_cancellation_items",
+    "tbd_cart_items",
+    "tbd_order_items",
+    "tbd_return_items",
+    "tbd_user_payment_methods",
+    "tbd_users_wishlist_products"
+  ],
+  "totalRowsInBackup": 97472
 }
