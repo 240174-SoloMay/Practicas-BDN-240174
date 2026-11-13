@@ -14,5 +14,5 @@
 |:---:|---|---|:---:|:---:|---|
 | 2. | Conexiones Remotas para Bases de Datos SQL | Crear y administrar usuarios y privilegios para conexiones desde internet o redes locales. | 60 | 🟢 Concluida | [Consultar README](./Practica%2002/readme02.md) |
 | 3. | Manipulación de Datos en Conexiones Remotas a Bases de Datos Relacionales | Crear procedimientos almacenados, funciones, tablas derivadas e importar datos en el contexto de E-Commerce. | 100 | 🟢 Concluida | [Consultar README](./Practica03/readme03.md) |
-
+| 4. | Práctica 04 | En desarrollo. | — | 🟡 En proceso | Pendiente |
 ---
