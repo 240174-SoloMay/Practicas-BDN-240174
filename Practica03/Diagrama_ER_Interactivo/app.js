@@ -39,9 +39,11 @@ fetch("data/schema.json")
   });
 
 function initialize() {
+  const totalRows = data.tables
+    .filter((table) => table.rowCountVerifiable)
+    .reduce((sum, table) => sum + table.rowCount, 0);
   $("#counts").textContent =
-    `${data.tables.length} tablas · ${data.relations.length} relaciones · ` +
-    `${data.tables.reduce((sum, table) => sum + table.columns.length, 0)} columnas`;
+    `Conteos por tabla en el panel · ${formatCount(totalRows)} filas en total`;
 
   [...new Set(data.tables.map((table) => table.group))].forEach((group) => {
     const option = document.createElement("option");
@@ -53,6 +55,7 @@ function initialize() {
   layoutTables();
   renderTables();
   renderEdges();
+  renderOverview();
   bindControls();
   bindPanAndZoom();
   fitToView();
@@ -112,7 +115,7 @@ function renderTables() {
     const recordCount = document.createElement("span");
     recordCount.className = "record-count";
     recordCount.textContent = table.rowCountVerifiable
-      ? `${formatCount(table.rowCount)} registros en respaldo`
+      ? `${formatCount(table.rowCount)} filas en respaldo`
       : "Registros no verificables";
     const description = document.createElement("p");
     description.className = "node-description";
@@ -443,14 +446,13 @@ function renderDetails(name) {
   close.className = "close-details";
   close.setAttribute("aria-label", "Cerrar inspección");
   close.textContent = "×";
-  close.addEventListener("click", () => {
-    selectedTable = null;
-    selectedRelation = null;
-    panel.innerHTML =
-      '<div class="details-empty"><p class="eyebrow">INSPECCIÓN</p><h2>Explora una tabla</h2><p>Selecciona una tarjeta para consultar su descripción, cantidad de registros, columnas e interrelaciones.</p></div>';
-    updateHighlights();
-  });
-  top.append(headingGroup, close);
+  close.addEventListener("click", renderOverview);
+  const overview = document.createElement("button");
+  overview.type = "button";
+  overview.className = "overview-button";
+  overview.textContent = "Conteos";
+  overview.addEventListener("click", renderOverview);
+  top.append(headingGroup, overview, close);
   panel.append(top);
 
   const count = document.createElement("div");
@@ -547,6 +549,53 @@ function renderDetails(name) {
   }
 }
 
+function renderOverview() {
+  selectedTable = null;
+  selectedRelation = null;
+  const panel = $("#details");
+  panel.replaceChildren();
+
+  const heading = document.createElement("div");
+  heading.className = "details-empty";
+  const eyebrow = document.createElement("p");
+  eyebrow.className = "eyebrow";
+  eyebrow.textContent = "FILAS EN EL RESPALDO SQL";
+  const title = document.createElement("h2");
+  title.textContent = "Conteo de cada tabla";
+  const totalRows = data.tables
+    .filter((table) => table.rowCountVerifiable)
+    .reduce((sum, table) => sum + table.rowCount, 0);
+  const total = document.createElement("div");
+  total.className = "details-count";
+  total.textContent = `${formatCount(totalRows)} filas verificables en total`;
+  const note = document.createElement("p");
+  note.className = "muted-text";
+  note.textContent =
+    "Cada renglón muestra una tabla y sus filas INSERT contadas en el respaldo; no es una consulta en vivo. Pulsa una tabla para inspeccionarla.";
+  heading.append(eyebrow, title, total, note);
+
+  const list = document.createElement("div");
+  list.className = "table-count-list";
+  data.tables.forEach((table) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "table-count-row";
+    const name = document.createElement("span");
+    name.className = "table-count-name";
+    name.textContent = table.name;
+    const count = document.createElement("strong");
+    count.className = "table-count-value";
+    count.textContent = table.rowCountVerifiable
+      ? `${formatCount(table.rowCount)} filas`
+      : "No verificable";
+    button.append(name, count);
+    button.addEventListener("click", () => selectTable(table.name));
+    list.append(button);
+  });
+  panel.append(heading, list);
+  updateHighlights();
+}
+
 function addDefinition(list, term, value) {
   const dt = document.createElement("dt");
   dt.textContent = term;
@@ -574,8 +623,7 @@ function resetView() {
   selectedRelation = null;
   renderTables();
   renderEdges();
-  $("#details").innerHTML =
-    '<div class="details-empty"><p class="eyebrow">INSPECCIÓN</p><h2>Explora una tabla</h2><p>Selecciona una tarjeta para consultar su descripción, cantidad de registros, columnas e interrelaciones.</p></div>';
+  renderOverview();
   fitToView();
 }
 

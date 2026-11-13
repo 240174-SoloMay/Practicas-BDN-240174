@@ -9,7 +9,7 @@
   "notes": [
     "Estructura y conteos reconstruidos del respaldo SQL adjunto.",
     "Los conteos corresponden a filas INSERT incluidas por tabla en el respaldo; no son una consulta en vivo.",
-    "Las descripciones se muestran solo cuando el respaldo declara COMMENT; en este archivo no se encontraron comentarios de tabla ni de columna.",
+    "Las descripciones se redactaron para esta documentación a partir de nombres, tipos y relaciones; el SQL no contiene comentarios COMMENT de tabla ni de columna.",
     "Las relaciones solo representan FOREIGN KEY explícitas."
   ],
   "tables": [
@@ -17,7 +17,7 @@
       "name": "tb_carts",
       "engine": "InnoDB",
       "options": "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
-      "description": "Sin descripción declarada en el respaldo.",
+      "description": "Cabecera de los carritos de compra asociados a usuarios, con su estado y fechas de creación y actualización.",
       "columns": [
         {
           "name": "ID",
@@ -29,8 +29,9 @@
           "primaryKey": true,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Identificador único de cabecera de los carritos de compra asociados a usuarios, con su estado y fechas de creación y actualización.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "user_ID",
@@ -44,10 +45,11 @@
             "tb_carts_ibfk_1"
           ],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
+          "description": "Identificador que referencia tb_user.ID y vincula este registro con la entidad relacionada.",
           "foreignKeyTargets": [
             "tb_user.ID"
-          ]
+          ],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "status",
@@ -59,8 +61,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Indicador binario del estado del registro; el significado de cada valor depende de la aplicación.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "creation_date",
@@ -72,8 +75,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Fecha y hora de creación del registro.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "last_update",
@@ -85,8 +89,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": "CURRENT_TIMESTAMP",
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Fecha y hora de la última actualización registrada.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         }
       ],
       "primaryKey": [
@@ -118,13 +123,14 @@
       "group": "tb",
       "rowCount": 0,
       "rowCountVerifiable": true,
-      "columnCount": 5
+      "columnCount": 5,
+      "descriptionOrigin": "Redacción editorial basada en nombres, tipos y relaciones del esquema; no declarada como COMMENT en el respaldo."
     },
     {
       "name": "tb_categories",
       "engine": "InnoDB",
       "options": "ENGINE=InnoDB AUTO_INCREMENT=10000 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
-      "description": "Sin descripción declarada en el respaldo.",
+      "description": "Catálogo de categorías de productos. La relación consigo misma permite representar categorías superiores y subcategorías.",
       "columns": [
         {
           "name": "ID",
@@ -136,8 +142,9 @@
           "primaryKey": true,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Identificador único de catálogo de categorías de productos. la relación consigo misma permite representar categorías superiores y subcategorías.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "name",
@@ -149,8 +156,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Nombre legible de la entidad o elemento del catálogo.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "description",
@@ -162,8 +170,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Texto descriptivo asociado a la entidad; su contenido lo proporciona la aplicación.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "sup_id_category",
@@ -177,10 +186,11 @@
             "fk_superior_category"
           ],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
+          "description": "Identificador que referencia tb_categories.ID y vincula este registro con la entidad relacionada.",
           "foreignKeyTargets": [
             "tb_categories.ID"
-          ]
+          ],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "status",
@@ -192,8 +202,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Indicador binario del estado del registro; el significado de cada valor depende de la aplicación.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "creation_date",
@@ -205,8 +216,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Fecha y hora de creación del registro.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "last_update",
@@ -218,8 +230,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": "CURRENT_TIMESTAMP",
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Fecha y hora de la última actualización registrada.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         }
       ],
       "primaryKey": [
@@ -258,13 +271,14 @@
       "group": "tb",
       "rowCount": 100,
       "rowCountVerifiable": true,
-      "columnCount": 7
+      "columnCount": 7,
+      "descriptionOrigin": "Redacción editorial basada en nombres, tipos y relaciones del esquema; no declarada como COMMENT en el respaldo."
     },
     {
       "name": "tb_logs",
       "engine": "InnoDB",
       "options": "ENGINE=InnoDB AUTO_INCREMENT=54859 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
-      "description": "Sin descripción declarada en el respaldo.",
+      "description": "Bitácora de operaciones registradas sobre tablas y filas, con usuario, tipo de operación, fecha, descripción y estado.",
       "columns": [
         {
           "name": "ID",
@@ -276,8 +290,9 @@
           "primaryKey": true,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Identificador único de bitácora de operaciones registradas sobre tablas y filas, con usuario, tipo de operación, fecha, descripción y estado.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "table_name",
@@ -289,8 +304,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Nombre de la tabla sobre la que se registró la operación.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "record_id",
@@ -302,8 +318,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Identificador de la fila afectada; el esquema no declara una clave foránea para este campo.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "table_operation",
@@ -315,8 +332,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Tipo de operación registrada; el respaldo define Create, Read, Update y Delete.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "db_user",
@@ -328,8 +346,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Nombre o identificador del usuario de base de datos registrado como actor de la operación.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "operation_date",
@@ -341,8 +360,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Fecha y hora en que se registró la operación.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "operation_description",
@@ -354,8 +374,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Texto con el detalle de la operación registrada.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "operation_status",
@@ -367,8 +388,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Indicador binario del estado de la operación; el respaldo no documenta el significado de cada valor.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         }
       ],
       "primaryKey": [
@@ -396,13 +418,14 @@
       "group": "tb",
       "rowCount": 49745,
       "rowCountVerifiable": true,
-      "columnCount": 8
+      "columnCount": 8,
+      "descriptionOrigin": "Redacción editorial basada en nombres, tipos y relaciones del esquema; no declarada como COMMENT en el respaldo."
     },
     {
       "name": "tb_order_cancellations",
       "engine": "InnoDB",
       "options": "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
-      "description": "Sin descripción declarada en el respaldo.",
+      "description": "Solicitudes de cancelación vinculadas a una orden y al usuario que las solicita, con motivo y estado.",
       "columns": [
         {
           "name": "ID",
@@ -414,8 +437,9 @@
           "primaryKey": true,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Identificador único de solicitudes de cancelación vinculadas a una orden y al usuario que las solicita, con motivo y estado.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "order_ID",
@@ -429,10 +453,11 @@
             "fk_order_cancellations_order"
           ],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
+          "description": "Identificador que referencia tb_orders.ID y vincula este registro con la entidad relacionada.",
           "foreignKeyTargets": [
             "tb_orders.ID"
-          ]
+          ],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "requested_by",
@@ -446,10 +471,11 @@
             "fk_order_cancellations_user"
           ],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
+          "description": "Identificador que referencia tb_user.ID y vincula este registro con la entidad relacionada.",
           "foreignKeyTargets": [
             "tb_user.ID"
-          ]
+          ],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "reason",
@@ -461,8 +487,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Motivo proporcionado para la solicitud o el evento asociado al registro.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "status",
@@ -474,8 +501,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Estado del flujo de solicitud; las opciones permitidas se definen en el ENUM y describen las etapas posibles.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "creation_date",
@@ -487,8 +515,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Fecha y hora de creación del registro.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "last_update",
@@ -500,8 +529,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": "CURRENT_TIMESTAMP",
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Fecha y hora de la última actualización registrada.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         }
       ],
       "primaryKey": [
@@ -552,13 +582,14 @@
       "group": "tb",
       "rowCount": 0,
       "rowCountVerifiable": true,
-      "columnCount": 7
+      "columnCount": 7,
+      "descriptionOrigin": "Redacción editorial basada en nombres, tipos y relaciones del esquema; no declarada como COMMENT en el respaldo."
     },
     {
       "name": "tb_orders",
       "engine": "InnoDB",
       "options": "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
-      "description": "Sin descripción declarada en el respaldo.",
+      "description": "Cabecera de órdenes de compra con vendedor, importes, estado de preparación y fechas.",
       "columns": [
         {
           "name": "ID",
@@ -570,8 +601,9 @@
           "primaryKey": true,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Identificador único de cabecera de órdenes de compra con vendedor, importes, estado de preparación y fechas.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "seller_ID",
@@ -585,10 +617,11 @@
             "tb_orders_ibfk_1"
           ],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
+          "description": "Identificador que referencia tb_user.ID y vincula este registro con la entidad relacionada.",
           "foreignKeyTargets": [
             "tb_user.ID"
-          ]
+          ],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "subtotal",
@@ -600,8 +633,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Importe subtotal asociado a la orden o renglón, expresado en la moneda que gestione la aplicación.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "shipping_cost",
@@ -613,8 +647,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Importe del costo de envío de la orden.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "fulfillment_status",
@@ -626,8 +661,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Estado del proceso de preparación y entrega de la orden; los valores permitidos están definidos por el ENUM.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "status",
@@ -639,8 +675,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Indicador binario del estado del registro; el significado de cada valor depende de la aplicación.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "creation_date",
@@ -652,8 +689,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Fecha y hora de creación del registro.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "last_update",
@@ -665,8 +703,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": "CURRENT_TIMESTAMP",
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Fecha y hora de la última actualización registrada.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         }
       ],
       "primaryKey": [
@@ -698,13 +737,14 @@
       "group": "tb",
       "rowCount": 0,
       "rowCountVerifiable": true,
-      "columnCount": 8
+      "columnCount": 8,
+      "descriptionOrigin": "Redacción editorial basada en nombres, tipos y relaciones del esquema; no declarada como COMMENT en el respaldo."
     },
     {
       "name": "tb_payment_methods",
       "engine": "InnoDB",
       "options": "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
-      "description": "Sin descripción declarada en el respaldo.",
+      "description": "Catálogo de métodos de pago, con nombre, descripción y estado.",
       "columns": [
         {
           "name": "ID",
@@ -716,8 +756,9 @@
           "primaryKey": true,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Identificador único de catálogo de métodos de pago, con nombre, descripción y estado.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "name",
@@ -729,8 +770,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Nombre legible de la entidad o elemento del catálogo.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "description",
@@ -742,8 +784,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Texto descriptivo asociado a la entidad; su contenido lo proporciona la aplicación.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "status",
@@ -755,8 +798,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Indicador binario del estado del registro; el significado de cada valor depende de la aplicación.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "creation_date",
@@ -768,8 +812,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Fecha y hora de creación del registro.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "last_update",
@@ -781,8 +826,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": "CURRENT_TIMESTAMP",
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Fecha y hora de la última actualización registrada.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         }
       ],
       "primaryKey": [
@@ -793,13 +839,14 @@
       "group": "tb",
       "rowCount": 0,
       "rowCountVerifiable": true,
-      "columnCount": 6
+      "columnCount": 6,
+      "descriptionOrigin": "Redacción editorial basada en nombres, tipos y relaciones del esquema; no declarada como COMMENT en el respaldo."
     },
     {
       "name": "tb_payment_transaction",
       "engine": "InnoDB",
       "options": "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
-      "description": "Sin descripción declarada en el respaldo.",
+      "description": "Datos de transacciones de pasarela asociadas a un pago, incluida la referencia externa y respuesta recibida.",
       "columns": [
         {
           "name": "ID",
@@ -811,8 +858,9 @@
           "primaryKey": true,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Identificador único de datos de transacciones de pasarela asociadas a un pago, incluida la referencia externa y respuesta recibida.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "payment_ID",
@@ -826,10 +874,11 @@
             "fk_trans_payment"
           ],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
+          "description": "Identificador que referencia tb_payments.ID y vincula este registro con la entidad relacionada.",
           "foreignKeyTargets": [
             "tb_payments.ID"
-          ]
+          ],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "transaction_reference",
@@ -841,8 +890,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Referencia de la transacción recibida o usada por el procesador de pagos.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "gateway_response",
@@ -854,8 +904,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Respuesta de texto recibida de la pasarela de pago, si se registra.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "status",
@@ -867,8 +918,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Indicador binario del estado del registro; el significado de cada valor depende de la aplicación.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "creation_date",
@@ -880,8 +932,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Fecha y hora de creación del registro.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "last_update",
@@ -893,8 +946,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": "CURRENT_TIMESTAMP",
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Fecha y hora de la última actualización registrada.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         }
       ],
       "primaryKey": [
@@ -926,13 +980,14 @@
       "group": "tb",
       "rowCount": 0,
       "rowCountVerifiable": true,
-      "columnCount": 7
+      "columnCount": 7,
+      "descriptionOrigin": "Redacción editorial basada en nombres, tipos y relaciones del esquema; no declarada como COMMENT en el respaldo."
     },
     {
       "name": "tb_payments",
       "engine": "InnoDB",
       "options": "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
-      "description": "Sin descripción declarada en el respaldo.",
+      "description": "Pagos asociados a órdenes, con importe, método de pago del usuario y estado del pago.",
       "columns": [
         {
           "name": "ID",
@@ -944,8 +999,9 @@
           "primaryKey": true,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Identificador único de pagos asociados a órdenes, con importe, método de pago del usuario y estado del pago.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "order_ID",
@@ -959,10 +1015,11 @@
             "fk_payments_order"
           ],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
+          "description": "Identificador que referencia tb_orders.ID y vincula este registro con la entidad relacionada.",
           "foreignKeyTargets": [
             "tb_orders.ID"
-          ]
+          ],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "user_payment_method_ID",
@@ -976,10 +1033,11 @@
             "fk_payments_user_method"
           ],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
+          "description": "Identificador que referencia tbd_user_payment_methods.ID y vincula este registro con la entidad relacionada.",
           "foreignKeyTargets": [
             "tbd_user_payment_methods.ID"
-          ]
+          ],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "amount",
@@ -991,8 +1049,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Importe del pago o reembolso, según la tabla donde aparece.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "payment_status",
@@ -1004,8 +1063,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Estado del pago; las opciones permitidas están definidas por el ENUM.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "creation_date",
@@ -1017,8 +1077,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Fecha y hora de creación del registro.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "last_update",
@@ -1030,8 +1091,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": "CURRENT_TIMESTAMP",
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Fecha y hora de la última actualización registrada.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         }
       ],
       "primaryKey": [
@@ -1082,13 +1144,14 @@
       "group": "tb",
       "rowCount": 0,
       "rowCountVerifiable": true,
-      "columnCount": 7
+      "columnCount": 7,
+      "descriptionOrigin": "Redacción editorial basada en nombres, tipos y relaciones del esquema; no declarada como COMMENT en el respaldo."
     },
     {
       "name": "tb_people",
       "engine": "InnoDB",
       "options": "ENGINE=InnoDB AUTO_INCREMENT=7504 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
-      "description": "Sin descripción declarada en el respaldo.",
+      "description": "Datos personales y de contacto asociados opcionalmente a una cuenta de usuario.",
       "columns": [
         {
           "name": "person_ID",
@@ -1100,8 +1163,9 @@
           "primaryKey": true,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Identificador único de datos personales y de contacto asociados opcionalmente a una cuenta de usuario.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "user_ID",
@@ -1115,10 +1179,11 @@
             "fk_people_users"
           ],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
+          "description": "Identificador que referencia tb_user.ID y vincula este registro con la entidad relacionada.",
           "foreignKeyTargets": [
             "tb_user.ID"
-          ]
+          ],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "courtesy_title",
@@ -1130,8 +1195,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Tratamiento o título de cortesía de la persona, si se proporciona.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "given_names",
@@ -1143,8 +1209,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Nombre o nombres de pila de la persona.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "family_names",
@@ -1156,8 +1223,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Apellidos de la persona, si se proporcionan.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "birth_date",
@@ -1169,8 +1237,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Fecha de nacimiento de la persona, si se proporciona.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "gender",
@@ -1182,8 +1251,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Valor de género seleccionado; las opciones permitidas se definen en el ENUM.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "country_code",
@@ -1195,8 +1265,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Código de país de dos caracteres asociado a los datos de contacto.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "phone",
@@ -1208,8 +1279,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Número telefónico de contacto, si se proporciona.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "status",
@@ -1221,8 +1293,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Indicador binario del estado del registro; el significado de cada valor depende de la aplicación.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "creation_date",
@@ -1234,8 +1307,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Fecha y hora de creación del registro.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "last_update",
@@ -1247,8 +1321,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": "CURRENT_TIMESTAMP",
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Fecha y hora de la última actualización registrada.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         }
       ],
       "primaryKey": [
@@ -1280,13 +1355,14 @@
       "group": "tb",
       "rowCount": 7503,
       "rowCountVerifiable": true,
-      "columnCount": 12
+      "columnCount": 12,
+      "descriptionOrigin": "Redacción editorial basada en nombres, tipos y relaciones del esquema; no declarada como COMMENT en el respaldo."
     },
     {
       "name": "tb_product_categories",
       "engine": "InnoDB",
       "options": "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
-      "description": "Sin descripción declarada en el respaldo.",
+      "description": "Tabla de asociación entre productos y categorías; cada fila vincula un producto con una categoría.",
       "columns": [
         {
           "name": "product_Id",
@@ -1300,10 +1376,11 @@
             "fk_pc_product"
           ],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
+          "description": "Identificador que referencia tb_products.ID y vincula este registro con la entidad relacionada.",
           "foreignKeyTargets": [
             "tb_products.ID"
-          ]
+          ],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "category_Id",
@@ -1317,10 +1394,11 @@
             "fk_pc_category"
           ],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
+          "description": "Identificador que referencia tb_categories.ID y vincula este registro con la entidad relacionada.",
           "foreignKeyTargets": [
             "tb_categories.ID"
-          ]
+          ],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "status",
@@ -1332,8 +1410,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Indicador binario del estado del registro; el significado de cada valor depende de la aplicación.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "creation_date",
@@ -1345,8 +1424,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Fecha y hora de creación del registro.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "last_update",
@@ -1358,8 +1438,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": "CURRENT_TIMESTAMP",
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Fecha y hora de la última actualización registrada.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         }
       ],
       "primaryKey": [
@@ -1404,13 +1485,14 @@
       "group": "tb",
       "rowCount": 17572,
       "rowCountVerifiable": true,
-      "columnCount": 5
+      "columnCount": 5,
+      "descriptionOrigin": "Redacción editorial basada en nombres, tipos y relaciones del esquema; no declarada como COMMENT en el respaldo."
     },
     {
       "name": "tb_products",
       "engine": "InnoDB",
       "options": "ENGINE=InnoDB AUTO_INCREMENT=24626 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
-      "description": "Sin descripción declarada en el respaldo.",
+      "description": "Catálogo de productos con SKU, nombre, descripción, precio, existencias y estado.",
       "columns": [
         {
           "name": "ID",
@@ -1422,8 +1504,9 @@
           "primaryKey": true,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Identificador único de catálogo de productos con sku, nombre, descripción, precio, existencias y estado.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "SKU",
@@ -1435,8 +1518,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Código SKU del producto utilizado para identificarlo en el catálogo.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "name",
@@ -1448,8 +1532,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Nombre legible de la entidad o elemento del catálogo.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "description",
@@ -1461,8 +1546,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Texto descriptivo asociado a la entidad; su contenido lo proporciona la aplicación.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "current_price",
@@ -1474,8 +1560,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Precio actual registrado para el producto.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "current_stock",
@@ -1487,8 +1574,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Cantidad de existencias actuales registradas para el producto.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "status",
@@ -1500,8 +1588,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Indicador binario del estado del registro; el significado de cada valor depende de la aplicación.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "creation_date",
@@ -1513,8 +1602,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Fecha y hora de creación del registro.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "last_update",
@@ -1526,8 +1616,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": "CURRENT_TIMESTAMP",
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Fecha y hora de la última actualización registrada.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         }
       ],
       "primaryKey": [
@@ -1546,13 +1637,14 @@
       "group": "tb",
       "rowCount": 15024,
       "rowCountVerifiable": true,
-      "columnCount": 9
+      "columnCount": 9,
+      "descriptionOrigin": "Redacción editorial basada en nombres, tipos y relaciones del esquema; no declarada como COMMENT en el respaldo."
     },
     {
       "name": "tb_products_users_providers",
       "engine": "InnoDB",
       "options": "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
-      "description": "Sin descripción declarada en el respaldo.",
+      "description": "Asociación entre usuarios y productos para registrar el tipo de participación del usuario como proveedor.",
       "columns": [
         {
           "name": "user_ID",
@@ -1566,10 +1658,11 @@
             "fk_products_users_providers_user"
           ],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
+          "description": "Identificador que referencia tb_user.ID y vincula este registro con la entidad relacionada.",
           "foreignKeyTargets": [
             "tb_user.ID"
-          ]
+          ],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "product_ID",
@@ -1583,10 +1676,11 @@
             "fk_products_users_providers_product"
           ],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
+          "description": "Identificador que referencia tb_products.ID y vincula este registro con la entidad relacionada.",
           "foreignKeyTargets": [
             "tb_products.ID"
-          ]
+          ],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "type_ownership",
@@ -1598,8 +1692,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Tipo de participación del usuario respecto al producto; las opciones se definen en el ENUM.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "status",
@@ -1611,8 +1706,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Indicador binario del estado del registro; el significado de cada valor depende de la aplicación.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "available_date",
@@ -1624,8 +1720,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Fecha y hora desde la que se registra la disponibilidad de la asociación.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "creation_date",
@@ -1637,8 +1734,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Fecha y hora de creación del registro.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "last_date",
@@ -1650,8 +1748,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Fecha y hora asociadas al último cambio o evento indicado por la aplicación; el esquema no precisa cuál.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         }
       ],
       "primaryKey": [
@@ -1696,13 +1795,14 @@
       "group": "tb",
       "rowCount": 0,
       "rowCountVerifiable": true,
-      "columnCount": 7
+      "columnCount": 7,
+      "descriptionOrigin": "Redacción editorial basada en nombres, tipos y relaciones del esquema; no declarada como COMMENT en el respaldo."
     },
     {
       "name": "tb_refunds",
       "engine": "InnoDB",
       "options": "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
-      "description": "Sin descripción declarada en el respaldo.",
+      "description": "Devoluciones de importes vinculadas a pagos, con cantidad reembolsada, motivo y fechas.",
       "columns": [
         {
           "name": "ID",
@@ -1714,8 +1814,9 @@
           "primaryKey": true,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Identificador único de devoluciones de importes vinculadas a pagos, con cantidad reembolsada, motivo y fechas.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "payment_ID",
@@ -1729,10 +1830,11 @@
             "fk_refunds_payment"
           ],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
+          "description": "Identificador que referencia tb_payments.ID y vincula este registro con la entidad relacionada.",
           "foreignKeyTargets": [
             "tb_payments.ID"
-          ]
+          ],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "amount",
@@ -1744,8 +1846,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Importe del pago o reembolso, según la tabla donde aparece.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "reason",
@@ -1757,8 +1860,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Motivo proporcionado para la solicitud o el evento asociado al registro.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "creation_date",
@@ -1770,8 +1874,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Fecha y hora de creación del registro.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "last_update",
@@ -1783,8 +1888,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": "CURRENT_TIMESTAMP",
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Fecha y hora de la última actualización registrada.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         }
       ],
       "primaryKey": [
@@ -1816,13 +1922,14 @@
       "group": "tb",
       "rowCount": 0,
       "rowCountVerifiable": true,
-      "columnCount": 6
+      "columnCount": 6,
+      "descriptionOrigin": "Redacción editorial basada en nombres, tipos y relaciones del esquema; no declarada como COMMENT en el respaldo."
     },
     {
       "name": "tb_returns",
       "engine": "InnoDB",
       "options": "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
-      "description": "Sin descripción declarada en el respaldo.",
+      "description": "Solicitudes de devolución vinculadas a una orden y a quien las solicita, con motivo y estado.",
       "columns": [
         {
           "name": "ID",
@@ -1834,8 +1941,9 @@
           "primaryKey": true,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Identificador único de solicitudes de devolución vinculadas a una orden y a quien las solicita, con motivo y estado.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "order_ID",
@@ -1849,10 +1957,11 @@
             "fk_returns_order_hdr"
           ],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
+          "description": "Identificador que referencia tb_orders.ID y vincula este registro con la entidad relacionada.",
           "foreignKeyTargets": [
             "tb_orders.ID"
-          ]
+          ],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "requested_by",
@@ -1866,10 +1975,11 @@
             "fk_returns_user"
           ],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
+          "description": "Identificador que referencia tb_user.ID y vincula este registro con la entidad relacionada.",
           "foreignKeyTargets": [
             "tb_user.ID"
-          ]
+          ],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "reason",
@@ -1881,8 +1991,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Motivo proporcionado para la solicitud o el evento asociado al registro.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "status",
@@ -1894,8 +2005,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Estado del flujo de solicitud; las opciones permitidas se definen en el ENUM y describen las etapas posibles.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "creation_date",
@@ -1907,8 +2019,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Fecha y hora de creación del registro.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "last_update",
@@ -1920,8 +2033,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": "CURRENT_TIMESTAMP",
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Fecha y hora de la última actualización registrada.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         }
       ],
       "primaryKey": [
@@ -1972,13 +2086,14 @@
       "group": "tb",
       "rowCount": 0,
       "rowCountVerifiable": true,
-      "columnCount": 7
+      "columnCount": 7,
+      "descriptionOrigin": "Redacción editorial basada en nombres, tipos y relaciones del esquema; no declarada como COMMENT en el respaldo."
     },
     {
       "name": "tb_shipments",
       "engine": "InnoDB",
       "options": "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
-      "description": "Sin descripción declarada en el respaldo.",
+      "description": "Información de envío de órdenes, con transportista, número de seguimiento, estado y fechas de entrega.",
       "columns": [
         {
           "name": "ID",
@@ -1990,8 +2105,9 @@
           "primaryKey": true,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Identificador único de información de envío de órdenes, con transportista, número de seguimiento, estado y fechas de entrega.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "order_ID",
@@ -2005,10 +2121,11 @@
             "fk_shipments_order"
           ],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
+          "description": "Identificador que referencia tb_orders.ID y vincula este registro con la entidad relacionada.",
           "foreignKeyTargets": [
             "tb_orders.ID"
-          ]
+          ],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "tracking_number",
@@ -2020,8 +2137,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Número de seguimiento del envío.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "carrier",
@@ -2033,8 +2151,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Nombre del transportista asociado al envío.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "shipping_status",
@@ -2046,8 +2165,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Estado del envío; las opciones permitidas están definidas por el ENUM.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "shipped_date",
@@ -2059,8 +2179,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Fecha y hora en que se registró la salida del envío.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "delivered_date",
@@ -2072,8 +2193,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Fecha y hora en que se registró la entrega.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "last_update",
@@ -2085,8 +2207,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": "CURRENT_TIMESTAMP",
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Fecha y hora de la última actualización registrada.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         }
       ],
       "primaryKey": [
@@ -2118,13 +2241,14 @@
       "group": "tb",
       "rowCount": 0,
       "rowCountVerifiable": true,
-      "columnCount": 8
+      "columnCount": 8,
+      "descriptionOrigin": "Redacción editorial basada en nombres, tipos y relaciones del esquema; no declarada como COMMENT en el respaldo."
     },
     {
       "name": "tb_user",
       "engine": "InnoDB",
       "options": "ENGINE=InnoDB AUTO_INCREMENT=7532 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
-      "description": "Sin descripción declarada en el respaldo.",
+      "description": "Cuentas de usuario con datos de acceso, estado y fechas de actividad.",
       "columns": [
         {
           "name": "ID",
@@ -2136,8 +2260,9 @@
           "primaryKey": true,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Identificador único de cuentas de usuario con datos de acceso, estado y fechas de actividad.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "email",
@@ -2149,8 +2274,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Dirección de correo electrónico asociada a la cuenta.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "nick",
@@ -2162,8 +2288,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Apodo o nombre de usuario de la cuenta.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "password",
@@ -2175,8 +2302,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Valor de credencial almacenado para la cuenta; el esquema no especifica su formato ni método de protección.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "creation_date",
@@ -2188,8 +2316,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Fecha y hora de creación del registro.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "last_update",
@@ -2201,8 +2330,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": "CURRENT_TIMESTAMP",
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Fecha y hora de la última actualización registrada.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "last_login",
@@ -2214,8 +2344,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Fecha y hora del último inicio de sesión registrado para la cuenta.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "status",
@@ -2227,8 +2358,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Indicador binario del estado del registro; el significado de cada valor depende de la aplicación.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         }
       ],
       "primaryKey": [
@@ -2254,13 +2386,14 @@
       "group": "tb",
       "rowCount": 7528,
       "rowCountVerifiable": true,
-      "columnCount": 8
+      "columnCount": 8,
+      "descriptionOrigin": "Redacción editorial basada en nombres, tipos y relaciones del esquema; no declarada como COMMENT en el respaldo."
     },
     {
       "name": "tb_user_addresses",
       "engine": "InnoDB",
       "options": "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
-      "description": "Sin descripción declarada en el respaldo.",
+      "description": "Direcciones asociadas a usuarios para entrega, con destinatario, instrucciones y coordenadas opcionales.",
       "columns": [
         {
           "name": "ID",
@@ -2272,8 +2405,9 @@
           "primaryKey": true,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Identificador único de direcciones asociadas a usuarios para entrega, con destinatario, instrucciones y coordenadas opcionales.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "user_ID",
@@ -2287,10 +2421,11 @@
             "fk_addresses_users"
           ],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
+          "description": "Identificador que referencia tb_user.ID y vincula este registro con la entidad relacionada.",
           "foreignKeyTargets": [
             "tb_user.ID"
-          ]
+          ],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "address_label",
@@ -2302,8 +2437,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Etiqueta que permite distinguir la dirección, por ejemplo, según el uso que le asigne la aplicación.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "recipient_name",
@@ -2315,8 +2451,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Nombre de la persona destinataria de la dirección.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "recipient_phone",
@@ -2328,8 +2465,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Teléfono de contacto de la persona destinataria.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "delivery_instructions",
@@ -2341,8 +2479,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Indicaciones adicionales para realizar la entrega.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "latitude",
@@ -2354,8 +2493,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Coordenada de latitud asociada a la dirección.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "longitude",
@@ -2367,8 +2507,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Coordenada de longitud asociada a la dirección.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "is_default",
@@ -2380,8 +2521,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Indicador que marca si la dirección o método está seleccionado como predeterminado.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "status",
@@ -2393,8 +2535,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Indicador binario del estado del registro; el significado de cada valor depende de la aplicación.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "creation_date",
@@ -2406,8 +2549,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Fecha y hora de creación del registro.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "last_update",
@@ -2419,8 +2563,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": "CURRENT_TIMESTAMP",
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Fecha y hora de la última actualización registrada.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "default_user_ID",
@@ -2432,8 +2577,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Identificador de usuario asociado a la configuración de dirección predeterminada; el respaldo no declara una clave foránea para este campo.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         }
       ],
       "primaryKey": [
@@ -2472,13 +2618,14 @@
       "group": "tb",
       "rowCount": 0,
       "rowCountVerifiable": true,
-      "columnCount": 13
+      "columnCount": 13,
+      "descriptionOrigin": "Redacción editorial basada en nombres, tipos y relaciones del esquema; no declarada como COMMENT en el respaldo."
     },
     {
       "name": "tbc_payment_methods_types",
       "engine": "InnoDB",
       "options": "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
-      "description": "Sin descripción declarada en el respaldo.",
+      "description": "Catálogo de tipos de método de pago con nombre, descripción y estado.",
       "columns": [
         {
           "name": "ID",
@@ -2490,8 +2637,9 @@
           "primaryKey": true,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Identificador único de catálogo de tipos de método de pago con nombre, descripción y estado.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "name",
@@ -2503,8 +2651,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Nombre legible de la entidad o elemento del catálogo.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "description",
@@ -2516,8 +2665,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Texto descriptivo asociado a la entidad; su contenido lo proporciona la aplicación.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "status",
@@ -2529,8 +2679,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Indicador binario del estado del registro; el significado de cada valor depende de la aplicación.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "creation_date",
@@ -2542,8 +2693,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Fecha y hora de creación del registro.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "last_update",
@@ -2555,8 +2707,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": "CURRENT_TIMESTAMP",
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Fecha y hora de la última actualización registrada.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         }
       ],
       "primaryKey": [
@@ -2567,13 +2720,14 @@
       "group": "tbc",
       "rowCount": 0,
       "rowCountVerifiable": true,
-      "columnCount": 6
+      "columnCount": 6,
+      "descriptionOrigin": "Redacción editorial basada en nombres, tipos y relaciones del esquema; no declarada como COMMENT en el respaldo."
     },
     {
       "name": "tbd_address_components",
       "engine": "InnoDB",
       "options": "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
-      "description": "Sin descripción declarada en el respaldo.",
+      "description": "Componentes individuales de una dirección, con tipo, valor y relaciones a la dirección y a un componente superior.",
       "columns": [
         {
           "name": "ID",
@@ -2585,8 +2739,9 @@
           "primaryKey": true,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Identificador único de componentes individuales de una dirección, con tipo, valor y relaciones a la dirección y a un componente superior.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "address_ID",
@@ -2601,11 +2756,12 @@
             "fk_component_parent"
           ],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
+          "description": "Componente de una clave foránea compuesta que vincula esta fila con tb_user_addresses.ID; tbd_address_components.address_ID, ID.",
           "foreignKeyTargets": [
             "tb_user_addresses.ID",
             "tbd_address_components.address_ID"
-          ]
+          ],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "value",
@@ -2617,8 +2773,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Valor de texto del componente de dirección.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "component_type",
@@ -2630,8 +2787,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Tipo de componente de dirección, expresado como texto.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "status",
@@ -2643,8 +2801,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Indicador binario del estado del registro; el significado de cada valor depende de la aplicación.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "address_sup_ID",
@@ -2658,10 +2817,11 @@
             "fk_component_parent"
           ],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
+          "description": "Componente de una clave foránea compuesta que vincula esta fila con tbd_address_components.address_ID, ID.",
           "foreignKeyTargets": [
             "tbd_address_components.ID"
-          ]
+          ],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "creation_date",
@@ -2673,8 +2833,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Fecha y hora de creación del registro.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "last_update",
@@ -2686,8 +2847,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": "CURRENT_TIMESTAMP",
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Fecha y hora de la última actualización registrada.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         }
       ],
       "primaryKey": [
@@ -2742,13 +2904,14 @@
       "group": "tbd",
       "rowCount": 0,
       "rowCountVerifiable": true,
-      "columnCount": 8
+      "columnCount": 8,
+      "descriptionOrigin": "Redacción editorial basada en nombres, tipos y relaciones del esquema; no declarada como COMMENT en el respaldo."
     },
     {
       "name": "tbd_cancellation_items",
       "engine": "InnoDB",
       "options": "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
-      "description": "Sin descripción declarada en el respaldo.",
+      "description": "Detalle auxiliar relacionado con una solicitud de cancelación, la orden y el usuario que la solicita.",
       "columns": [
         {
           "name": "ID",
@@ -2760,8 +2923,9 @@
           "primaryKey": true,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Identificador único de detalle auxiliar relacionado con una solicitud de cancelación, la orden y el usuario que la solicita.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "cancellation_ID",
@@ -2775,10 +2939,11 @@
             "fk_cancellation_items_header"
           ],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
+          "description": "Identificador que referencia tb_order_cancellations.ID y vincula este registro con la entidad relacionada.",
           "foreignKeyTargets": [
             "tb_order_cancellations.ID"
-          ]
+          ],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "order_ID",
@@ -2792,10 +2957,11 @@
             "fk_cancellations_order"
           ],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
+          "description": "Identificador que referencia tb_orders.ID y vincula este registro con la entidad relacionada.",
           "foreignKeyTargets": [
             "tb_orders.ID"
-          ]
+          ],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "reason",
@@ -2807,8 +2973,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Motivo proporcionado para la solicitud o el evento asociado al registro.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "requested_by",
@@ -2822,10 +2989,11 @@
             "fk_cancellations_user"
           ],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
+          "description": "Identificador que referencia tb_user.ID y vincula este registro con la entidad relacionada.",
           "foreignKeyTargets": [
             "tb_user.ID"
-          ]
+          ],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "creation_date",
@@ -2837,8 +3005,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Fecha y hora de creación del registro.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "last_update",
@@ -2850,8 +3019,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": "CURRENT_TIMESTAMP",
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Fecha y hora de la última actualización registrada.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         }
       ],
       "primaryKey": [
@@ -2921,13 +3091,14 @@
       "group": "tbd",
       "rowCount": 0,
       "rowCountVerifiable": true,
-      "columnCount": 7
+      "columnCount": 7,
+      "descriptionOrigin": "Redacción editorial basada en nombres, tipos y relaciones del esquema; no declarada como COMMENT en el respaldo."
     },
     {
       "name": "tbd_cart_items",
       "engine": "InnoDB",
       "options": "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
-      "description": "Sin descripción declarada en el respaldo.",
+      "description": "Productos y proveedores incluidos en un carrito, con la cantidad solicitada.",
       "columns": [
         {
           "name": "cart_ID",
@@ -2941,10 +3112,11 @@
             "fk_cart_items_cart"
           ],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
+          "description": "Identificador que referencia tb_carts.ID y vincula este registro con la entidad relacionada.",
           "foreignKeyTargets": [
             "tb_carts.ID"
-          ]
+          ],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "provider_ID",
@@ -2958,10 +3130,11 @@
             "fk_cart_items_provider_product"
           ],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
+          "description": "Componente de una clave foránea compuesta que vincula esta fila con tb_products_users_providers.user_ID, product_ID.",
           "foreignKeyTargets": [
             "tb_products_users_providers.user_ID"
-          ]
+          ],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "product_ID",
@@ -2975,10 +3148,11 @@
             "fk_cart_items_provider_product"
           ],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
+          "description": "Componente de una clave foránea compuesta que vincula esta fila con tb_products_users_providers.user_ID, product_ID.",
           "foreignKeyTargets": [
             "tb_products_users_providers.product_ID"
-          ]
+          ],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "quantity",
@@ -2990,8 +3164,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Cantidad de unidades del producto en el carrito o renglón.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "creation_date",
@@ -3003,8 +3178,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Fecha y hora de creación del registro.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "last_update",
@@ -3016,8 +3192,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": "CURRENT_TIMESTAMP",
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Fecha y hora de la última actualización registrada.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         }
       ],
       "primaryKey": [
@@ -3066,13 +3243,14 @@
       "group": "tbd",
       "rowCount": 0,
       "rowCountVerifiable": true,
-      "columnCount": 6
+      "columnCount": 6,
+      "descriptionOrigin": "Redacción editorial basada en nombres, tipos y relaciones del esquema; no declarada como COMMENT en el respaldo."
     },
     {
       "name": "tbd_order_items",
       "engine": "InnoDB",
       "options": "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
-      "description": "Sin descripción declarada en el respaldo.",
+      "description": "Renglones de una orden con datos del producto, proveedor, cantidad, precio unitario e importe subtotal.",
       "columns": [
         {
           "name": "ID",
@@ -3084,8 +3262,9 @@
           "primaryKey": true,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Identificador único de renglones de una orden con datos del producto, proveedor, cantidad, precio unitario e importe subtotal.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "seller_order_ID",
@@ -3099,10 +3278,11 @@
             "tbd_order_items_ibfk_1"
           ],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
+          "description": "Identificador que referencia tb_orders.ID y vincula este registro con la entidad relacionada.",
           "foreignKeyTargets": [
             "tb_orders.ID"
-          ]
+          ],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "product_ID",
@@ -3116,10 +3296,11 @@
             "tbd_order_items_ibfk_2"
           ],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
+          "description": "Componente de una clave foránea compuesta que vincula esta fila con tb_products_users_providers.product_ID, user_ID.",
           "foreignKeyTargets": [
             "tb_products_users_providers.product_ID"
-          ]
+          ],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "provider_ID",
@@ -3133,10 +3314,11 @@
             "tbd_order_items_ibfk_2"
           ],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
+          "description": "Componente de una clave foránea compuesta que vincula esta fila con tb_products_users_providers.product_ID, user_ID.",
           "foreignKeyTargets": [
             "tb_products_users_providers.user_ID"
-          ]
+          ],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "product_name",
@@ -3148,8 +3330,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Nombre del producto guardado en el renglón de la orden.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "quantity",
@@ -3161,8 +3344,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Cantidad de unidades del producto en el carrito o renglón.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "unit_price",
@@ -3174,8 +3358,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Precio por unidad del producto en el renglón de la orden.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "subtotal",
@@ -3187,8 +3372,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Importe subtotal asociado a la orden o renglón, expresado en la moneda que gestione la aplicación.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "creation_date",
@@ -3200,8 +3386,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Fecha y hora de creación del registro.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "last_update",
@@ -3213,8 +3400,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": "CURRENT_TIMESTAMP",
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Fecha y hora de la última actualización registrada.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         }
       ],
       "primaryKey": [
@@ -3268,13 +3456,14 @@
       "group": "tbd",
       "rowCount": 0,
       "rowCountVerifiable": true,
-      "columnCount": 10
+      "columnCount": 10,
+      "descriptionOrigin": "Redacción editorial basada en nombres, tipos y relaciones del esquema; no declarada como COMMENT en el respaldo."
     },
     {
       "name": "tbd_return_items",
       "engine": "InnoDB",
       "options": "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
-      "description": "Sin descripción declarada en el respaldo.",
+      "description": "Detalle asociado a una devolución y su orden, con motivo y estado.",
       "columns": [
         {
           "name": "ID",
@@ -3286,8 +3475,9 @@
           "primaryKey": true,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Identificador único de detalle asociado a una devolución y su orden, con motivo y estado.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "return_ID",
@@ -3301,10 +3491,11 @@
             "fk_return_items_header"
           ],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
+          "description": "Identificador que referencia tb_returns.ID y vincula este registro con la entidad relacionada.",
           "foreignKeyTargets": [
             "tb_returns.ID"
-          ]
+          ],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "order_ID",
@@ -3318,10 +3509,11 @@
             "fk_returns_order"
           ],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
+          "description": "Identificador que referencia tb_orders.ID y vincula este registro con la entidad relacionada.",
           "foreignKeyTargets": [
             "tb_orders.ID"
-          ]
+          ],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "reason",
@@ -3333,8 +3525,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Motivo proporcionado para la solicitud o el evento asociado al registro.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "status",
@@ -3346,8 +3539,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Estado del flujo de solicitud; las opciones permitidas se definen en el ENUM y describen las etapas posibles.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "creation_date",
@@ -3359,8 +3553,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Fecha y hora de creación del registro.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "last_update",
@@ -3372,8 +3567,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": "CURRENT_TIMESTAMP",
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Fecha y hora de la última actualización registrada.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         }
       ],
       "primaryKey": [
@@ -3424,13 +3620,14 @@
       "group": "tbd",
       "rowCount": 0,
       "rowCountVerifiable": true,
-      "columnCount": 7
+      "columnCount": 7,
+      "descriptionOrigin": "Redacción editorial basada en nombres, tipos y relaciones del esquema; no declarada como COMMENT en el respaldo."
     },
     {
       "name": "tbd_user_payment_methods",
       "engine": "InnoDB",
       "options": "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
-      "description": "Sin descripción declarada en el respaldo.",
+      "description": "Métodos de pago vinculados a usuarios, con proveedor, referencia, etiqueta y últimos dígitos almacenados.",
       "columns": [
         {
           "name": "ID",
@@ -3442,8 +3639,9 @@
           "primaryKey": true,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Identificador único de métodos de pago vinculados a usuarios, con proveedor, referencia, etiqueta y últimos dígitos almacenados.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "user_ID",
@@ -3457,10 +3655,11 @@
             "tbd_user_payment_methods_ibfk_1"
           ],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
+          "description": "Identificador que referencia tb_user.ID y vincula este registro con la entidad relacionada.",
           "foreignKeyTargets": [
             "tb_user.ID"
-          ]
+          ],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "payment_method_type_ID",
@@ -3474,10 +3673,11 @@
             "tbd_user_payment_methods_ibfk_2"
           ],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
+          "description": "Identificador que referencia tbc_payment_methods_types.ID y vincula este registro con la entidad relacionada.",
           "foreignKeyTargets": [
             "tbc_payment_methods_types.ID"
-          ]
+          ],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "provider",
@@ -3489,8 +3689,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Nombre del proveedor de pago registrado para el método.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "provider_method_ref",
@@ -3502,8 +3703,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Referencia del método de pago en el proveedor externo; el esquema no define su formato.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "label",
@@ -3515,8 +3717,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Etiqueta descriptiva asignada por el usuario al método de pago.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "last_four",
@@ -3528,8 +3731,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Últimos cuatro caracteres almacenados para identificar el método de pago.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "is_default",
@@ -3541,8 +3745,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Indicador que marca si la dirección o método está seleccionado como predeterminado.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "status",
@@ -3554,8 +3759,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Indicador binario del estado del registro; el significado de cada valor depende de la aplicación.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "creation_date",
@@ -3567,8 +3773,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Fecha y hora de creación del registro.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "last_update",
@@ -3580,8 +3787,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": "CURRENT_TIMESTAMP",
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Fecha y hora de la última actualización registrada.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         }
       ],
       "primaryKey": [
@@ -3640,13 +3848,14 @@
       "group": "tbd",
       "rowCount": 0,
       "rowCountVerifiable": true,
-      "columnCount": 11
+      "columnCount": 11,
+      "descriptionOrigin": "Redacción editorial basada en nombres, tipos y relaciones del esquema; no declarada como COMMENT en el respaldo."
     },
     {
       "name": "tbd_users_wishlist_products",
       "engine": "InnoDB",
       "options": "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
-      "description": "Sin descripción declarada en el respaldo.",
+      "description": "Tabla de asociación entre usuarios y productos guardados en su lista de deseos.",
       "columns": [
         {
           "name": "user_ID",
@@ -3660,10 +3869,11 @@
             "fk_user2"
           ],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
+          "description": "Identificador que referencia tb_user.ID y vincula este registro con la entidad relacionada.",
           "foreignKeyTargets": [
             "tb_user.ID"
-          ]
+          ],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "product_ID",
@@ -3677,10 +3887,11 @@
             "fk_products3"
           ],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
+          "description": "Identificador que referencia tb_products.ID y vincula este registro con la entidad relacionada.",
           "foreignKeyTargets": [
             "tb_products.ID"
-          ]
+          ],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "status",
@@ -3692,8 +3903,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Indicador binario del estado del registro; el significado de cada valor depende de la aplicación.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "creation_date",
@@ -3705,8 +3917,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": null,
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Fecha y hora de creación del registro.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         },
         {
           "name": "last_update",
@@ -3718,8 +3931,9 @@
           "primaryKey": false,
           "foreignKeys": [],
           "onUpdate": "CURRENT_TIMESTAMP",
-          "description": "Sin descripción declarada en el respaldo.",
-          "foreignKeyTargets": []
+          "description": "Fecha y hora de la última actualización registrada.",
+          "foreignKeyTargets": [],
+          "descriptionOrigin": "Redacción editorial basada en el nombre, tipo y relaciones del campo; no declarada como COMMENT en el respaldo."
         }
       ],
       "primaryKey": [
@@ -3764,7 +3978,8 @@
       "group": "tbd",
       "rowCount": 0,
       "rowCountVerifiable": true,
-      "columnCount": 5
+      "columnCount": 5,
+      "descriptionOrigin": "Redacción editorial basada en nombres, tipos y relaciones del esquema; no declarada como COMMENT en el respaldo."
     }
   ],
   "relations": [
@@ -4408,5 +4623,6 @@
     "tbd_user_payment_methods",
     "tbd_users_wishlist_products"
   ],
-  "totalRowsInBackup": 97472
+  "totalRowsInBackup": 97472,
+  "descriptionPolicy": "Las descripciones son editoriales e inferidas del esquema; no deben interpretarse como comentarios oficiales ni como reglas de negocio no declaradas."
 }

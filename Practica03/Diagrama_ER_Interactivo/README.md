@@ -3,6 +3,8 @@
 Explorador local del esquema MySQL 8.0.46 verificado contra
 `respaldo_111126_1794591103484.sql`.
 
+Paleta visual: `#0B1320`, `#0F2A45`, `#1E4E6A`, `#8FB8C9` y `#F2EFE9`.
+
 ## Ejecutar localmente
 
 1. Descomprime el ZIP.
@@ -21,6 +23,8 @@ porque el navegador no permite que `fetch()` lea `data/schema.json` al abrir
 - Arrastrar el encabezado de una tabla para cambiar su posición.
 - Seleccionar una tabla para ver descripción, conteo del respaldo, campos,
   restricciones e índices; las relaciones conectadas quedan resaltadas.
+- Ver en el panel lateral una fila por tabla con su cantidad de registros
+  incluida en el respaldo, incluso antes de seleccionar una tabla.
 - Pulsar una relación o un enlace en el inspector para seleccionarla.
 - **Ajustar**, **Restablecer**, **Mostrar todas**, pausar/reanudar animación y
   controlar la velocidad del flujo.
@@ -30,9 +34,11 @@ porque el navegador no permite que `fetch()` lea `data/schema.json` al abrir
 El esquema incluye **25 tablas, 190 columnas y 33 claves foráneas declaradas**.
 Los conteos por tabla se calcularon con las filas `INSERT` incluidas en el
 respaldo y no representan una consulta en vivo. Las 25 tablas tienen una sección
-de datos en el respaldo; cuando no hay filas `INSERT`, el total es 0. En el SQL
-no hay `COMMENT` para tablas ni columnas; se indica la ausencia de descripción
-declarada sin inventarla.
+de datos en el respaldo; cuando no hay filas `INSERT`, el conteo verificable es
+0. El diagrama incluye descripciones editoriales redactadas a partir de los
+nombres, tipos y relaciones del esquema. El SQL no contiene `COMMENT` de tabla
+ni columna; estas descripciones no son comentarios oficiales ni reglas de
+negocio confirmadas.
 
 `data/schema.json` contiene la estructura documentada, los conteos y la huella
 SHA-256 del respaldo utilizado. El SQL no se ejecuta y no se necesita una base
